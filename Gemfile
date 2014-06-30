@@ -49,3 +49,4 @@ gem 'spring',        group: :development
 gem 'haml', '~> 4.0.5'
 gem 'zurb-foundation', '~> 4.3.2'
 
+gem 'rails_12factor', group: :production
