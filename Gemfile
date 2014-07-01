@@ -48,5 +48,6 @@ gem 'spring',        group: :development
 
 gem 'haml-rails'
 gem 'foundation-rails'
+gem 'carrierwave'
 
 gem 'rails_12factor', group: :production
