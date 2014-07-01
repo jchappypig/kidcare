@@ -46,7 +46,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'haml', '~> 4.0.5'
-gem 'zurb-foundation', '~> 4.3.2'
+gem 'haml-rails'
+gem 'foundation-rails'
 
 gem 'rails_12factor', group: :production
