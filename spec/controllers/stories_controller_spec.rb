@@ -91,6 +91,11 @@ describe StoriesController do
       before { post :create, story: attributes_for(:story).merge(content: '') }
       it { is_expected.to render_template(:new) }
     end
+  end
+
+  describe 'DELETE #destory' do
+    before { story }
+    it { expect { delete :destroy, id: story }.to change { Story.count }.by(-1) };
 
   end
 end
