@@ -51,9 +51,10 @@ gem 'foundation-rails'
 gem 'carrierwave'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', require: false
+  gem 'database_cleaner'
 end
 
 gem 'rails_12factor', group: :production
