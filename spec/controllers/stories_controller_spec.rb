@@ -68,4 +68,29 @@ describe StoriesController do
       it { is_expected.to render_template(:new) }
     end
   end
+
+  describe 'PUT #update' do
+    context 'when succeeds' do
+      it 'redirects to story page' do
+        put :update, id: story, story: story.attributes;
+        expect(response).to redirect_to(story_path(assigns(:story)))
+      end
+
+      it 'updates the story' do
+        put :update, id: story, story: story.attributes.merge(content: 'new content');
+        expect(assigns(:story).content).to eq('new content')
+      end
+
+      it 'does not add a new story' do
+        attributes = story.attributes;
+        expect { put :update, id: story, story: attributes }.not_to change { Story.count }
+      end
+    end
+
+    context 'when fails' do
+      before { post :create, story: attributes_for(:story).merge(content: '') }
+      it { is_expected.to render_template(:new) }
+    end
+
+  end
 end
