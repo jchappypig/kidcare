@@ -17,7 +17,7 @@ describe StoriesController do
     end
 
     it 'loads all of the posts into @stories' do
-      story1, story2 = Story.create!, Story.create!
+      story1, story2 = create(:story), create(:story)
       expect(assigns(:stories)).to match_array([story1, story2])
     end
   end
@@ -49,5 +49,23 @@ describe StoriesController do
 
     it { is_expected.to render_template(:edit) }
     it { is_expected.to be_success }
+  end
+
+  describe 'POST #create' do
+    context 'when succeeds' do
+      it 'redirects to story page' do
+        post :create, story: attributes_for(:story)
+        expect(response).to redirect_to(story_path(assigns(:story)))
+      end
+
+      it 'create and save story' do
+        expect { post :create, story: attributes_for(:story) }.to change { Story.count }.by(1)
+      end
+    end
+
+    context 'when fails' do
+      before { post :create, story: attributes_for(:story).merge(content: '') }
+      it { is_expected.to render_template(:new) }
+    end
   end
 end
