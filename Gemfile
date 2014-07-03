@@ -55,6 +55,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', require: false
   gem 'database_cleaner'
+  gem 'faker'
 end
 
 gem 'rails_12factor', group: :production
