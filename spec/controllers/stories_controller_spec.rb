@@ -96,6 +96,5 @@ describe StoriesController do
   describe 'DELETE #destory' do
     before { story }
     it { expect { delete :destroy, id: story }.to change { Story.count }.by(-1) };
-
   end
 end
