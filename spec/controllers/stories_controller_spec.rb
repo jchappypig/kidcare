@@ -58,8 +58,18 @@ describe StoriesController do
         expect(response).to redirect_to(story_path(assigns(:story)))
       end
 
-      it 'create and save story' do
+      it 'creates and save story' do
         expect { post :create, story: attributes_for(:story) }.to change { Story.count }.by(1)
+      end
+
+      context 'when there are story attachments' do
+        it 'creates and save story attachments' do
+          photoOne = attributes_for(:story_attachment)[:photo];
+          photoTwo = attributes_for(:story_attachment)[:photo];
+          post :create,
+               {story: attributes_for(:story)}.merge(story_attachments: {photo: [photoOne, photoTwo]})
+          expect(Story.first.story_attachment.count).to eq 2
+        end
       end
     end
 

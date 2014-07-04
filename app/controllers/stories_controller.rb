@@ -23,6 +23,11 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     if @story.save
+      if(params[:story_attachments].present?)
+        params[:story_attachments][:photo].each do |photo|
+          StoryAttachment.create!(photo: photo, story_id: @story.id)
+        end
+      end
       redirect_to @story, notice: 'Story was successfully created.'
     else
       render action: 'new'
@@ -52,6 +57,6 @@ class StoriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def story_params
-    params.require(:story).permit(:title, :content, :time_line)
+    params.require(:story).permit(:title, :content, :time_line, story_attachments_attributes: [:id, :story_id, :photo])
   end
 end
