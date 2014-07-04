@@ -3,6 +3,9 @@ require 'rails_helper'
 describe StoriesController do
   let(:story) { create(:story) }
 
+  let(:photoOne) { attributes_for(:story_attachment)[:photo] }
+  let(:photoTwo) { attributes_for(:story_attachment, another_photo: true)[:photo] }
+
   describe 'GET #index' do
 
     before { get :index }
@@ -64,8 +67,6 @@ describe StoriesController do
 
       context 'when there are story attachments' do
         it 'creates and save story attachments' do
-          photoOne = attributes_for(:story_attachment)[:photo];
-          photoTwo = attributes_for(:story_attachment)[:photo];
           post :create,
                {story: attributes_for(:story)}.merge(story_attachments: {photo: [photoOne, photoTwo]})
           expect(Story.first.story_attachment.count).to eq 2
@@ -82,18 +83,27 @@ describe StoriesController do
   describe 'PUT #update' do
     context 'when succeeds' do
       it 'redirects to story page' do
-        put :update, id: story, story: story.attributes;
+        put :update, id: story, story: story.attributes
         expect(response).to redirect_to(story_path(assigns(:story)))
       end
 
       it 'updates the story' do
-        put :update, id: story, story: story.attributes.merge(content: 'new content');
-        expect(assigns(:story).content).to eq('new content')
+        story
+        put :update, id: story, story: {content: 'new content'}
+        expect(Story.find(story).content).to eq('new content')
       end
 
-      it 'does not add a new story' do
-        attributes = story.attributes;
-        expect { put :update, id: story, story: attributes }.not_to change { Story.count }
+      context 'when story attachments changed' do
+        it 'updates story attachments' do
+          story = create(:story_with_attachments, attachments_count: 1)
+          expect(story.story_attachment.first.photo_url).to include(photoOne.original_filename)
+
+          put :update, id: story, story_attachments: {photo: [photoTwo]}, story: attributes_for(:story)
+
+          updated_story = Story.find(story)
+          expect(updated_story.story_attachment.count).to eq(1)
+          expect(updated_story.story_attachment.first.photo_url).to include(photoTwo.original_filename)
+        end
       end
     end
 
@@ -105,6 +115,6 @@ describe StoriesController do
 
   describe 'DELETE #destory' do
     before { story }
-    it { expect { delete :destroy, id: story }.to change { Story.count }.by(-1) };
+    it { expect { delete :destroy, id: story }.to change { Story.count }.by(-1) }
   end
 end

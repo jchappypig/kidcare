@@ -2,7 +2,11 @@ include ActionDispatch::TestProcess
 
 FactoryGirl.define do
   factory :story_attachment do
+    ignore do
+      another_photo false
+    end
+
     association :story, strategy: :build
-    photo { fixture_file_upload 'app/assets/images/test.png', 'image/png' }
+    photo { fixture_file_upload 'spec/images/' + "#{another_photo ? 'ball': 'flower'}" + '.png', 'image/png' }
   end
 end
