@@ -9,6 +9,9 @@
 %p
   %b Time line:
   = @story.time_line
+%p
+  - @story_attachments.each do |attachment|
+    = image_tag attachment.photo_url
 
 = link_to 'Edit', edit_story_path(@story)
 \|

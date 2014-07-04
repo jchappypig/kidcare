@@ -26,11 +26,23 @@ describe StoriesController do
   end
 
   describe 'GET #show' do
-    before { get :show, id: story }
-    subject { response }
+    it 'responds successfully' do
+      get :show, id: story
+      expect(response).to be_success
+    end
+    it 'renders the show template' do
+      get :show, id: story
+      expect(response).to render_template('show')
+    end
 
-    it { is_expected.to render_template(:show) }
-    it { is_expected.to be_success }
+    context 'when there are story attachments' do
+      it 'displayed all attachments' do
+        story = create(:story_with_attachments, attachments_count: 3)
+        get :show, id: story
+
+        expect(assigns(:story_attachments).count).to eq(3)
+      end
+    end
   end
 
   describe 'GET #new' do

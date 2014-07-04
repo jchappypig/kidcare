@@ -8,6 +8,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1
   def show
+    @story_attachments = @story.story_attachment.all
   end
 
   # GET /stories/new
