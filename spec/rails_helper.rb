@@ -34,7 +34,7 @@ RSpec.configure do |config|
 
   config.after(:suite) do
 
-    Dir["#{Rails.root}/public/uploads/tmp/**/*", "#{Rails.root}/public/uploads/story_attachment"].each do |file|
+    Dir["#{Rails.root}/public/uploads/tmp", "#{Rails.root}/public/uploads/test"].each do |file|
       FileUtils.rm_rf(file)
     end
   end
