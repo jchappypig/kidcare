@@ -36,7 +36,7 @@ class StoriesController < ApplicationController
 # PATCH/PUT /stories/1
   def update
     if @story.update(story_params)
-      @story.story_attachment = []
+      @story.story_attachment.clear
 
       params[:story_attachments][:photo].each do |photo|
         StoryAttachment.create!(photo: photo, story_id: @story.id)
@@ -61,7 +61,7 @@ class StoriesController < ApplicationController
 
 # Never trust parameters from the scary internet, only allow the white list through.
   def story_params
-    params.require(:story).permit(:title, :content, :time_line, story_attachments_attributes: [:id, :story_id, :photo])
+    params.require(:story).permit(:title, :content, :time_line, outcome_ids: [], story_attachments_attributes: [:id, :story_id, :photo])
   end
 
 end

@@ -6,7 +6,6 @@
       = f.input :content
       = f.input :time_line, value: Date.today
       = f.input :story_attachment, as: :file, input_html: { multiple: true, name: 'story_attachments[photo][]'}
-      = f.association :outcomes,   as: :check_boxes, label_method: :description
+      = f.association :outcomes, as: :check_boxes, label_method: :description
    .form-actions
       = f.button :submit
-
