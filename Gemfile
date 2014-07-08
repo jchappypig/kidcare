@@ -49,6 +49,7 @@ gem 'spring',        group: :development
 gem 'haml-rails'
 gem 'foundation-rails'
 gem 'carrierwave'
+gem 'seed-fu'
 
 group :development, :test do
   gem 'rspec-rails'
