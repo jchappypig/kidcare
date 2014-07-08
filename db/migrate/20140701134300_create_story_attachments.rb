@@ -1,7 +1,7 @@
 class CreateStoryAttachments < ActiveRecord::Migration
   def change
     create_table :story_attachments do |t|
-      t.integer :story_id
+      t.belongs_to :story
       t.string :photo
     end
   end
