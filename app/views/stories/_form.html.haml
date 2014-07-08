@@ -1,22 +1,12 @@
-= form_for @story do |f|
-  - if @story.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@story.errors.count, "error")} prohibited this story from being saved:"
-      %ul
-        - @story.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for @story do |f|
+   = f.error_notification
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :content
-    = f.text_area :content
-  .field
-    = f.label :time_line
-    = f.date_select :time_line
-  .field
-    = f.label :photo
-    = f.file_field :photo, multiple: true, name: 'story_attachments[photo][]'
-  .actions
-    = f.submit 'Save'
+   .form-inputs
+      = f.input :title
+      = f.input :content
+      = f.input :time_line, value: Date.today
+      = f.input :story_attachment, as: :file, input_html: { multiple: true, name: 'story_attachments[photo][]'}
+      = f.association :outcomes,   as: :check_boxes, label_method: :description
+   .form-actions
+      = f.button :submit
+

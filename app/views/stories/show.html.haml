@@ -12,6 +12,10 @@
 %p
   - @story_attachments.each do |attachment|
     = image_tag attachment.photo_url
+%p
+  - @story.outcomes.each do |outcome|
+    = outcome.description
+    %p
 
 = link_to 'Edit', edit_story_path(@story)
 \|

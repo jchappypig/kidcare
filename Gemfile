@@ -50,6 +50,7 @@ gem 'haml-rails'
 gem 'foundation-rails'
 gem 'carrierwave'
 gem 'seed-fu'
+gem 'simple_form'
 
 group :development, :test do
   gem 'rspec-rails'
