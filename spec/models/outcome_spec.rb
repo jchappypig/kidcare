@@ -5,5 +5,5 @@ describe Outcome do
   it { is_expected.to validate_presence_of :description }
   it { is_expected.to validate_presence_of :category }
   it { is_expected.to have_many :story_outcomes}
-  # it { is_expected.to have_many :story}
+  it { is_expected.to have_many(:stories).through(:story_outcomes)}
 end
