@@ -40,7 +40,7 @@ class StoriesController < ApplicationController
 
       params[:story_attachments][:photo].each do |photo|
         StoryAttachment.create!(photo: photo, story_id: @story.id)
-      end if(params[:story_attachments].present?)
+      end if (params[:story_attachments].present?)
       redirect_to @story, notice: 'Story was successfully updated.'
     else
       render action: 'edit'
