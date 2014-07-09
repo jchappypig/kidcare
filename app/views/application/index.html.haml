@@ -1,22 +1,27 @@
 .row
-  .large-3.columns
-    %h1
-      %img{src: "http://placehold.it/400x100&text=Logo"}/
-  .large-9.columns
-    %ul.right.button-group
-      %li
-        =link_to 'Our Stories', stories_path, html_options = {class: 'button'}
-      %li
-        =link_to 'Our Stories', stories_path, html_options = {class: 'button'}
-      %li
-        =link_to 'Our Stories', stories_path, html_options = {class: 'button'}
-      %li
-        =link_to 'Our Stories', stories_path, html_options = {class: 'button'}
+  .large-12.columns
+    %nav.top-bar{'data-topbar' => ''}
+      %ul.title-area
+        %li.name
+          %h1
+            =link_to('Little Star Early Learning Centre', root_path)
+        %li.toggle-topbar.menu-icon
+          =link_to('Menu', '#')
+      %section.top-bar-section
+        %ul.right
+          %li
+            =link_to 'Our Stories', stories_path
+          %li.divider
+          %li
+            =link_to 'Our Stories', stories_path
+          %li.divider
+          %li
+            =link_to 'Our Stories', stories_path
 .row
   .large-12.columns
     %ul.example-orbit{"data-orbit" => ""}
       %li
-        %img{src: "http://placehold.it/1000x400&text=[%20img%201%20]"}/
+        = image_tag('girl.jpg')
       %li
         %img{src: "http://placehold.it/1000x400&text=[%20img%202%20]"}/
       %li
@@ -41,7 +46,10 @@
       %h4 Get in touch!
       .row
         .large-9.columns
-          %p We'd love to hear from you, you attractive person you.
+          %p
+            Address: 6 Nielsen Ave, Carlton NSW 2218
+            %br
+            Phone:(02) 9587 3703
         .large-3.columns
           %a.radius.button.right{href: "#"} Contact Us
 %footer.row
