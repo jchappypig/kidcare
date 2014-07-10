@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bower-rails (0.7.3)
     builder (3.2.2)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
@@ -166,6 +167,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bower-rails
   carrierwave
   coffee-rails (~> 4.0.0)
   database_cleaner

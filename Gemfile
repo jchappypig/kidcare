@@ -51,6 +51,7 @@ gem 'foundation-rails'
 gem 'carrierwave'
 gem 'seed-fu'
 gem 'simple_form'
+gem 'bower-rails'
 
 group :development, :test do
   gem 'rspec-rails'
