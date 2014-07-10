@@ -5,9 +5,9 @@
       %li
         =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 200,  :separator => ' ')}"), image_path('boy.jpg'))
       %li
-        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 200,  :separator => ' ')}"), image_path('girl.jpg'))
+        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 20,  :separator => ' ')}"), image_path('girl.jpg'))
       %li
-        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 200,  :separator => ' ')}"), image_path('about_us.jpg'))
+        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 100,  :separator => ' ')}"), image_path('about_us.jpg'))
     %p
       = content
 
