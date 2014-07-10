@@ -8,5 +8,9 @@
     = javascript_include_tag 'vendor/modernizr'
     = csrf_meta_tags
   %body
-    = yield
+    = render partial: 'layouts/header'
+    .row
+      .large-12.columns
+        = yield
+    = render partial: 'layouts/footer'
     = javascript_include_tag 'application'
