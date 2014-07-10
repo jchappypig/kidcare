@@ -1,11 +1,8 @@
 .stories
   %ul
     %li
-      =link_to('/assets/about_us.jpg') do
-        =image_tag('about_us.jpg', class: 'story-image')
+      =link_to(image_tag('about_us.jpg', class: 'story-image'), asset_path('/assets/boy.jpg'))
     %li
-      =link_to('/assets/boy.jpg') do
-        =image_tag('about_us.jpg', class: 'story-image')
+      =link_to(image_tag('about_us.jpg', class: 'story-image'), asset_path('/assets/girl.jpg'))
     %li
-      =link_to('/assets/girl.jpg') do
-        =image_tag('about_us.jpg', class: 'story-image')
+      =link_to(image_tag('about_us.jpg', class: 'story-image'), asset_path('/assets/about_us.jpg'))
