@@ -12,8 +12,7 @@
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
-$topbar-bg-color: #008CBA;
-$topbar-link-bg-hover: #007095;
+$factor-minus-20: -20%;
 
 // $experimental: true;
 
@@ -63,12 +62,12 @@ $topbar-link-bg-hover: #007095;
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
-// $success-color: #43AC6A;
-// $warning-color: #f08a24;
-// $info-color: #a0d3e8;
+$primary-color: #008CBA;
+$secondary-color: #e7e7e7;
+$alert-color: #f04124;
+$success-color: #43AC6A;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
 
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;
@@ -1189,7 +1188,7 @@ $topbar-link-bg-hover: #007095;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+$topbar-bg-color: $primary-color;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1219,7 +1218,7 @@ $topbar-link-bg-hover: #007095;
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
 // $topbar-link-bg-color-hover: #555555;
-// $topbar-link-bg-hover: #272727;
+$topbar-link-bg-hover: scale-color($primary-color, $lightness: $factor-minus-20);
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;

@@ -6,7 +6,8 @@
           %h1
             =link_to('Little Star Early Learning Centre', root_path)
         %li.toggle-topbar.menu-icon
-          =link_to('Menu', '#')
+          %a{href: '#'}
+            %span
       %section.top-bar-section
         %ul.right
           %li
@@ -19,13 +20,13 @@
             =link_to 'Our Stories', stories_path
 .row
   .large-12.columns
-    %ul.example-orbit{"data-orbit" => ""}
+    %ul.example-orbit{'data-orbit' => ''}
       %li
         = image_tag('girl.jpg')
       %li
-        %img{src: "http://placehold.it/1000x400&text=[%20img%202%20]"}/
+        %img{src: 'http://placehold.it/1000x400&text=[%20img%202%20]'}/
       %li
-        %img{src: "http://placehold.it/1000x400&text=[%20img%203%20]"}/
+        %img{src: 'http://placehold.it/1000x400&text=[%20img%203%20]'}/
 %hr/
 .row
   .large-4.columns
@@ -39,7 +40,7 @@
   .large-4.columns
     %h4
       Announcement
-      %i.fi-flag.size36
+      %i.fi-flag
     %p Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa. Boudin aliqua adipisicing rump corned beef.
 .row
   .large-12.columns
@@ -52,7 +53,7 @@
             %br
             Phone:(02) 9587 3703
         .large-3.columns
-          %a.radius.button.right{href: "#"} Contact Us
+          %a.radius.button.right{href: '#'} Contact Us
 %footer.row
   .large-12.columns
     %hr/
@@ -62,10 +63,10 @@
       .large-6.columns
         %ul.inline-list.right
           %li
-            %a{href: "#"} Link 1
+            %a{href: '#'} Link 1
           %li
-            %a{href: "#"} Link 2
+            %a{href: '#'} Link 2
           %li
-            %a{href: "#"} Link 3
+            %a{href: '#'} Link 3
           %li
-            %a{href: "#"} Link 4
+            %a{href: '#'} Link 4
