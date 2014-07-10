@@ -1,10 +1,13 @@
 .stories
-  %ul
-    %li
-      =link_to(image_tag('about_us.jpg', class: 'story-image', alt: 'Dev, Isabella, Tawona and Pashav were applying their creative skills...'), image_path('boy.jpg'))
-    %li
-      =link_to(image_tag('about_us.jpg', class: 'story-image'), image_path('girl.jpg'))
-    %li
-      =link_to(image_tag('about_us.jpg', class: 'story-image'), image_path('about_us.jpg'))
-  %p
-    Dev, Isabella, Tawona and Pashav were applying their creative skills and imagination as they created with the  blocks. The creations they built in blocks are often reminiscent of things they have seen, and so they will begin to name what they built. Tawona explained “Look Dev I’m making a robot, do you like my robot Dev?” Dev replied” Wow, I’m making a tower” Isabella added “I’m making a house for my horsey” Dev replied “Your horsey can live in my tower Isabella!” Tawona commented” Horsey’s don’t live in a tower!” Dev, Tawona and Isabella laughed whilst Pashav was making a train.
+  .story
+    - content = 'Dev, Isabella, Tawona and Pashav were applying their creative skills and imagination as they created with the  blocks. The creations they built in blocks are often reminiscent of things they have seen, and so they will begin to name what they built. Tawona explained “Look Dev I’m making a robot, do you like my robot Dev?” Dev replied” Wow, I’m making a tower” Isabella added “I’m making a house for my horsey” Dev replied “Your horsey can live in my tower Isabella!” Tawona commented” Horsey’s don’t live in a tower!” Dev, Tawona and Isabella laughed whilst Pashav was making a train.'
+    %ul
+      %li
+        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 200,  :separator => ' ')}"), image_path('boy.jpg'))
+      %li
+        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 200,  :separator => ' ')}"), image_path('girl.jpg'))
+      %li
+        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 200,  :separator => ' ')}"), image_path('about_us.jpg'))
+    %p
+      = content
+
