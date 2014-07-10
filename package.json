@@ -1,0 +1,23 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Little Star Early Learning Centre",
+  "main": "index.js",
+  "dependencies": {
+    "bower": "^1.3.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jchappypig/kidcare.git"
+  },
+  "author": "Huanhuan Huang (hhuang@thoughtworks.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jchappypig/kidcare/issues"
+  },
+  "homepage": "https://github.com/jchappypig/kidcare"
+}
