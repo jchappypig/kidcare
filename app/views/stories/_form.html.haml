@@ -5,6 +5,8 @@
       = f.input :title
       = f.input :content
       = f.input :time_line, value: Date.today
+      - @story.story_attachment.each do |attachment|
+         = image_tag attachment.photo_url
       = f.input :story_attachment, as: :file, input_html: { multiple: true, name: 'story_attachments[photo][]'}
       = f.association :outcomes, as: :check_boxes, label_method: :description
    .form-actions

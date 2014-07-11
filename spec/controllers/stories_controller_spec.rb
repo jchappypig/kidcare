@@ -113,8 +113,9 @@ describe StoriesController do
           put :update, id: story, story_attachments: {photo: [photoTwo]}, story: attributes_for(:story)
 
           updated_story = Story.find(story)
-          expect(updated_story.story_attachment.count).to eq(1)
-          expect(updated_story.story_attachment.first.photo_url).to include(photoTwo.original_filename)
+          expect(updated_story.story_attachment.count).to eq(2)
+          expect(updated_story.story_attachment.map { |attachment| Pathname.new(attachment.photo_url).basename.to_s }).
+              to match_array([photoOne.original_filename, photoTwo.original_filename])
         end
       end
     end

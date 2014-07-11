@@ -36,8 +36,6 @@ class StoriesController < ApplicationController
 # PATCH/PUT /stories/1
   def update
     if @story.update(story_params)
-      @story.story_attachment.clear
-
       params[:story_attachments][:photo].each do |photo|
         StoryAttachment.create!(photo: photo, story_id: @story.id)
       end if (params[:story_attachments].present?)
