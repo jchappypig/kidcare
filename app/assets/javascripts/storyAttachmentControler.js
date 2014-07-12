@@ -1,15 +1,15 @@
 var app = angular.module('KidcareApp', ['ngResource']);
 
-app.factory('StoryAttachment', function($resource) {
+app.factory('StoryAttachment', ['$resource', function($resource) {
   $resource("/story_attachments/:id");
-});
+}]);
 
-app.factory('_', function($window) {
+app.factory('_', ['_', function($window) {
   'use strict';
   return $window._;
-});
+}]);
 
-app.controller('StoryAttachmentController', function(StoryAttachment, $scope, _) {
+app.controller('StoryAttachmentController', ['StoryAttachment', '$scope', '_', function(StoryAttachment, $scope, _) {
 
   $scope.createAttachments = function(_attachments) {
     $scope.attachments = JSON.parse(_attachments);
@@ -19,4 +19,4 @@ app.controller('StoryAttachmentController', function(StoryAttachment, $scope, _)
     StoryAttachment.remove({id: attachment.id});
     $scope.attachments = _.without($scope.attachments, attachment);
   };
-});
+}]);
