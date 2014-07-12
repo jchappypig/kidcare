@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/contact_us' => 'application#contact_us'
   get '/our_stories' => 'application#our_stories'
 
+  resources :story_attachments, only: [:destroy], defaults: {format: :json}
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

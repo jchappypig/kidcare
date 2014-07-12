@@ -1,7 +1,7 @@
 var app = angular.module('KidcareApp', ['ngResource']);
 
 app.factory('StoryAttachment', ['$resource', function($resource) {
-  $resource("/story_attachments/:id");
+  return $resource("/story_attachments/:id");
 }]);
 
 app.factory('_', ['$window', function($window) {
@@ -16,7 +16,9 @@ app.controller('StoryAttachmentController', ['StoryAttachment', '$scope', '_', f
   };
 
   $scope.removeAttachment = function(attachment) {
-    StoryAttachment.remove({id: attachment.id});
-    $scope.attachments = _.without($scope.attachments, attachment);
+    if (confirm("Are you sure?")) {
+      StoryAttachment.remove({id: attachment.id});
+      $scope.attachments = _.without($scope.attachments, attachment);
+    }
   };
 }]);

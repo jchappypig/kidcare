@@ -8,6 +8,8 @@
     .story-images{'ng-controller'=> 'StoryAttachmentController', 'ng-init' => "createAttachments('#{@story_attachments_as_json}')"}
       .story-image{'ng-repeat'=>'attachment in attachments'}
         %img{'ng-src'=> '{{ attachment.photo_url }}'}
+        = link_to('#', 'ng-click'=>'removeAttachment(attachment)') do
+          .fi-trash
     = f.input :story_attachment, as: :file, input_html: { multiple: true, name: 'story_attachments[photo][]'}
     = f.association :outcomes, as: :check_boxes, label_method: :description
   .form-actions
