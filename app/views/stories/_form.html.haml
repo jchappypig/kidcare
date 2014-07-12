@@ -1,13 +1,14 @@
 = simple_form_for @story do |f|
-   = f.error_notification
+  = f.error_notification
 
-   .form-inputs
-      = f.input :title
-      = f.input :content
-      = f.input :time_line, value: Date.today
-      - @story.story_attachment.each do |attachment|
-         = image_tag attachment.photo_url
-      = f.input :story_attachment, as: :file, input_html: { multiple: true, name: 'story_attachments[photo][]'}
-      = f.association :outcomes, as: :check_boxes, label_method: :description
-   .form-actions
-      = f.button :submit
+  .form-inputs
+    = f.input :title
+    = f.input :content
+    = f.input :time_line, value: Date.today
+    .story-images{'ng-controller'=> 'StoryAttachmentController', 'ng-init' => "createAttachments('#{@story_attachments_as_json}')"}
+      .story-image{'ng-repeat'=>'attachment in attachments'}
+        %img{'ng-src'=> '{{ attachment.photo_url }}'}
+    = f.input :story_attachment, as: :file, input_html: { multiple: true, name: 'story_attachments[photo][]'}
+    = f.association :outcomes, as: :check_boxes, label_method: :description
+  .form-actions
+    = f.button :submit

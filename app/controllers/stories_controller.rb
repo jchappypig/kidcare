@@ -18,6 +18,10 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
+    story_attachments = @story.story_attachment.map do |attachment|
+     {id: attachment.id, photo_url: attachment.photo_url}
+    end
+    @story_attachments_as_json = story_attachments.to_json
   end
 
   # POST /stories

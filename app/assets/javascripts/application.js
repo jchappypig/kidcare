@@ -15,6 +15,7 @@
 //= require foundation
 //= require underscore/underscore
 //= require angular
+//= require angular-resource
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
