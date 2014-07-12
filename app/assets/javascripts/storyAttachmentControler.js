@@ -4,7 +4,7 @@ app.factory('StoryAttachment', ['$resource', function($resource) {
   $resource("/story_attachments/:id");
 }]);
 
-app.factory('_', ['_', function($window) {
+app.factory('_', ['$window', function($window) {
   'use strict';
   return $window._;
 }]);
