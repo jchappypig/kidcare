@@ -1,15 +1,23 @@
 %p
   %b Content:
+  %br
   = @story.content
 %p
-  %b Time line:
+  %b Time:
+  %br
   = @story.time_line
 %p
-  - @story_attachments.each do |attachment|
-    = image_tag attachment.photo_url
+  %b Photos:
+  %br
+  %ul.stories
+    - @story_attachments.each do |attachment|
+      %li
+        = image_tag attachment.photo_url, class: 'story-image'
 %p
+  %b Outcomes:
+  %br
   - @story.outcomes.each do |outcome|
-    = outcome.description
+    = outcome.long_description
     %p
 
 = link_to 'Edit', edit_story_path(@story)
