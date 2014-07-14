@@ -2,9 +2,8 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :title
+    = f.input :time_line, value: Date.today, label: 'Time'
     = f.input :content
-    = f.input :time_line, value: Date.today
     - if @story_attachments_as_json
       .story-images{'ng-controller'=> 'StoryAttachmentController', 'ng-init' => "createAttachments('#{@story_attachments_as_json}')"}
         .story-image{'ng-repeat'=>'attachment in attachments'}

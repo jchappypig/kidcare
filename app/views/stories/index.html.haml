@@ -2,7 +2,6 @@
 
 %table
   %tr
-    %th Title
     %th Content
     %th Time line
     %th
@@ -11,7 +10,6 @@
 
   - @stories.each do |story|
     %tr
-      %td= story.title
       %td= story.content
       %td= story.time_line
       %td= link_to 'Show', story
