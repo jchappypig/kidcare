@@ -60,6 +60,7 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'database_cleaner'
   gem 'faker'
+  gem 'html2haml'
 end
 
 gem 'angularjs-rails'
