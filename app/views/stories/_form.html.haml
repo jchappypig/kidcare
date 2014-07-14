@@ -11,6 +11,9 @@
           = link_to('#', 'ng-click'=>'removeAttachment(attachment)') do
             .fi-trash.small
     = f.input :story_attachment, as: :file, input_html: { multiple: true, name: 'story_attachments[photo][]'}
+    
+    .form-actions
+      = f.button :submit
     = f.association :outcomes, as: :check_boxes, label_method: :long_description
   .form-actions
     = f.button :submit

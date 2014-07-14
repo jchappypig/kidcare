@@ -8094,7 +8094,7 @@ $.widget( "mobile.checkboxradio", $.extend( {
 
 $.widget( "mobile.button", {
 
-	initSelector: "input[type='button'], input[type='submit'], input[type='reset']",
+	initSelector: "input[type='button'], input[type='reset']",
 
 	options: {
 		theme: null,
