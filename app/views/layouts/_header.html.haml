@@ -18,3 +18,10 @@
           %li.divider
           %li
             =link_to 'Contact Us', contact_us_path
+          %li.divider
+          - if user_signed_in?
+            %li
+              = link_to 'logout', destroy_user_session_path, method: :delete
+          - else
+            %li
+              =link_to 'Login', new_user_session_path
