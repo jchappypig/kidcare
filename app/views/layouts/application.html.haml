@@ -9,6 +9,12 @@
     = csrf_meta_tags
   %body
     = render partial: 'layouts/header'
+    .row
+      .large-12.columns
+        .notice
+          = notice
+        .alert
+          = alert
     .row{'ng-view' => ''}
       .large-12.columns
         = yield
