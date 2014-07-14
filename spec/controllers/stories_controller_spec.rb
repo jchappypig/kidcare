@@ -31,7 +31,7 @@ describe StoriesController do
     end
   end
 
-  context 'not authenticated user' do
+  context 'authenticated user' do
     before :each do
       user = create(:user)
       sign_in :user, user
