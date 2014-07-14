@@ -1,13 +1,11 @@
-.stories
-  .story
-    - content = 'Dev, Isabella, Tawona and Pashav were applying their creative skills and imagination as they created with the  blocks. The creations they built in blocks are often reminiscent of things they have seen, and so they will begin to name what they built. Tawona explained “Look Dev I’m making a robot, do you like my robot Dev?” Dev replied” Wow, I’m making a tower” Isabella added “I’m making a house for my horsey” Dev replied “Your horsey can live in my tower Isabella!” Tawona commented” Horsey’s don’t live in a tower!” Dev, Tawona and Isabella laughed whilst Pashav was making a train.'
-    %ul
-      %li
-        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 200,  :separator => ' ')}"), image_path('boy.jpg'))
-      %li
-        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 20,  :separator => ' ')}"), image_path('girl.jpg'))
-      %li
-        =link_to(image_tag('about_us.jpg', class: 'story-image', alt: "#{truncate(content, :length => 100,  :separator => ' ')}"), image_path('about_us.jpg'))
-    %p
-      = content
+%ul.stories
+  %h4 2014-07-14 @Little Star
+  - @stories.each do |story|
+    %li
+      %ul.story
+        - story.story_attachment.each do |attachment|
+          %li
+            =link_to(image_tag(attachment.photo_url, class: 'story-image', alt: "#{truncate(story.content, :length => 200,  :separator => ' ')}"), attachment.photo_url)
+        %p
+          = story.content
 

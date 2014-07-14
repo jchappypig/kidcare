@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def our_stories
+    @stories = Story.all
   end
 
   def set_csrf_cookie_for_ng
