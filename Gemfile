@@ -65,9 +65,4 @@ end
 
 gem 'angularjs-rails'
 
-
-group :production do
-  gem 'rails_12factor'
-  gem 'unicorn'
-  gem 'capistrano'
-end
+gem 'rails_12factor', group: :production
