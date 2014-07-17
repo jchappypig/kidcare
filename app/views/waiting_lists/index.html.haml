@@ -1,0 +1,33 @@
+%h1 Listing waiting_lists
+
+%table
+  %tr
+    %th Child name
+    %th Child age
+    %th Parent name
+    %th Phone
+    %th Address
+    %th Postcode
+    %th Expect join time
+    %th Days per week
+    %th
+    %th
+    %th
+
+  - @waiting_lists.each do |waiting_list|
+    %tr
+      %td= waiting_list.child_name
+      %td= waiting_list.child_age
+      %td= waiting_list.parent_name
+      %td= waiting_list.phone
+      %td= waiting_list.address
+      %td= waiting_list.postcode
+      %td= waiting_list.expect_join_time
+      %td= waiting_list.days_per_week
+      %td= link_to 'Show', waiting_list
+      %td= link_to 'Edit', edit_waiting_list_path(waiting_list)
+      %td= link_to 'Destroy', waiting_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Waiting list', new_waiting_list_path

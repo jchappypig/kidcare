@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Child name:
+  = @waiting_list.child_name
+%p
+  %b Child age:
+  = @waiting_list.child_age
+%p
+  %b Parent name:
+  = @waiting_list.parent_name
+%p
+  %b Phone:
+  = @waiting_list.phone
+%p
+  %b Address:
+  = @waiting_list.address
+%p
+  %b Postcode:
+  = @waiting_list.postcode
+%p
+  %b Expect join time:
+  = @waiting_list.expect_join_time
+%p
+  %b Days per week:
+  = @waiting_list.days_per_week
+
+= link_to 'Edit', edit_waiting_list_path(@waiting_list)
+\|
+= link_to 'Back', waiting_lists_path
