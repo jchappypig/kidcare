@@ -7,7 +7,7 @@ describe ApplicationController do
   context 'not authenticated user' do
     it 'should not allow user access' do
       get :our_stories
-      should_deny_access
+      should_deny_user_access
     end
   end
 
