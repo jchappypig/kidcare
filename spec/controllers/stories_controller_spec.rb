@@ -10,31 +10,59 @@ describe StoriesController do
   let(:photoTwo) { attributes_for(:story_attachment, another_photo: true)[:photo] }
 
   context 'not authenticated user' do
-    it 'should not allow user access' do
-      get :index
-      should_deny_user_access
+    context 'no login' do
+      it 'should not allow user access' do
+        get :index
+        should_deny_user_access
 
-      get :new
-      should_deny_user_access
+        get :new
+        should_deny_user_access
 
-      post :create, story: attributes_for(:story)
-      should_deny_user_access
+        post :create, story: attributes_for(:story)
+        should_deny_user_access
 
-      get :edit, id: story
-      should_deny_user_access
+        get :edit, id: story
+        should_deny_user_access
 
-      put :update, id: story, story: story.attributes
-      should_deny_user_access
+        put :update, id: story, story: story.attributes
+        should_deny_user_access
 
-      delete :destroy, id: story
-      should_deny_user_access
+        delete :destroy, id: story
+        should_deny_user_access
+      end
+    end
+    context 'non staff login' do
+      before :each do
+        parent = create(:user)
+        sign_in :user, parent
+      end
+
+      it 'should not allow user access' do
+        get :index
+        should_deny_staff_access
+
+        get :new
+        should_deny_staff_access
+
+        post :create, story: attributes_for(:story)
+        should_deny_staff_access
+
+        get :edit, id: story
+        should_deny_staff_access
+
+        put :update, id: story, story: story.attributes
+        should_deny_staff_access
+
+        delete :destroy, id: story
+        should_deny_staff_access
+      end
     end
   end
 
   context 'authenticated user' do
     before :each do
-      user = create(:user)
-      sign_in :user, user
+      admin = create(:admin)
+      sign_in :user, admin
     end
 
     describe 'GET #index' do

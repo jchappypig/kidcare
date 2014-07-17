@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_admin!
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
   # GET /stories
@@ -67,4 +68,10 @@ class StoriesController < ApplicationController
     params.require(:story).permit(:content, :time_line, outcome_ids: [], story_attachments_attributes: [:id, :story_id, :photo])
   end
 
+  def authenticate_admin!
+    unless current_user.try(:admin?)
+      flash[:alert] = 'You are not authorized to view this page.'
+      redirect_to root_path
+    end
+  end
 end
