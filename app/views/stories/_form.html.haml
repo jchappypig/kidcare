@@ -10,7 +10,9 @@
           %img.story-image{'ng-src'=> '{{ attachment.photo_url }}'}
           = link_to('#', 'ng-click'=>'removeAttachment(attachment)') do
             .fi-trash.small
-    = f.input :story_attachment, as: :file, input_html: { multiple: true, name: 'story_attachments[photo][]'}
+    = file_field_tag('fileupload', name: 'story_attachments[photo][]', 'data-url'=>'',  'multiple'=>'')
+    .progress.radius.success
+      %span.meter{ 'style' => 'width: 0%;' }
     
     .form-actions
       = f.button :submit
