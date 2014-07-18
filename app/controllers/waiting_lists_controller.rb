@@ -21,7 +21,8 @@ class WaitingListsController < ApplicationController
     @waiting_list = WaitingList.new(waiting_list_params)
 
     if @waiting_list.save
-      redirect_to @waiting_list, notice: 'Waiting list was successfully created.'
+      current_user.try(:admin?) ?
+          (redirect_to @waiting_list, notice: 'Waiting list was successfully created.') : (redirect_to root_path)
     else
       render action: 'new'
     end

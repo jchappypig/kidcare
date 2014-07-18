@@ -24,12 +24,12 @@ describe WaitingListsController do
 
       describe 'POST #create' do
         context 'when succeeds' do
-          it 'redirects to waiting_list page' do
+          it 'redirects to home page' do
             post :create, waiting_list: attributes_for(:waiting_list)
-            expect(response).to redirect_to(waiting_list_path(assigns(:waiting_list)))
+            expect(response).to redirect_to(root_path)
           end
 
-          it 'creates and save waiting_list' do
+          it 'creates and save waiting list' do
             expect { post :create, waiting_list: attributes_for(:waiting_list) }.to change { WaitingList.count }.by(1)
           end
         end
@@ -67,6 +67,15 @@ describe WaitingListsController do
     before :each do
       admin = create(:admin)
       sign_in :user, admin
+    end
+
+    describe 'POST #create' do
+      context 'when succeeds' do
+        it 'redirects to home page' do
+          post :create, waiting_list: attributes_for(:waiting_list)
+          expect(response).to redirect_to(waiting_list_path(assigns(:waiting_list)))
+        end
+      end
     end
 
     describe 'GET #index' do
