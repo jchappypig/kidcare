@@ -7,6 +7,17 @@ $(function () {
         'width',
           progress + '%'
       );
+    },
+    add: function (e, data) {
+      $('#fileupload .story-image').remove();
+      $.each(data.files, function (index, file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#fileupload').parent().after('<img src="'+ e.target.result +'" class="story-image"></img>');
+        }
+        reader.readAsDataURL(file);
+      });
+        data.submit();
     }
   });
 });
