@@ -10,8 +10,14 @@
             %span
       %section.top-bar-section
         %ul.right
-          %li
-            =link_to 'Edit Stories', stories_path
+          - if current_user.try(:admin?)
+            %li.has-dropdown
+              =link_to 'Management', '#'
+              %ul.dropdown
+                %li
+                  =link_to 'Edit Stories', stories_path
+                %li
+                  =link_to 'Edit Waiting List', waiting_lists_path
           %li.divider
           %li
             =link_to 'Our Stories', our_stories_path

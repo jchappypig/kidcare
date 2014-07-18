@@ -24,4 +24,11 @@ class ApplicationController < ActionController::Base
   def verified_request?
     super || form_authenticity_token == request.headers['X-XSRF-TOKEN']
   end
+
+  def authenticate_admin!
+    unless current_user.try(:admin?)
+      flash[:alert] = 'You are not authorized to view this page.'
+      redirect_to root_path
+    end
+  end
 end

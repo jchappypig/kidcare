@@ -67,11 +67,4 @@ class StoriesController < ApplicationController
   def story_params
     params.require(:story).permit(:content, :time_line, outcome_ids: [], story_attachments_attributes: [:id, :story_id, :photo])
   end
-
-  def authenticate_admin!
-    unless current_user.try(:admin?)
-      flash[:alert] = 'You are not authorized to view this page.'
-      redirect_to root_path
-    end
-  end
 end

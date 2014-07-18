@@ -1,4 +1,6 @@
 class WaitingListsController < ApplicationController
+  before_action :authenticate_user!, except: [:new, :create]
+  before_action :authenticate_admin!, except: [:new, :create]
   before_action :set_waiting_list, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -46,7 +48,6 @@ class WaitingListsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def waiting_list_params
-    puts params
     params.require(:waiting_list).permit(:child_name, :child_age, :parent_name, :phone, :address, :postcode, :expect_join_time, days_per_week: [])
   end
 end

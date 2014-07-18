@@ -198,6 +198,4 @@ describe StoriesController do
       it { expect { delete :destroy, id: story }.to change { Story.count }.by(-1) }
     end
   end
-
-
 end
