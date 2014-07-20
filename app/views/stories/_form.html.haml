@@ -5,7 +5,7 @@
     = f.input :time_line, value: Date.today, label: 'Time'
     = f.input :content
     - if @story_attachments_as_json
-      %ul{'ng-controller'=> 'StoryAttachmentController', 'ng-init' => "createAttachments('#{@story_attachments_as_json}')"}
+      %ul{'ng-controller'=> 'StoryAttachmentController', 'ng-init' => "getAttachments('#{@story.id}')"}
         %li{'ng-repeat'=>'attachment in attachments'}
           %img.story-image{'ng-src'=> '{{ attachment.photo_url }}'}
           = link_to('#', 'ng-click'=>'removeAttachment(attachment)') do

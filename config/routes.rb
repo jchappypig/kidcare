@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :waiting_lists
 
   devise_for :users
-  resources :stories
+  resources :stories do
+    resource :story_attachments, defaults: {format: :json}
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
