@@ -20,7 +20,6 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
-    @story_attachments_as_json = @story.get_story_attachments_as_json
   end
 
   # POST /stories

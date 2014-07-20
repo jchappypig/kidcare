@@ -122,15 +122,6 @@ describe StoriesController do
 
       it { is_expected.to render_template(:edit) }
       it { is_expected.to be_success }
-
-      it('assigns the story attachments as json') do
-        story = create(:story_with_attachments)
-
-        get :edit, id: story
-
-        story_attachment = story.story_attachment.first
-        expect(assigns(:story_attachments_as_json)).to eq([{id: story_attachment.id, photo_url: story_attachment.photo_url}].to_json)
-      end
     end
 
     describe 'POST #create' do

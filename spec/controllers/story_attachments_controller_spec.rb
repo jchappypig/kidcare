@@ -17,8 +17,5 @@ describe StoryAttachmentsController do
     it 'responds formatted attachments' do
       expect(response.body).to eq([{id: story_attachment.id, photo_url: story_attachment.photo_url}].to_json)
     end
-    # subject {response}
-    # it {is_expected.to eq({id: story_attachment.id, photo_url: story_attachment.photo_url})}
   end
-
 end

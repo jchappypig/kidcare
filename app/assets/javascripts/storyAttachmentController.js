@@ -14,11 +14,6 @@ app.factory('_', ['$window', function($window) {
 }]);
 
 app.controller('StoryAttachmentController', ['StoryAttachment', 'StoryAttachments', '$scope', '_', function(StoryAttachment, StoryAttachments, $scope, _) {
-
-  $scope.createAttachments = function(_attachments) {
-    $scope.attachments = JSON.parse(_attachments);
-  };
-
   $scope.getAttachments = function(story_id) {
     $scope.attachments = StoryAttachments.query({story_id: story_id});
   };
