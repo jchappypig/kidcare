@@ -77,4 +77,7 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Cloudfront setting
+  config.action_controller.asset_host = 'd2rdhd9cdj2ya1.cloudfront.net'
 end
