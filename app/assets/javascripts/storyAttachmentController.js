@@ -29,6 +29,6 @@ app.controller('StoryAttachmentController', ['StoryAttachment', 'StoryAttachment
     if (confirm("Are you sure?")) {
       StoryAttachment.remove({id: attachment.id});
       setAttachments();
-    }
+    };
   };
 }]);
