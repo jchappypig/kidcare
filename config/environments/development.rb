@@ -29,4 +29,8 @@ Rails.application.configure do
 
   #devise setting
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  # pdfkit setting
+  config.action_controller.asset_host = 'http://localhost:3000'
+  # config.threadsafe!
 end
