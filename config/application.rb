@@ -23,5 +23,20 @@ module Kidcare
 
     #devise recommended setting
     config.assets.initialize_on_precompile = false
+
+    #rack_cors setting
+    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', {
+            headers: :any,
+            max_age: 30.days.to_i,
+            methods: [:get], # post and options are not needed yet
+
+            credentials: false, # To allow '*' on allow origin
+
+        }
+      end
+    end
   end
 end

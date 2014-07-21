@@ -54,6 +54,7 @@ gem 'simple_form'
 gem 'underscore-rails'
 gem 'devise'
 gem 'fog'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   gem 'rspec-rails'
