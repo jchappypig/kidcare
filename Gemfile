@@ -53,6 +53,7 @@ gem 'seed-fu'
 gem 'simple_form'
 gem 'underscore-rails'
 gem 'devise'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   gem 'rspec-rails'
