@@ -8,7 +8,7 @@ $(function () {
           progress + '%'
       );
 
-      $('.meter').text(progress + '%')
+      $('.meter').text(progress + '%');
 
       if(progress === 100) {
         window.alert('Upload completed!');
