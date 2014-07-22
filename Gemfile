@@ -55,7 +55,7 @@ gem 'underscore-rails'
 gem 'devise'
 gem 'fog'
 gem 'pdfkit'
-gem 'wkhtmltopdf-binary', '~> 0.9.9'
+gem 'wkhtmltopdf-binary', '~> 0.9.9.2'
 
 group :development, :test do
   gem 'rspec-rails'
