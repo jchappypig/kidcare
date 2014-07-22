@@ -28,6 +28,6 @@ CarrierWave.configure do |config|
 
   config.fog_directory = ENV['S3_BUCKET_NAME']
   # config.s3_access_policy = :public_read # Generate http:// urls. Defaults to :authenticated_read (https://)
-  # config.fog_host = "#{ENV['S3_ASSET_URL']}/#{ENV['S3_BUCKET_NAME']}"
+  config.asset_host = 'http://dixp8xql24np4.cloudfront.net'
 end
 
