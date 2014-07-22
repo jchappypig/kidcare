@@ -2,8 +2,6 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-require 'pdfkit'
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -23,10 +21,7 @@ module Kidcare
     # config.i18n.default_locale = :de
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
 
-    # devise recommended setting
+    #devise recommended setting
     config.assets.initialize_on_precompile = false
-
-    # pdfkit setting
-    config.middleware.use PDFKit::Middleware, :print_media_type => true
   end
 end

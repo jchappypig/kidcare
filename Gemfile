@@ -54,7 +54,6 @@ gem 'simple_form'
 gem 'underscore-rails'
 gem 'devise'
 gem 'fog'
-gem 'pdfkit'
 
 group :development, :test do
   gem 'rspec-rails'
