@@ -49,6 +49,7 @@ gem 'spring',        group: :development
 gem 'haml-rails'
 gem 'foundation-rails'
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'seed-fu'
 gem 'simple_form'
 gem 'underscore-rails'

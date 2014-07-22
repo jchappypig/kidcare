@@ -4,7 +4,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -15,6 +15,15 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+
+  # fix rotated issue
+  def fix_exif_rotation
+    manipulate! do |photo|
+      photo.tap(&:auto_orient)
+    end
+  end
+
+  process :fix_exif_rotation
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
