@@ -21,7 +21,10 @@ module Kidcare
     # config.i18n.default_locale = :de
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
 
-    #devise recommended setting
+    # devise recommended setting
     config.assets.initialize_on_precompile = false
+
+    # pdf kit setting
+    config.middleware.use PDFKit::Middleware
   end
 end
