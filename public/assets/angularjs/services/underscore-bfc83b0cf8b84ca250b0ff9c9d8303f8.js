@@ -1,0 +1,1 @@
+App.factory("_",["$window",function(t){"use strict";return t._}]);
