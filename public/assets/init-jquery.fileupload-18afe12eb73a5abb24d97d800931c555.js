@@ -1,0 +1,1 @@
+$(function(){$("#fileupload").fileupload({dataType:"json",progressall:function(e,t){var o=parseInt(t.loaded/t.total*100,10);$(".progress .meter").css("width",o+"%"),$(".meter").text(o+"%"),100===o&&(window.alert("Upload completed!"),$(".story-images").click())}})});
