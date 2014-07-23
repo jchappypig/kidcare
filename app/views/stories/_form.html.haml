@@ -4,10 +4,10 @@
   .form-inputs.stories
     = f.input :time_line, value: Date.today, label: 'Time'
     = f.input :content
-    %ul.story-images{'ng-controller'=> 'StoryAttachmentController', 'ng-init' => "getAttachments('#{@story.id}')", 'ng-click' => "getAttachments('#{@story.id}')"}
+    %ul.story-images{'ng-controller'=> 'StoryAttachmentController', 'ng-init' => "getAttachments('#{@story.id}')", 'ng-click' => 'refreshAttachments()'}
       %li{'ng-repeat'=>'attachment in attachments'}
         %img.story-image{'ng-src'=> '{{ attachment.preview_url }}'}
-        = link_to('#', 'ng-click'=>'removeAttachment(attachment)') do
+        = link_to('#', 'ng-click'=>'removeAttachment(attachment); $event.stopPropagation();') do
           .fi-trash.small
     = file_field_tag('fileupload', name: 'story_attachments[photo][]', 'data-url'=>'',  'multiple'=>'')
     .progress.radius.success
