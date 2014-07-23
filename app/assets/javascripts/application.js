@@ -16,10 +16,10 @@
 //= require underscore
 //= require angular
 //= require angular-resource
+//= require storyAttachmentController
 //= require imagelightbox
 //= require init-imagelightbox
 //= require jquery.mobile.js
-//= require storyAttachmentController
 //= require jquery.ui.widget
 //= require jquery.iframe-transport
 //= require jquery.fileupload
