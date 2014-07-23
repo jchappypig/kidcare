@@ -17,12 +17,12 @@
 //= require angular
 //= require angular-resource
 //= require angularjs/storyAttachmentController
-//= require imagelightbox
-//= require init-imagelightbox
-//= require jquery.mobile.js
-//= require jquery.ui.widget
-//= require jquery.iframe-transport
-//= require jquery.fileupload
-//= require init-jquery.fileupload
+//= require imagelightbox/imagelightbox
+//= require imagelightbox/init-imagelightbox
+//= require jqueryMobile/jquery.mobile.js
+//= require jqueryFileUpload/jquery.ui.widget
+//= require jqueryFileUpload/jquery.iframe-transport
+//= require jqueryFileUpload/jquery.fileupload
+//= require jqueryFileUpload/init-jquery.fileupload
 
 $(function(){ $(document).foundation(); });
