@@ -16,7 +16,7 @@
 //= require underscore
 //= require angular
 //= require angular-resource
-//= require storyAttachmentController
+//= require angularjs/storyAttachmentController
 //= require imagelightbox
 //= require init-imagelightbox
 //= require jquery.mobile.js
