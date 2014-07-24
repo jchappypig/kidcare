@@ -12,7 +12,14 @@ class ApplicationController < ActionController::Base
   end
 
   def our_stories
-    @stories = Story.all
+    time_line = params[:date]
+    if(time_line)
+      @stories = Story.where(time_line: time_line)
+    end
+
+    if(!@stories || !@stories.any?)
+      @stories = Story.where(time_line: Date.today)
+    end
   end
 
   def set_csrf_cookie_for_ng

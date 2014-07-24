@@ -18,8 +18,42 @@ describe ApplicationController do
     end
 
     describe 'GET #our_stories' do
-      before { get :our_stories }
-      it { is_expected.to render_template(:our_stories) }
+      before(:each) do
+        @today = Date.today
+        @yesterday = Date.yesterday
+
+        @today_story = create(:story, time_line: @today)
+        @yesterday_story = create(:story, time_line: @yesterday)
+      end
+
+      it 'renders template' do
+        get :our_stories
+
+        expect(response).to render_template(:our_stories)
+      end
+
+      it 'gets stories for today if no date passed in' do
+        get :our_stories
+
+        expect(assigns(:stories)).to include(@today_story)
+        expect(assigns(:stories)).not_to include(@yesterday_story)
+      end
+
+      it 'gets stories by date' do
+        get :our_stories, date: @yesterday
+
+        expect(assigns(:stories)).not_to include(@today_story)
+        expect(assigns(:stories)).to include(@yesterday_story)
+      end
+
+      it 'gets stories for today if stories for specific date not found' do
+        tomorrow = Date.tomorrow
+
+        get :our_stories, date: tomorrow
+
+        expect(assigns(:stories)).to include(@today_story)
+        expect(assigns(:stories)).not_to include(@yesterday_story)
+      end
     end
   end
 end
