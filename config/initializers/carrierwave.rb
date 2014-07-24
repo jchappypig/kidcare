@@ -31,3 +31,15 @@ CarrierWave.configure do |config|
   config.asset_host = 'http://dixp8xql24np4.cloudfront.net'
 end
 
+module CarrierWave
+  module MiniMagick
+    def quality(percentage)
+      manipulate! do |img|
+        img.quality(percentage.to_s)
+        img = yield(img) if block_given?
+        img
+      end
+    end
+  end
+end
+
