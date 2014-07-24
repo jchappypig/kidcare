@@ -59,3 +59,10 @@ $(function() {
       }
     });
 });
+
+$(document).ready(function() {
+  window._.each($('.stories a'), function(link) {
+    $('<img />').attr('src', link.href);
+  });
+});
+
