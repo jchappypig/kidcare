@@ -1,4 +1,4 @@
-%ul.stories
+%ul.stories.image-light-box
   %h4 2014-07-14 @Little Star
   - @stories.each do |story|
     %li
@@ -8,4 +8,5 @@
             =link_to(image_tag(attachment.photo_url(:thumb), class: 'story-image', alt: "#{truncate(story.content, :length => 200,  :separator => ' ')}"), attachment.photo_url)
         %p
           = story.content
+      %hr
 

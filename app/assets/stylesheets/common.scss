@@ -1,3 +1,36 @@
 .large { font-size: 3em; }
 .medium { font-size: 2.25em; }
 .small { font-size: 1.5em; }
+
+ul {
+  list-style-type: none;
+}
+
+.story li {
+  display: inline-block;
+  margin: 0.625em;
+}
+
+
+.story .story-image {
+  border-color: #eee;
+  border: 0.625em solid rgba(255, 255, 255, .5); /* 10 */
+
+  -webkit-box-shadow: 0 0 0.313em rgba(0, 0, 0, .05); /* 5 */
+  -moz-box-shadow: 0 0 0.313em rgba(0, 0, 0, .05); /* 5 */
+  box-shadow: 0 0 0.313em rgba(0, 0, 0, .05); /* 5 */
+
+  -webkit-transition: -webkit-box-shadow .3s ease, border-color .3s ease;
+  -moz-transition: -moz-box-shadow .3s ease, border-color .3s ease;
+  -ms-transition: -ms-box-shadow .3s ease, border-color .3s ease;
+  -o-transition: -o-box-shadow .3s ease, border-color .3s ease;
+  transition: box-shadow .3s ease, border-color .3s ease;
+
+  &:hover {
+    border-color: #fff;
+
+    -webkit-box-shadow: 0 0 0.938em rgba(0, 0, 0, .25); /* 15 */
+    -moz-box-shadow: 0 0 0.938em rgba(0, 0, 0, .25); /* 15 */
+    box-shadow: 0 0 0.938em rgba(0, 0, 0, .25); /* 15 */
+  }
+}

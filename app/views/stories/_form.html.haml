@@ -1,7 +1,7 @@
 = simple_form_for @story do |f|
   = f.error_notification
 
-  .form-inputs.stories
+  .form-inputs.story
     = f.input :time_line, value: Date.today, label: 'Time'
     = f.input :content
     %ul.story-images{'ng-controller'=> 'StoryAttachmentController', 'ng-init' => "getAttachments('#{@story.id}')", 'ng-click' => 'refreshAttachments()'}

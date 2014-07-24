@@ -23,7 +23,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :preview do
-    process :resize_to_fit => [nil, 250]
+    process :resize_to_fit => [nil, 150]
   end
 
   # fix rotated issue

@@ -9,10 +9,10 @@
 %p
   %b Photos:
   %br
-  %ul.stories
+  %ul.story
     - @story_attachments.each do |attachment|
       %li
-        = image_tag attachment.photo_url, class: 'story-image'
+        = image_tag attachment.photo_url(:preview), class: 'story-image'
 %p
   %b Outcomes:
   %br

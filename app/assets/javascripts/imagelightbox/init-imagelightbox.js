@@ -35,7 +35,7 @@ $(function() {
 
   //	WITH ACTIVITY INDICATION
 
-  var selectorA = '.stories a';
+  var selectorA = '.image-light-box a';
   var instanceA = $(selectorA).imageLightbox(
     {
       quitOnDocClick: false,
