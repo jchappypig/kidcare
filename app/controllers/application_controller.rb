@@ -12,12 +12,11 @@ class ApplicationController < ActionController::Base
   end
 
   def our_stories
-    time_line = params[:date]
-    if(time_line)
-      @stories = Story.where(time_line: time_line)
-    end
+    time_line = params[:date] || Date.today
+    @stories = Story.where(time_line: time_line)
 
-    if(!@stories || !@stories.any?)
+
+    if(!@stories || @stories.empty?)
       @stories = Story.where(time_line: Date.today)
     end
   end
