@@ -12,13 +12,26 @@ class ApplicationController < ActionController::Base
   end
 
   def our_stories
-    time_line = params[:date] || Date.today
-    @stories = Story.where(time_line: time_line)
+    datesAvailable = Story.order(:time_line).pluck('DISTINCT time_line')
+    date = getStoryDate(datesAvailable)
 
+    @stories = Story.where(time_line: date)
+    current_date_index = datesAvailable.index(date)
+    @last_story_date = (current_date_index == 0 ? nil : datesAvailable[current_date_index - 1])
+    @next_story_date = (current_date_index == (datesAvailable.size - 1) ? nil : datesAvailable[current_date_index + 1])
+  end
 
-    if(!@stories || @stories.empty?)
-      @stories = Story.where(time_line: Date.today)
+  def getStoryDate(datesAvailable)
+    begin
+      date = Date.parse(params[:date].to_s)
+    rescue ArgumentError
+      date = datesAvailable.last
     end
+
+    if (!datesAvailable.include?(date))
+      date = datesAvailable.last
+    end
+    date
   end
 
   def set_csrf_cookie_for_ng
