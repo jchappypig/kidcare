@@ -18,8 +18,17 @@
     - @stories.each do |story|
       %li.story
         %ul
-          - story.story_attachment.each do |attachment|
-            %li
-              =link_to(image_tag(attachment.photo_url(:thumb), class: 'story-image', alt: "#{truncate(story.content, :length => 200,  :separator => ' ')}"), attachment.photo_url)
-          %p
+          .content
+            .story-images.left
+              - story.story_attachment.each do |attachment|
+                %li
+                  =link_to(image_tag(attachment.photo_url(:thumb), class: 'story-image', alt: "#{truncate(story.content, :length => 200,  :separator => ' ')}"), attachment.photo_url)
             = story.content
+            .clear
+          .outcomes
+            - if story.outcomes.any?
+              .panel.callout.radius
+                - story.outcomes.each do |outcome|
+                  .outcome
+                    %b
+                      = outcome.long_description
