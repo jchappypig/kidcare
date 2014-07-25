@@ -1,10 +1,25 @@
 %ul.stories.image-light-box
-  %h4 2014-07-14 @Little Star
-  - @stories.each do |story|
-    %li.story
-      %ul
-        - story.story_attachment.each do |attachment|
-          %li
-            =link_to(image_tag(attachment.photo_url(:thumb), class: 'story-image', alt: "#{truncate(story.content, :length => 200,  :separator => ' ')}"), attachment.photo_url)
-        %p
-          = story.content
+  %h4
+    = "#{@stories.first.time_line.strftime('%A, %d %b %Y')} @ Little Star"
+
+  .navigate-date
+    - if @last_story_date
+      .left
+        =link_to(our_stories_path(date: @last_story_date)) do
+          .fi-arrow-left.left
+          .left Last
+
+    - if @next_story_date
+      .right
+        =link_to(our_stories_path(date: @next_story_date)) do
+          .fi-arrow-right.right
+          .right Next
+  .stories
+    - @stories.each do |story|
+      %li.story
+        %ul
+          - story.story_attachment.each do |attachment|
+            %li
+              =link_to(image_tag(attachment.photo_url(:thumb), class: 'story-image', alt: "#{truncate(story.content, :length => 200,  :separator => ' ')}"), attachment.photo_url)
+          %p
+            = story.content
