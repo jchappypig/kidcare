@@ -24,7 +24,7 @@
         %td= waiting_list.address
         %td= waiting_list.postcode
         %td= waiting_list.expect_join_time
-        %td= waiting_list.days_per_week
+        %td= waiting_list.days_per_week.reject!(&:empty?).join(',')
         %td.action
           = link_to waiting_list do
             %i.fi-eye.small
