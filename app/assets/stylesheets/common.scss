@@ -22,7 +22,6 @@ ul {
   }
 }
 
-
 .story .story-image {
   border-color: #eee;
   border: 0.625em solid rgba(255, 255, 255, .5); /* 10 */
@@ -44,4 +43,12 @@ ul {
     -moz-box-shadow: 0 0 0.938em rgba(0, 0, 0, .25); /* 15 */
     box-shadow: 0 0 0.938em rgba(0, 0, 0, .25); /* 15 */
   }
+}
+
+td.time {
+  width: 6rem;
+}
+
+td.action {
+  width: 5rem;
 }

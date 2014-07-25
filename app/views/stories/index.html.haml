@@ -1,20 +1,30 @@
 %h1 Listing stories
 
-%table
-  %tr
-    %th Content
-    %th Time line
-    %th
-    %th
-    %th
-
-  - @stories.each do |story|
+%table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
+  %thead
     %tr
-      %td= story.content
-      %td= story.time_line
-      %td= link_to 'Show', story
-      %td= link_to 'Edit', edit_story_path(story)
-      %td= link_to 'Destroy', story, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Time line
+      %th Content
+      %th
+      %th
+      %th
+  %tbody
+    - @stories.each do |story|
+      %tr
+        %td.time= story.time_line
+        %td= story.content
+        %td.action
+          = link_to story do
+            %i.fi-eye.small
+            Show
+        %td.action
+          = link_to edit_story_path(story) do
+            %i.fi-pencil.small
+            Edit
+        %td.action
+          = link_to story, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+            %i.fi-trash.small
+            Destroy
 
 %br
 

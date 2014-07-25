@@ -6,14 +6,14 @@
     - if @last_story_date
       .left
         =link_to(our_stories_path(date: @last_story_date)) do
-          .fi-arrow-left.left
-          .left Last
+          %i.fi-arrow-left
+          Last
 
     - if @next_story_date
       .right
         =link_to(our_stories_path(date: @next_story_date)) do
-          .fi-arrow-right.right
-          .right Next
+          Next
+          %i.fi-arrow-right
   .stories
     - @stories.each do |story|
       %li.story
