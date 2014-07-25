@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'application#index'
   get '/contact_us' => 'application#contact_us'
+  get '/about_us' => 'application#about_us'
   get '/our_stories' => 'application#our_stories'
 
   resources :story_attachments, only: [:destroy], defaults: {format: :json}

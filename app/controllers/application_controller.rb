@@ -6,9 +6,13 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, only: [:our_stories]
 
   def index
+    @story
   end
 
   def contact_us
+  end
+
+  def about_us
   end
 
   def our_stories

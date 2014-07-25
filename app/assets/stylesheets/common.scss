@@ -1,8 +1,16 @@
 $primary-color: #008CBA;
 
-.large { font-size: 3em; }
-.medium { font-size: 2.25em; }
-.small { font-size: 1.5em; }
+.large {
+  font-size: 3em;
+}
+
+.medium {
+  font-size: 2.25em;
+}
+
+.small {
+  font-size: 1.5em;
+}
 
 ul {
   list-style-type: none;
@@ -43,6 +51,10 @@ ul {
     -moz-box-shadow: 0 0 0.938em rgba(0, 0, 0, .25); /* 15 */
     box-shadow: 0 0 0.938em rgba(0, 0, 0, .25); /* 15 */
   }
+}
+
+.italic {
+  font-style: italic;
 }
 
 .clear {
