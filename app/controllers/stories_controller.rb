@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
 
   # GET /stories
   def index
-    @stories = Story.all
+    @stories = Story.all.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /stories/1

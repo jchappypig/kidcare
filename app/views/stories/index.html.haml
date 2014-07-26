@@ -25,7 +25,7 @@
           = link_to story, :method => :delete, :data => { :confirm => 'Are you sure?' } do
             %i.fi-trash.small
             Destroy
-
+= will_paginate @stories, class: 'digg_pagination'
 %br
 
 = link_to 'New Story', new_story_path
