@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :white_list do
-    email "MyString"
+    email Faker::Internet::email
   end
 end
