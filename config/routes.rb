@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :white_lists
+
   resources :waiting_lists
 
   devise_for :users
