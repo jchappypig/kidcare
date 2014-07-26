@@ -80,4 +80,19 @@ Rails.application.configure do
 
   # Cloudfront setting
   config.action_controller.asset_host = 'd2rdhd9cdj2ya1.cloudfront.net'
+
+  # Action mailer setting
+  config.action_mailer.default_url_options = { host: 'jchappypig.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'jchappypig@hotmail.com'}
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.live.com',
+      port:                 587,
+      domain:               'jchappypig.com',
+      user_name:            ENV['MAIL_KEY'],
+      password:             ENV['MAIL_SECRET'],
+      authentication:       'plain',
+      enable_starttls_auto: true  }
 end
