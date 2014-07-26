@@ -111,8 +111,12 @@ describe StoriesController do
         expect(response).to be_success
       end
 
-      it 'create new instance of story' do
+      it 'creates new instance of story' do
         expect(assigns(:story)).to be_a_new(Story)
+      end
+
+      it 'generated new guid' do
+        expect(assigns(:story).guid).not_to be_nil
       end
     end
 
@@ -136,10 +140,26 @@ describe StoriesController do
         end
 
         context 'when there are story attachments' do
-          it 'creates and save story attachments' do
+          it 'creates story attachments and assign story guid to them' do
+            story_attributes = attributes_for(:story)
             post :create,
-                 {story: attributes_for(:story)}.merge(story_attachments: {photo: [photoOne, photoTwo]})
-            expect(Story.first.story_attachment.count).to eq 2
+                 {story: story_attributes}.merge(story_attachments: {photo: [photoOne, photoTwo]})
+            expect(Story.count).to eq 0
+            expect(StoryAttachment.count).to eq 2
+            expect(StoryAttachment.first.guid).to eq story_attributes[:guid]
+            expect(StoryAttachment.second.guid).to eq story_attributes[:guid]
+          end
+
+          it 'gets orphan story attachments and attaches it to story with the same guid' do
+            story_attributes = attributes_for(:story)
+            attachment1 = create(:story_attachment, guid: story_attributes[:guid], story: nil)
+            attachment2 = create(:story_attachment, guid: story_attributes[:guid], story: nil)
+
+            post :create, story: attributes_for(:story)
+
+            expect(Story.count).to eq 1
+            expect(Story.first.story_attachment).to match_array([attachment1, attachment2])
+
           end
         end
       end

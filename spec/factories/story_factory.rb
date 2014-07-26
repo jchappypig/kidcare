@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :story do
     content {Faker::Lorem.paragraph}
     time_line Date.today
+    guid SecureRandom.uuid
 
     factory :story_with_attachments do
       ignore do

@@ -16,6 +16,7 @@ class StoriesController < ApplicationController
   # GET /stories/new
   def new
     @story = Story.new
+    @story.guid = SecureRandom.uuid
   end
 
   # GET /stories/1/edit
@@ -25,13 +26,18 @@ class StoriesController < ApplicationController
   # POST /stories
   def create
     @story = Story.new(story_params)
-    if @story.save
+    if params[:story_attachments].present?
       params[:story_attachments][:photo].each do |photo|
-        StoryAttachment.create!(photo: photo, story_id: @story.id)
-      end if (params[:story_attachments].present?)
+        StoryAttachment.create!(photo: photo, guid: @story.guid)
+      end
       redirect_to @story, notice: 'Story was successfully created.'
     else
-      render action: 'new'
+      if @story.save
+        StoryAttachment.where(guid: @story.guid, story_id: nil).update_all(story_id: @story)
+        redirect_to @story, notice: 'Story was successfully created.'
+      else
+        render action: 'new'
+      end
     end
   end
 
@@ -61,6 +67,6 @@ class StoriesController < ApplicationController
 
 # Never trust parameters from the scary internet, only allow the white list through.
   def story_params
-    params.require(:story).permit(:content, :time_line, outcome_ids: [], story_attachments_attributes: [:id, :story_id, :photo])
+    params.require(:story).permit(:content, :time_line, :guid, outcome_ids: [], story_attachments_attributes: [:id, :story_id, :photo])
   end
 end
