@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   resources :waiting_lists
 
   devise_for :users
-  resources :stories do
-    resource :story_attachments, defaults: {format: :json}
-  end
+  resources :stories
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -15,7 +13,10 @@ Rails.application.routes.draw do
   get '/about_us' => 'application#about_us'
   get '/our_stories' => 'application#our_stories'
 
-  resources :story_attachments, only: [:destroy], defaults: {format: :json}
+  resources :story_attachments, only: [:destroy], defaults: {format: :json} do
+    get '/:guid' => 'story_attachments#show', on: :collection
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

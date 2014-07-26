@@ -1,9 +1,9 @@
 App.controller('StoryAttachmentController', ['StoryAttachment', 'StoryAttachments', '$scope', '_', function(StoryAttachment, StoryAttachments, $scope, _) {
-  var storyId;
+  var storyGuid;
 
-  $scope.getAttachments = function(story_id) {
-    storyId = story_id;
-    $scope.attachments = StoryAttachments.query({story_id: storyId});
+  $scope.getAttachments = function(_storyGuid) {
+    storyGuid = _storyGuid;
+    $scope.attachments = StoryAttachments.query({guid: storyGuid});
   };
 
   $scope.removeAttachment = function(attachment) {
@@ -16,7 +16,7 @@ App.controller('StoryAttachmentController', ['StoryAttachment', 'StoryAttachment
   };
 
   $scope.refreshAttachments = function() {
-    var newAttachments = StoryAttachments.query({story_id: storyId}, function() {
+    var newAttachments = StoryAttachments.query({guid: storyGuid}, function() {
       var currentAttachments = $scope.attachments;
       _.each(newAttachments, function(newAttachment) {
         if(_.where(currentAttachments, {id: newAttachment.id}).length == 0) {

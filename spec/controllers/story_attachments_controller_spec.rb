@@ -11,7 +11,7 @@ describe StoryAttachmentsController do
   describe 'GET #show' do
     before :each do
       story_attachment
-      get :show, story_id: story_attachment.story, format: 'json'
+      get :show, guid: story_attachment.guid, format: 'json'
     end
 
     it 'responds formatted attachments' do

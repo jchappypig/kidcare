@@ -6,7 +6,7 @@ class StoryAttachmentsController < ApplicationController
   end
 
   def show
-    story_attachments = StoryAttachment.where(story_id: params[:story_id]).map do |attachment|
+    story_attachments = StoryAttachment.where(guid: params[:guid]).map do |attachment|
       {id: attachment.id, preview_url: attachment.photo_url(:preview),
        thumb_url: attachment.photo_url(:thumb), photo_url: attachment.photo_url}
     end
