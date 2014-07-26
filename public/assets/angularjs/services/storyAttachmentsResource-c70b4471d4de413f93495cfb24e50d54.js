@@ -1,1 +1,0 @@
-App.factory("StoryAttachments",["$resource",function(t){"use strict";return t("/stories/:story_id/story_attachments")}]);

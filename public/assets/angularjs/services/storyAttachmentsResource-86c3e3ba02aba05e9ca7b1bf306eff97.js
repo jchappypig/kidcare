@@ -1,0 +1,1 @@
+App.factory("StoryAttachments",["$resource",function(t){"use strict";return t("/story_attachments/:guid")}]);
