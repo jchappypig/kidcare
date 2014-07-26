@@ -37,7 +37,7 @@
           = link_to waiting_list, :method => :delete, :data => { :confirm => 'Are you sure?' } do
             %i.fi-trash.small
             Destroy
-
+= will_paginate @waiting_lists, class: 'digg_pagination'
 %br
 
 = link_to 'New Waiting list', new_waiting_list_path
