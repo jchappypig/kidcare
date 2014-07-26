@@ -1,18 +1,29 @@
-%h1 Listing white_lists
+%h1 Listing White Lists
 
-%table
-  %tr
-    %th Email
-    %th
-    %th
-    %th
-
-  - @white_lists.each do |white_list|
+%table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
+  %thead
     %tr
-      %td= white_list.email
-      %td= link_to 'Show', white_list
-      %td= link_to 'Edit', edit_white_list_path(white_list)
-      %td= link_to 'Destroy', white_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Email
+      %th
+      %th
+      %th
+
+  %tbody
+    - @white_lists.each do |white_list|
+      %tr
+        %td= white_list.email
+        %td.action
+          = link_to white_list do
+            %i.fi-eye.small
+            Show
+        %td.action
+          = link_to edit_white_list_path(white_list) do
+            %i.fi-pencil.small
+            Edit
+        %td.action
+          = link_to white_list, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+            %i.fi-trash.small
+            Destroy
 
 %br
 
