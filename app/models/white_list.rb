@@ -1,3 +1,7 @@
 class WhiteList < ActiveRecord::Base
-  validates :email, presence: true
+  validates :email, uniqueness: {case_sensitive: false}, presence: true, email: true
+
+  def self.find_by_email_ignore_case(email)
+    WhiteList.where('LOWER(email) = ?', email.to_s.downcase).first
+  end
 end

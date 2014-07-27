@@ -56,6 +56,7 @@ gem 'will_paginate'
 gem 'underscore-rails'
 gem 'devise'
 gem 'fog'
+gem 'email_validator', :require => 'email_validator/strict'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -51,6 +51,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    email_validator (1.4.0)
+      activemodel
     erubis (2.7.0)
     excon (0.38.0)
     execjs (2.2.1)
@@ -229,6 +231,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
   devise
+  email_validator
   factory_girl_rails
   faker
   fog
