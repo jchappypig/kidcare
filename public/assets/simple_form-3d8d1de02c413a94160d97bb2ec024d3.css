@@ -1,0 +1,5 @@
+/* line 1, /Users/hhuang/rails/kidcare/app/assets/stylesheets/simple_form.scss */
+.error small {
+  padding-left: 0.5em;
+  color: red;
+}

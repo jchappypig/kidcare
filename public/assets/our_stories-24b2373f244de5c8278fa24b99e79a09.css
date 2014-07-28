@@ -1,0 +1,21 @@
+/* line 1, /Users/hhuang/rails/kidcare/app/assets/stylesheets/our_stories.scss */
+.navigate-date {
+  display: block;
+  padding-bottom: 2rem;
+}
+
+/* line 6, /Users/hhuang/rails/kidcare/app/assets/stylesheets/our_stories.scss */
+.story-images.left {
+  padding: 0 2rem 0.8rem 0;
+}
+
+/* line 10, /Users/hhuang/rails/kidcare/app/assets/stylesheets/our_stories.scss */
+.stories .story {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+/* line 15, /Users/hhuang/rails/kidcare/app/assets/stylesheets/our_stories.scss */
+.stories .content {
+  padding-bottom: 2rem;
+}
