@@ -25,5 +25,7 @@
 //= require jqueryFileUpload/jquery.iframe-transport
 //= require jqueryFileUpload/jquery.fileupload
 //= require jqueryFileUpload/init-jquery.fileupload
+//= require gmaps/google
+//= require init-gmap
 
 $(function(){ $(document).foundation(); });

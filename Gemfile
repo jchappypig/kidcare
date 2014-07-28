@@ -57,6 +57,7 @@ gem 'underscore-rails'
 gem 'devise'
 gem 'fog'
 gem 'email_validator', :require => 'email_validator/strict'
+gem 'gmaps4rails'
 
 group :development, :test do
   gem 'rspec-rails'
