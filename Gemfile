@@ -59,6 +59,7 @@ gem 'fog'
 gem 'email_validator', :require => 'email_validator/strict'
 gem 'gmaps4rails'
 gem 'capistrano'
+gem 'unicorn'
 
 group :development, :test do
   gem 'rspec-rails'
