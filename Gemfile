@@ -64,6 +64,7 @@ gem 'capistrano-rvm'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'unicorn'
+gem 'dotenv-deployment'
 
 group :development, :test do
   gem 'rspec-rails'

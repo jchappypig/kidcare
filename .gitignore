@@ -25,3 +25,4 @@ node_modules/*
 **/.keep
 
 config/database.yml
+config/.env
