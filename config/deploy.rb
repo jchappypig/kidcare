@@ -1,3 +1,5 @@
+require 'dotenv/deployment/capistrano'
+
 set :application, 'kidcare'
 set :deploy_user, 'jchappypig'
 
