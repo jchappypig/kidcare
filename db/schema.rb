@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726111011) do
+ActiveRecord::Schema.define(version: 20140905044626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,16 +61,18 @@ ActiveRecord::Schema.define(version: 20140726111011) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "waiting_lists", force: true do |t|
-    t.string   "child_name"
-    t.integer  "child_age"
-    t.string   "parent_name"
-    t.string   "phone"
+    t.string   "child_full_name"
+    t.string   "parent_full_name"
+    t.string   "home_phone"
     t.text     "address"
     t.string   "postcode"
-    t.date     "expect_join_time"
-    t.string   "days_per_week"
-    t.datetime "created_at"
+    t.date     "intend_start_date"
+    t.string   "days_required"
+    t.datetime "date_contacted"
     t.datetime "updated_at"
+    t.string   "mobile_phone"
+    t.date     "child_dob"
+    t.string   "preferred_way_of_contact"
   end
 
   create_table "white_lists", force: true do |t|

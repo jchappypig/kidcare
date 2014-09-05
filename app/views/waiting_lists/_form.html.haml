@@ -4,21 +4,22 @@
   .form-inputs
     %fieldset.foundation
       %legend Child's Details
-      = f.input :child_name
-      = f.input :child_age
+      = f.input :child_full_name
+      = f.input :child_dob
 
     %fieldset.foundation
       %legend Carer's Details
-      = f.input :parent_name
-      = f.input :phone
+      = f.input :parent_full_name
       = f.input :address
+      = f.input :home_phone
+      = f.input :mobile_phone
       = f.input :postcode
     .ui-field-contain
       %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
-        = f.input :expect_join_time, label: 'Start Date'
+        = f.input :intend_start_date, label: 'Start Date'
 
     .ui-field-contain
       %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
-        = f.input :days_per_week, as: :check_boxes, collection: %w(Mon Tue Wed Thu Fri)
+        = f.input :days_required, as: :check_boxes, collection: %w(Monday Tuesday Wednesday Thursday Friday)
   .form-actions
     = f.button :submit

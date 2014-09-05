@@ -17,14 +17,14 @@
   %tbody
     - @waiting_lists.each do |waiting_list|
       %tr
-        %td= waiting_list.child_name
-        %td= waiting_list.child_age
-        %td= waiting_list.parent_name
-        %td= waiting_list.phone
+        %td= waiting_list.child_full_name
+        %td= waiting_list.child_dob
+        %td= waiting_list.parent_full_name
+        %td= waiting_list.home_phone
         %td= waiting_list.address
         %td= waiting_list.postcode
-        %td= waiting_list.expect_join_time
-        %td= waiting_list.days_per_week.reject!(&:empty?).join(',')
+        %td= waiting_list.intend_start_date
+        %td= waiting_list.days_required.reject!(&:empty?).join(',')
         %td.action
           = link_to waiting_list do
             %i.fi-eye.small

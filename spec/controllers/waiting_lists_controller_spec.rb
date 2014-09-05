@@ -35,7 +35,7 @@ describe WaitingListsController do
         end
 
         context 'when fails' do
-          before { post :create, waiting_list: attributes_for(:waiting_list).merge(child_name: '') }
+          before { post :create, waiting_list: attributes_for(:waiting_list).merge(child_full_name: '') }
           it { is_expected.to render_template(:new) }
         end
       end
@@ -137,13 +137,13 @@ describe WaitingListsController do
 
         it 'updates the waiting_list' do
           waiting_list
-          put :update, id: waiting_list, waiting_list: {child_name: 'new name'}
-          expect(WaitingList.find(waiting_list).child_name).to eq('new name')
+          put :update, id: waiting_list, waiting_list: {child_full_name: 'new name'}
+          expect(WaitingList.find(waiting_list).child_full_name).to eq('new name')
         end
       end
 
       context 'when fails' do
-        before { post :create, waiting_list: attributes_for(:waiting_list).merge(child_name: '') }
+        before { post :create, waiting_list: attributes_for(:waiting_list).merge(child_full_name: '') }
         it { is_expected.to render_template(:new) }
       end
     end

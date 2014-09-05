@@ -2,16 +2,16 @@
 
 %p
   %b Child name:
-  = @waiting_list.child_name
+  = @waiting_list.child_full_name
 %p
   %b Child age:
-  = @waiting_list.child_age
+  = @waiting_list.child_dob
 %p
   %b Parent name:
-  = @waiting_list.parent_name
+  = @waiting_list.parent_full_name
 %p
   %b Phone:
-  = @waiting_list.phone
+  = @waiting_list.home_phone
 %p
   %b Address:
   = @waiting_list.address
@@ -20,7 +20,7 @@
   = @waiting_list.postcode
 %p
   %b Expect join time:
-  = @waiting_list.expect_join_time
+  = @waiting_list.intend_start_date
 %p
   %b Days per week:
   = @waiting_list.days_per_week
