@@ -3,13 +3,14 @@
 %table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
   %thead
     %tr
-      %th Child name
-      %th Child age
-      %th Parent name
-      %th Phone
+      %th Child's full name
+      %th Child's date of birth
+      %th Parent's full name
       %th Address
-      %th Expect join time
-      %th Days per week
+      %th Home phone
+      %th Mobile phone
+      %th Intend start date
+      %th Days required
       %th
       %th
       %th
@@ -19,8 +20,9 @@
         %td= waiting_list.child_full_name
         %td= waiting_list.child_dob
         %td= waiting_list.parent_full_name
-        %td= waiting_list.home_phone
         %td= waiting_list.address
+        %td= waiting_list.home_phone
+        %td= waiting_list.mobile_phone
         %td= waiting_list.intend_start_date
         %td= waiting_list.days_required.reject!(&:empty?).join(',')
         %td.action

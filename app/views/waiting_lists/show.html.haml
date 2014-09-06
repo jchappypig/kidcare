@@ -1,26 +1,32 @@
 %p#notice= notice
 
 %p
-  %b Child name:
+  %b Child's full name:
   = @waiting_list.child_full_name
 %p
-  %b Child age:
+  %b Child's date of birth:
   = @waiting_list.child_dob
 %p
-  %b Parent name:
+  %b Parent's full name:
   = @waiting_list.parent_full_name
-%p
-  %b Phone:
-  = @waiting_list.home_phone
 %p
   %b Address:
   = @waiting_list.address
 %p
-  %b Expect join time:
+  %b Home phone:
+  = @waiting_list.home_phone
+%p
+  %b Mobile phone:
+  = @waiting_list.mobile_phone
+%p
+  %b Intend start date:
   = @waiting_list.intend_start_date
 %p
-  %b Days per week:
-  = @waiting_list.days_per_week
+  %b Days required:
+  = @waiting_list.days_required.reject!(&:empty?).join(',')
+%p
+  %b Date Contacted:
+  = @waiting_list.date_contacted
 
 = link_to 'Edit', edit_waiting_list_path(@waiting_list)
 \|
