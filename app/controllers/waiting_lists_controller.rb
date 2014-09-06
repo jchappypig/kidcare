@@ -49,6 +49,6 @@ class WaitingListsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def waiting_list_params
-    params.require(:waiting_list).permit(:child_full_name, :child_dob, :parent_full_name, :home_phone, :mobile_phone, :address, :postcode, :intend_start_date, days_required: [])
+    params.require(:waiting_list).permit(:child_full_name, :child_dob, :parent_full_name, :home_phone, :mobile_phone, :address, :intend_start_date, days_required: [])
   end
 end

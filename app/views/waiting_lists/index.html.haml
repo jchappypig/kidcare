@@ -8,7 +8,6 @@
       %th Parent name
       %th Phone
       %th Address
-      %th Postcode
       %th Expect join time
       %th Days per week
       %th
@@ -22,7 +21,6 @@
         %td= waiting_list.parent_full_name
         %td= waiting_list.home_phone
         %td= waiting_list.address
-        %td= waiting_list.postcode
         %td= waiting_list.intend_start_date
         %td= waiting_list.days_required.reject!(&:empty?).join(',')
         %td.action

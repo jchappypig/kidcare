@@ -6,5 +6,4 @@ class WaitingList < ActiveRecord::Base
   validates :home_phone, presence: true
   validates :mobile_phone, presence: true
   validates :address, presence: true
-  validates :postcode, presence: true
 end

@@ -7,5 +7,4 @@ describe WaitingList do
   it { is_expected.to validate_presence_of :home_phone }
   it { is_expected.to validate_presence_of :mobile_phone }
   it { is_expected.to validate_presence_of :address }
-  it { is_expected.to validate_presence_of :postcode }
 end

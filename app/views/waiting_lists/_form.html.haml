@@ -4,16 +4,17 @@
   .form-inputs
     %fieldset.foundation
       %legend Child's Details
-      = f.input :child_full_name
-      = f.input :child_dob
+      = f.input :child_full_name, label: "Child's full name"
+      .ui-field-contain
+        %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
+          = f.input :child_dob, label: "Child's date of birth"
 
     %fieldset.foundation
       %legend Carer's Details
-      = f.input :parent_full_name
+      = f.input :parent_full_name, lable: "Parent's full name"
       = f.input :address
       = f.input :home_phone
       = f.input :mobile_phone
-      = f.input :postcode
     .ui-field-contain
       %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
         = f.input :intend_start_date, label: 'Start Date'

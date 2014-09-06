@@ -6,7 +6,6 @@ FactoryGirl.define do
     home_phone Faker::PhoneNumber.phone_number
     mobile_phone Faker::PhoneNumber.cell_phone
     address Faker::Address.street_address
-    postcode Faker::Address.postcode
     intend_start_date %w(ASAP Later).sample
     days_required %w(Monday Tuesday)
   end
