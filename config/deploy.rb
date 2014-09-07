@@ -15,7 +15,7 @@ set :repo_url, "git@github.com:jchappypig/#{fetch(:application)}.git"
 set :keep_releases, 5
 
 # files we want symlinking to specific entries in shared
-set :linked_files, %w{config/database.yml nginx.conf unicorn_init.sh unicorn.rb}
+set :linked_files, %w{config/database.yml config/nginx.conf config/unicorn_init.sh config/unicorn.rb}
 
 # dirs we want symlinking to shared
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
