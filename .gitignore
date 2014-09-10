@@ -26,5 +26,6 @@ node_modules/*
 
 config/database.yml
 config/deploy.rb
-config/deploy/production.rb
+config/deploy/*
+
 .env
