@@ -159,7 +159,14 @@ describe StoriesController do
 
             expect(Story.count).to eq 1
             expect(Story.first.story_attachment).to match_array([attachment1, attachment2])
+          end
 
+          it 'should create story without attachment if photo is empty' do
+            story_attributes = attributes_for(:story)
+            post :create,
+                 {story: story_attributes}.merge(story_attachments: {photo: ['']})
+            expect(Story.count).to eq 1
+            expect(Story.first.story_attachment.count).to eq(0)
           end
         end
       end

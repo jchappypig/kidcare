@@ -26,7 +26,7 @@ class StoriesController < ApplicationController
   # POST /stories
   def create
     @story = Story.new(story_params)
-    if params[:story_attachments].present?
+    if params[:story_attachments].present? && !params[:story_attachments][:photo][0].to_s.empty?
       params[:story_attachments][:photo].each do |photo|
         StoryAttachment.create!(photo: photo, guid: @story.guid)
       end
