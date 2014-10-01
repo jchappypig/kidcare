@@ -1,5 +1,8 @@
 %h1
   Weekly Program
+
+%h3
+  Learning Outcomes
 .row
   .large-12.columns
     %p.outcomes
@@ -9,7 +12,7 @@
             .outcome
               - if outcome.category == 'item_title'
                 .item_title
-                  = outcome.long_description
+                  = 'Outcome ' + outcome.long_description
               - else
                 .item
                   = outcome.long_description
