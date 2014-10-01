@@ -5,9 +5,18 @@ describe ApplicationController do
   include AuthenticationHelper
 
   context 'not authenticated user' do
-    it 'should not allow user access' do
-      get :our_stories
-      should_deny_user_access
+    describe 'GET#our_stories' do
+      it 'should not allow user access' do
+        get :our_stories
+        should_deny_user_access
+      end
+    end
+
+    describe 'GET#weekly_program' do
+      it 'should not allow user access' do
+        get :weekly_program
+        should_deny_user_access
+      end
     end
   end
 
@@ -85,6 +94,13 @@ describe ApplicationController do
 
         expect(assigns(:last_story_date)).to be_nil
         expect(assigns(:next_story_date)).to be_nil
+      end
+    end
+    describe 'GET #weekly_program' do
+      it 'renders template' do
+        get :weekly_program
+
+        expect(response).to render_template(:weekly_program)
       end
     end
   end

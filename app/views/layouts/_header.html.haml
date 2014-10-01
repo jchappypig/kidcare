@@ -21,8 +21,13 @@
                 %li
                   =link_to 'Edit Email White List', white_lists_path
           %li.divider
-          %li
-            =link_to 'Our Stories', our_stories_path
+          %li.has-dropdown
+            =link_to 'Activities', '#'
+            %ul.dropdown
+              %li
+                =link_to 'Learning Stories', our_stories_path
+              %li
+                =link_to 'Weekly Program', weekly_program_path
           %li.divider
           %li
             =link_to 'About Us', about_us_path

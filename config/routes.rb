@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/contact_us' => 'application#contact_us'
   get '/about_us' => 'application#about_us'
   get '/our_stories' => 'application#our_stories'
+  get '/weekly_program' => 'application#weekly_program'
 
   resources :story_attachments, only: [:destroy], defaults: {format: :json} do
     get '/:guid' => 'story_attachments#show', on: :collection
