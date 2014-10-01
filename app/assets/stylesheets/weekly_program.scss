@@ -1,0 +1,9 @@
+.item_title {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.item_title, .item {
+  display: inline-block;
+  line-height: 2em;
+}

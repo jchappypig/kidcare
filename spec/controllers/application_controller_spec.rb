@@ -102,6 +102,13 @@ describe ApplicationController do
 
         expect(response).to render_template(:weekly_program)
       end
+
+      it 'gets all story outcomes' do
+        Outcome.create(item_no: '1', description: 'description1', category: '1');
+        Outcome.create(item_no: '2', description: 'description2', category: '1');
+        get :weekly_program
+        expect(assigns(:outcomes).count).to eq 2
+      end
     end
   end
 end

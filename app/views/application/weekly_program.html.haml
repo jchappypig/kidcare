@@ -2,5 +2,14 @@
   Weekly Program
 .row
   .large-12.columns
-    %p
-      This is weekly.
+    %p.outcomes
+      - if @outcomes.any?
+        .panel.callout.radius
+          - @outcomes.each do |outcome|
+            .outcome
+              - if outcome.category == 'item_title'
+                .item_title
+                  = outcome.long_description
+              - else
+                .item
+                  = outcome.long_description

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def weekly_program
-
+    @outcomes = Outcome.all
   end
 
   def our_stories
