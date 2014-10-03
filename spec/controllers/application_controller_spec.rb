@@ -95,6 +95,12 @@ describe ApplicationController do
         expect(assigns(:last_story_date)).to be_nil
         expect(assigns(:next_story_date)).to be_nil
       end
+
+      it 'should not throw exception if no story found' do
+        get :our_stories
+
+        expect(response).to render_template(:our_stories)
+      end
     end
     describe 'GET #weekly_program' do
       it 'renders template' do

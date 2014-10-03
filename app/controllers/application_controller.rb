@@ -24,9 +24,11 @@ class ApplicationController < ActionController::Base
     date = getStoryDate(datesAvailable)
 
     @stories = Story.where(time_line: date)
-    current_date_index = datesAvailable.index(date)
-    @last_story_date = (current_date_index == 0 ? nil : datesAvailable[current_date_index - 1])
-    @next_story_date = (current_date_index == (datesAvailable.size - 1) ? nil : datesAvailable[current_date_index + 1])
+    if !@stories.empty?
+      current_date_index = datesAvailable.index(date)
+      @last_story_date = (current_date_index == 0 ? nil : datesAvailable[current_date_index - 1])
+      @next_story_date = (current_date_index == (datesAvailable.size - 1) ? nil : datesAvailable[current_date_index + 1])
+    end
   end
 
   def getStoryDate(datesAvailable)
