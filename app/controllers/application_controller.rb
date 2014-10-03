@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   after_filter :set_csrf_cookie_for_ng
-  before_action :authenticate_user!, only: [:our_stories, :weekly_program]
+  before_action :authenticate_user!, only: [:our_stories, :our_weekly_program]
 
   def index
     @story
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def about_us
   end
 
-  def weekly_program
+  def our_weekly_program
     @outcomes = Outcome.all
   end
 

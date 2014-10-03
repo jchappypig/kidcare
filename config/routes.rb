@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :white_lists
 
   resources :waiting_lists
+  resources :weekly_programs
 
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :stories
@@ -14,7 +15,8 @@ Rails.application.routes.draw do
   get '/contact_us' => 'application#contact_us'
   get '/about_us' => 'application#about_us'
   get '/our_stories' => 'application#our_stories'
-  get '/weekly_program' => 'application#weekly_program'
+  get '/our_weekly_program' => 'application#our_weekly_program'
+  get '/activity_selection' => 'weekly_programs#activity_selection'
 
   resources :story_attachments, only: [:destroy], defaults: {format: :json} do
     get '/:guid' => 'story_attachments#show', on: :collection

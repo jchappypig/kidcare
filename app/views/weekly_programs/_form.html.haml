@@ -1,0 +1,11 @@
+= simple_form_for @weekly_program do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :week_start
+    = f.input :number
+    = f.input :program_staff
+    = f.input :theme
+    = f.input :colour
+  .form-actions
+    = f.button :submit

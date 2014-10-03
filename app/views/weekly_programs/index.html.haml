@@ -1,0 +1,38 @@
+%h1 Listing Weekly Program
+
+%table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
+  %thead
+    %tr
+      %th Week start
+      %th Number
+      %th Program staff
+      %th Theme
+      %th Colour
+      %th
+      %th
+      %th
+
+  %tbody
+    - @weekly_programs.each do |weekly_program|
+      %tr
+        %td= weekly_program.week_start
+        %td= weekly_program.number
+        %td= weekly_program.program_staff
+        %td= weekly_program.theme
+        %td= weekly_program.colour
+        %td.action
+          = link_to weekly_program do
+            %i.fi-eye.small
+            Show
+        %td.action
+          = link_to edit_weekly_program_path(weekly_program) do
+            %i.fi-pencil.small
+            Edit
+        %td.action
+          = link_to weekly_program, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+            %i.fi-trash.small
+            Destroy
+
+%br
+
+= link_to 'New Weekly Program', new_weekly_program_path

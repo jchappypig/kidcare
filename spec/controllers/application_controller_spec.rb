@@ -14,7 +14,7 @@ describe ApplicationController do
 
     describe 'GET#weekly_program' do
       it 'should not allow user access' do
-        get :weekly_program
+        get :our_weekly_program
         should_deny_user_access
       end
     end
@@ -104,15 +104,15 @@ describe ApplicationController do
     end
     describe 'GET #weekly_program' do
       it 'renders template' do
-        get :weekly_program
+        get :our_weekly_program
 
-        expect(response).to render_template(:weekly_program)
+        expect(response).to render_template(:our_weekly_program)
       end
 
       it 'gets all story outcomes' do
         Outcome.create(item_no: '1', description: 'description1', category: '1');
         Outcome.create(item_no: '2', description: 'description2', category: '1');
-        get :weekly_program
+        get :our_weekly_program
         expect(assigns(:outcomes).count).to eq 2
       end
     end
