@@ -7,5 +7,6 @@ FactoryGirl.define do
     letter { Faker::Lorem.name.first }
     number { Faker::Number.digit }
     shape { Faker::Lorem.word }
+    colour { Faker::Lorem.word }
   end
 end
