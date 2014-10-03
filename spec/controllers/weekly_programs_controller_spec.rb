@@ -18,7 +18,7 @@ describe WeeklyProgramsController do
         post :create, our_weekly_program: attributes_for(:weekly_program)
         should_deny_user_access
 
-        get :activity_selection
+        get :activity_selection, weekly_program_id: weekly_program
         should_deny_user_access
 
         # get :edit, id: weekly_program
@@ -47,7 +47,7 @@ describe WeeklyProgramsController do
         post :create, our_weekly_program: attributes_for(:weekly_program)
         should_deny_staff_access
 
-        get :activity_selection
+        get :activity_selection, weekly_program_id: weekly_program
         should_deny_staff_access
 
         # get :edit, id: weekly_program
@@ -102,7 +102,7 @@ describe WeeklyProgramsController do
       context 'when succeeds' do
         it 'redirects to activity selection page' do
           post :create, weekly_program: attributes_for(:weekly_program)
-          expect(response).to redirect_to(activity_selection_path)
+          expect(response).to redirect_to(weekly_program_activity_selection_path(WeeklyProgram.first))
         end
 
         it 'creates and save weekly program' do
@@ -117,7 +117,7 @@ describe WeeklyProgramsController do
     end
 
     describe 'Get #activity_selection' do
-      before { get :activity_selection }
+      before { get :activity_selection, weekly_program_id: weekly_program }
       it { is_expected.to render_template(:activity_selection) }
 
       it 'responds successfully' do

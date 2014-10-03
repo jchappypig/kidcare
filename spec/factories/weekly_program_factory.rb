@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :weekly_program do
     week_start 1.days.ago
-    week_end 2.days.ago
     program_staff { Faker::name }
     theme { Faker::Lorem.sentence }
     goals { Faker::Lorem.sentence }

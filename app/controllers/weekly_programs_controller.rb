@@ -14,7 +14,7 @@ class WeeklyProgramsController < ApplicationController
     @weekly_program = WeeklyProgram.new(weekly_program_params)
 
     if @weekly_program.save
-      redirect_to activity_selection_path, notice: 'Weekly program was successfully created.'
+      redirect_to weekly_program_activity_selection_path(@weekly_program), notice: 'Weekly program was successfully created.'
     else
       render action: 'new'
     end
