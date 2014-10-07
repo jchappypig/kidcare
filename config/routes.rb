@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :waiting_lists
   resources :weekly_programs do
     get '/activity_selection' => 'weekly_programs#activity_selection'
+    resource :activities
   end
 
   devise_for :users, controllers: { registrations: 'registrations' }
