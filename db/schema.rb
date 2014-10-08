@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004000109) do
+ActiveRecord::Schema.define(version: 20141008004116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: true do |t|
+    t.string  "category"
+    t.string  "day"
+    t.text    "cross_mentor"
+    t.string  "cross_mentor_outcome"
+    t.text    "social"
+    t.string  "social_outcome"
+    t.text    "art_and_craft"
+    t.string  "art_and_craft_outcome"
+    t.text    "language"
+    t.string  "language_outcome"
+    t.integer "weekly_program_id"
+  end
 
   create_table "outcomes", force: true do |t|
     t.string "item_no"

@@ -7,4 +7,5 @@ class WeeklyProgram < ActiveRecord::Base
   validates :number, presence: true
   validates :colour, presence: true
   validates :shape, presence: true
+  has_many :activities
 end
