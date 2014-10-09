@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :waiting_lists
   resources :weekly_programs do
-    get '/activity_selection' => 'weekly_programs#activity_selection'
+    get '/activity_selection' => 'activities#activity_selection'
     resource :activities
   end
 

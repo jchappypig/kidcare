@@ -18,9 +18,6 @@ describe WeeklyProgramsController do
         post :create, our_weekly_program: attributes_for(:weekly_program)
         should_deny_user_access
 
-        get :activity_selection, weekly_program_id: weekly_program
-        should_deny_user_access
-
         # get :edit, id: weekly_program
         # should_deny_user_access
         #
@@ -45,9 +42,6 @@ describe WeeklyProgramsController do
         should_deny_staff_access
 
         post :create, our_weekly_program: attributes_for(:weekly_program)
-        should_deny_staff_access
-
-        get :activity_selection, weekly_program_id: weekly_program
         should_deny_staff_access
 
         # get :edit, id: weekly_program
@@ -114,15 +108,6 @@ describe WeeklyProgramsController do
       #   before { post :create, weekly_program: attributes_for(:weekly_program).merge(email: '') }
       #   it { is_expected.to render_template(:new) }
       # end
-    end
-
-    describe 'Get #activity_selection' do
-      before { get :activity_selection, weekly_program_id: weekly_program }
-      it { is_expected.to render_template(:activity_selection) }
-
-      it 'responds successfully' do
-        expect(response).to be_success
-      end
     end
   end
 end

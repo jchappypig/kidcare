@@ -1,0 +1,10 @@
+%h1 Select an Activity for Weekly Program
+.row
+  .large-8.columns
+    =link_to('Indoor Program', new_weekly_program_activities_path(@weekly_program_id, category: 'Indoor'), 'data-role' => 'button')
+.row
+  .large-8.columns
+    =link_to('Outdoor Program', new_weekly_program_activities_path(@weekly_program_id, category: 'Outdoor'), 'data-role' => 'button')
+.row
+  .large-8.columns
+    =link_to('Weekly Group time planning', '#', 'data-role' => 'button')

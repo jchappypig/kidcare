@@ -3,11 +3,17 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_admin!
 
   def new
+    @activity = Activity.new
+    @activity.weekly_program_id = params[:weekly_program_id]
+    @activity.category = params[:category]
+  end
 
+  def activity_selection
+    @weekly_program_id = params[:weekly_program_id]
   end
 
   private
-  def story_params
-    params.require(:story).permit(:content, :time_line, :guid, outcome_ids: [], story_attachments_attributes: [:id, :story_id, :photo])
+  def activity_params
+    params.require(:activity).permit(:weekly_program_id, :category)
   end
 end

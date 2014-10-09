@@ -20,10 +20,6 @@ class WeeklyProgramsController < ApplicationController
     end
   end
 
-  def activity_selection
-
-  end
-
   private
   def set_weekly_program
     @weekly_program = WeeklyProgram.find(params[:id])
