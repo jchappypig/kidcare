@@ -33,6 +33,11 @@ class WeeklyProgramsController < ApplicationController
     end
   end
 
+  def destroy
+    @weekly_program.destroy
+    redirect_to weekly_programs_url
+  end
+
   private
   def set_weekly_program
     @weekly_program = WeeklyProgram.find(params[:id])

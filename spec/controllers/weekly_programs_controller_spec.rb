@@ -23,9 +23,9 @@ describe WeeklyProgramsController do
 
         put :update, id: weekly_program, weekly_program: weekly_program.attributes
         should_deny_user_access
-        #
-        # delete :destroy, id: weekly_program
-        # should_deny_user_access
+
+        delete :destroy, id: weekly_program
+        should_deny_user_access
       end
     end
     context 'non staff login' do
@@ -49,9 +49,9 @@ describe WeeklyProgramsController do
 
         put :update, id: weekly_program, weekly_program: weekly_program.attributes
         should_deny_staff_access
-        #
-        # delete :destroy, id: weekly_program
-        # should_deny_staff_access
+
+        delete :destroy, id: weekly_program
+        should_deny_staff_access
       end
     end
   end
@@ -136,6 +136,11 @@ describe WeeklyProgramsController do
         before { post :update, id: weekly_program, weekly_program: weekly_program.attributes.merge(theme: '') }
         it { is_expected.to render_template(:edit) }
       end
+    end
+
+    describe 'DELETE #destory' do
+      before { weekly_program }
+      it { expect { delete :destroy, id: weekly_program }.to change { WeeklyProgram.count }.by(-1) }
     end
   end
 end
