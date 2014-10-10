@@ -12,6 +12,10 @@ class ActivitiesController < ApplicationController
     @weekly_program_id = params[:weekly_program_id]
   end
 
+  def create
+
+  end
+
   private
   def activity_params
     params.require(:activity).permit(:weekly_program_id, :category)

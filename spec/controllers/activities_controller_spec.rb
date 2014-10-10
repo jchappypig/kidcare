@@ -14,6 +14,9 @@ describe ActivitiesController do
 
         get :activity_selection, weekly_program_id: weekly_program
         should_deny_user_access
+
+        post :create, activity: attributes_for(:activity), weekly_program_id: weekly_program
+        should_deny_user_access
       end
     end
     context 'non staff login' do
@@ -27,6 +30,9 @@ describe ActivitiesController do
         should_deny_staff_access
 
         get :activity_selection, weekly_program_id: weekly_program
+        should_deny_staff_access
+
+        post :create, activity: attributes_for(:activity), weekly_program_id: weekly_program
         should_deny_staff_access
       end
     end
