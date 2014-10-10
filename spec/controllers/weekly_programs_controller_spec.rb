@@ -18,11 +18,11 @@ describe WeeklyProgramsController do
         post :create, our_weekly_program: attributes_for(:weekly_program)
         should_deny_user_access
 
-        # get :edit, id: weekly_program
-        # should_deny_user_access
-        #
-        # put :update, id: weekly_program, weekly_program: weekly_program.attributes
-        # should_deny_user_access
+        get :edit, id: weekly_program
+        should_deny_user_access
+
+        put :update, id: weekly_program, weekly_program: weekly_program.attributes
+        should_deny_user_access
         #
         # delete :destroy, id: weekly_program
         # should_deny_user_access
@@ -44,11 +44,11 @@ describe WeeklyProgramsController do
         post :create, our_weekly_program: attributes_for(:weekly_program)
         should_deny_staff_access
 
-        # get :edit, id: weekly_program
-        # should_deny_staff_access
-        #
-        # put :update, id: weekly_program, weekly_program: weekly_program.attributes
-        # should_deny_staff_access
+        get :edit, id: weekly_program
+        should_deny_staff_access
+
+        put :update, id: weekly_program, weekly_program: weekly_program.attributes
+        should_deny_staff_access
         #
         # delete :destroy, id: weekly_program
         # should_deny_staff_access
@@ -104,10 +104,38 @@ describe WeeklyProgramsController do
         end
       end
 
-      # context 'when fails' do
-      #   before { post :create, weekly_program: attributes_for(:weekly_program).merge(email: '') }
-      #   it { is_expected.to render_template(:new) }
-      # end
+      context 'when fails' do
+        before { post :create, weekly_program: attributes_for(:weekly_program).merge(theme: '') }
+        it { is_expected.to render_template(:new) }
+      end
+    end
+
+    describe 'GET #edit' do
+      before { get :edit, id: weekly_program }
+      subject { response }
+
+      it { is_expected.to render_template(:edit) }
+      it { is_expected.to be_success }
+    end
+
+    describe 'PUT #update' do
+      context 'when succeeds' do
+        it 'redirects to weekly program page' do
+          put :update, id: weekly_program, weekly_program: weekly_program.attributes
+          expect(response).to redirect_to(weekly_program_path(assigns(:weekly_program)))
+        end
+
+        it 'updates the weekly program' do
+          weekly_program
+          put :update, id: weekly_program, weekly_program: {theme: 'new theme'}
+          expect(WeeklyProgram.find(weekly_program).theme).to eq('new theme')
+        end
+      end
+
+      context 'when fails' do
+        before { post :update, id: weekly_program, weekly_program: weekly_program.attributes.merge(theme: '') }
+        it { is_expected.to render_template(:edit) }
+      end
     end
   end
 end

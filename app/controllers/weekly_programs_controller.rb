@@ -1,6 +1,7 @@
 class WeeklyProgramsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!
+  before_action :set_weekly_program, only: [:show, :edit, :update, :destroy]
 
   def index
     @weekly_programs = WeeklyProgram.all
@@ -17,6 +18,18 @@ class WeeklyProgramsController < ApplicationController
       redirect_to weekly_program_activity_selection_path(@weekly_program), notice: 'Weekly program was successfully created.'
     else
       render action: 'new'
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @weekly_program.update(weekly_program_params)
+      redirect_to @weekly_program, notice: 'Weekly program was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 

@@ -206,8 +206,8 @@ describe StoriesController do
       end
 
       context 'when fails' do
-        before { post :create, story: attributes_for(:story).merge(content: '') }
-        it { is_expected.to render_template(:new) }
+        before { post :update, id: story, story: story.attributes.merge(content: '') }
+        it { is_expected.to render_template(:edit) }
       end
     end
 
