@@ -26,6 +26,9 @@ describe WeeklyProgramsController do
 
         delete :destroy, id: weekly_program
         should_deny_user_access
+
+        get :show, id: weekly_program
+        should_deny_user_access
       end
     end
     context 'non staff login' do
@@ -51,6 +54,9 @@ describe WeeklyProgramsController do
         should_deny_staff_access
 
         delete :destroy, id: weekly_program
+        should_deny_staff_access
+
+        get :show, id: weekly_program
         should_deny_staff_access
       end
     end
@@ -138,9 +144,20 @@ describe WeeklyProgramsController do
       end
     end
 
-    describe 'DELETE #destory' do
+    describe 'DELETE #destroy' do
       before { weekly_program }
       it { expect { delete :destroy, id: weekly_program }.to change { WeeklyProgram.count }.by(-1) }
+    end
+
+    describe 'GET #show' do
+      it 'responds successfully' do
+        get :show, id: weekly_program
+        expect(response).to be_success
+      end
+      it 'renders the show template' do
+        get :show, id: weekly_program
+        expect(response).to render_template('show')
+      end
     end
   end
 end

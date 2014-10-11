@@ -34,6 +34,10 @@ ul {
   }
 }
 
+h1.with_label {
+  display: inline-block;
+}
+
 .story .story-image {
   border-color: #eee;
   border: 0.625em solid rgba(255, 255, 255, .5); /* 10 */

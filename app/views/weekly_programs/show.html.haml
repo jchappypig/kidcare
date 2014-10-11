@@ -1,0 +1,105 @@
+%h1.inline
+  Weekly Program
+%span.label
+  = @weekly_program.week_range
+
+.row
+  .large-12.columns
+    .row
+      .large-4.columns
+        %b Program staff:
+        = @weekly_program.program_staff
+      .large-8.columns
+        %b Theme:
+        = @weekly_program.theme
+    .row
+      .large-4.columns
+        %b Number Of week:
+        = @weekly_program.number
+      .large-8.columns
+        %b Goals:
+        = @weekly_program.goals
+    .row
+      .large-4.columns
+        %b Letter Of week:
+        = @weekly_program.letter
+      .large-4.columns
+        %b Colour:
+        = @weekly_program.colour
+      .large-4.columns
+        %b Shape:
+        = @weekly_program.shape
+    .right
+      = link_to 'Edit', edit_weekly_program_path(@weekly_program)
+
+.row
+  .large-12.columns
+    %h3 Indoor Program
+    - indoor_activities = @weekly_program.indoor_activities
+    - if indoor_activities.empty?
+      .right
+        = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: 'Indoor')
+    - else
+      - indoor_activities.each do |activity|
+        %h4.inline
+          = activity.day
+        .right
+          = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: 'Indoor')
+          \|
+          = link_to 'Edit', edit_weekly_program_activities_path(@weekly_program, id: activity)
+
+        %table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
+          %thead
+            %tr
+              %th Cross Mentor
+              %th Social
+              %th Art and Craft
+              %th Language
+          %tbody
+            %tr
+              %td= activity.cross_mentor
+              %td= activity.social
+              %td= activity.art_and_craft
+              %td= activity.language
+            %tr
+              %td= activity.cross_mentor_outcome
+              %td= activity.social_outcome
+              %td= activity.art_and_craft_outcome
+              %td= activity.language_outcome
+.row
+  .large-12.columns
+    %h3 Outdoor Program
+    - outdoor_activities = @weekly_program.outdoor_activities
+    - if outdoor_activities.empty?
+      .right
+        = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: 'Outdoor')
+    - else
+      - outdoor_activities.each do |activity|
+        %h4.inline
+          = activity.day
+        .right
+          = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: 'Outdoor')
+          \|
+          = link_to 'Edit', edit_weekly_program_activities_path(@weekly_program, id: activity)
+
+        %table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
+          %thead
+            %tr
+              %th Cross Mentor
+              %th Social
+              %th Art and Craft
+              %th Language
+          %tbody
+            %tr
+              %td= activity.cross_mentor
+              %td= activity.social
+              %td= activity.art_and_craft
+              %td= activity.language
+            %tr
+              %td= activity.cross_mentor_outcome
+              %td= activity.social_outcome
+              %td= activity.art_and_craft_outcome
+              %td= activity.language_outcome
+
+%p
+= link_to 'Back', weekly_programs_path

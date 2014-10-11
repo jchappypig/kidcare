@@ -29,6 +29,9 @@ describe StoriesController do
 
         delete :destroy, id: story
         should_deny_user_access
+
+        get :show, id: story
+        should_deny_user_access
       end
     end
     context 'non staff login' do
@@ -54,6 +57,9 @@ describe StoriesController do
         should_deny_staff_access
 
         delete :destroy, id: story
+        should_deny_staff_access
+
+        get :show, id: story
         should_deny_staff_access
       end
     end

@@ -84,5 +84,63 @@ describe ActivitiesController do
         expect(assigns(:weekly_program_id)).to eq(weekly_program.id.to_s)
       end
     end
+
+    describe 'POST #create' do
+      context 'when succeeds' do
+        it 'redirects to activity selection page' do
+          post :create, activity: attributes_for(:activity), weekly_program_id: weekly_program.id
+          expect(response).to redirect_to(weekly_program_path(weekly_program))
+        end
+
+        it 'creates and save weekly program' do
+          expect {
+            post :create, activity: attributes_for(:activity), weekly_program_id: weekly_program.id
+          }.to change { weekly_program.activities.count }.by(1)
+        end
+      end
+
+      # context 'when fails' do
+      #   before { post :create, activity: attributes_for(:activity).merge(), weekly_program_id: weekly_program }
+      #   it { is_expected.to render_template(:new) }
+      # end
+    end
+
+    describe 'GET #edit' do
+      let(:activity) {create(:activity, weekly_program: weekly_program)}
+
+      before { get :edit, id: activity, weekly_program_id: weekly_program }
+      subject { response }
+
+      it { is_expected.to render_template(:edit) }
+      it { is_expected.to be_success }
+    end
+
+    describe 'PUT #update' do
+      let(:activity) {create(:activity, weekly_program: weekly_program)}
+
+      context 'when succeeds' do
+        it 'redirects to weekly program page' do
+          put :update, weekly_program_id: weekly_program, activity: {category: 'new category'}, id: activity
+          expect(response).to redirect_to(weekly_program_path(weekly_program))
+        end
+
+        it 'updates the weekly program' do
+          activity
+          put :update, weekly_program_id: weekly_program, activity: {category: 'new category'}, id: activity
+          expect(Activity.find(activity).category).to eq('new category')
+        end
+      end
+
+      it 'should not allow weekly program id to be mismatch' do
+        another_weekly_program = create(:weekly_program)
+        put :update, weekly_program_id: another_weekly_program, activity: {category: 'new category'}, id: activity
+        expect(response).to render_template(:edit)
+      end
+
+      # context 'when fails' do
+      #   before { post :update, id: weekly_program, weekly_program: weekly_program.attributes.merge(theme: '') }
+      #   it { is_expected.to render_template(:edit) }
+      # end
+    end
   end
 end

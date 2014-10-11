@@ -1,3 +1,5 @@
+require 'date'
+
 class WeeklyProgram < ActiveRecord::Base
   validates :week_start, presence: true
   validates :program_staff, presence: true
@@ -8,4 +10,22 @@ class WeeklyProgram < ActiveRecord::Base
   validates :colour, presence: true
   validates :shape, presence: true
   has_many :activities, dependent: :destroy
+
+  def week_range
+    week_start_desc = to_word(week_start)
+    week_end_desc = to_word(week_start + 4)
+    return week_start_desc + ' to ' + week_end_desc
+  end
+
+  def to_word(date)
+    date.strftime("#{date.day.ordinalize} %b, %Y")
+  end
+
+  def indoor_activities
+    activities.where(category: 'Indoor');
+  end
+
+  def outdoor_activities
+    activities.where(category: 'Outdoor');
+  end
 end

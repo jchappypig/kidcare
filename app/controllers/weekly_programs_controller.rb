@@ -38,6 +38,10 @@ class WeeklyProgramsController < ApplicationController
     redirect_to weekly_programs_url
   end
 
+  def show
+
+  end
+
   private
   def set_weekly_program
     @weekly_program = WeeklyProgram.find(params[:id])
