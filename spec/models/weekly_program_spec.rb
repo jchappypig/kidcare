@@ -28,6 +28,15 @@ describe WeeklyProgram do
         expect(weekly_program.indoor_activities).to include(indoor_activity)
         expect(weekly_program.indoor_activities).not_to include(outdoor_activity)
       end
+
+      it 'should sort by date' do
+        tuesday_activity = create(:activity, category: 'Indoor', weekly_program: weekly_program, day: 'Tuesday')
+        monday_activity = create(:activity, category: 'Indoor', weekly_program: weekly_program, day: 'Monday')
+        wednesday_activity = create(:activity, category: 'Indoor', weekly_program: weekly_program, day: 'Wednesday')
+        expect(weekly_program.indoor_activities.first).to eq monday_activity
+        expect(weekly_program.indoor_activities.second).to eq tuesday_activity
+        expect(weekly_program.indoor_activities.last).to eq wednesday_activity
+      end
     end
 
     describe 'outdoor_activities' do

@@ -1,4 +1,4 @@
-= simple_form_for @activity, url: weekly_program_activities_path(@activity.weekly_program_id) do |f|
+= simple_form_for @activity, url: weekly_program_activities_path(@activity.weekly_program_id, id: params[:id]) do |f|
   = f.error_notification
 
   .form-inputs

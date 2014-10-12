@@ -22,10 +22,20 @@ class WeeklyProgram < ActiveRecord::Base
   end
 
   def indoor_activities
-    activities.where(category: 'Indoor');
+    find_by_category('Indoor')
   end
 
   def outdoor_activities
-    activities.where(category: 'Outdoor');
+    find_by_category('Outdoor')
+  end
+
+  private
+
+  def priority
+    %w(Monday Tuesday Wednesday Thursday Friday)
+  end
+
+  def find_by_category(category)
+    activities.where(category: category).sort_by { |activity| priority.index(activity.day) || priority.size }
   end
 end
