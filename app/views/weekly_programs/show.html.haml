@@ -1,6 +1,6 @@
 %h1.inline
   Weekly Program
-%span.label
+%span.label.warning
   = @weekly_program.week_range
 
 .row
@@ -25,7 +25,7 @@
         = @weekly_program.letter
       .large-4.columns
         %b Colour:
-        = @weekly_program.colour
+        = content_tag(:span, @weekly_program.colour, style: 'color: ' + @weekly_program.colour)
       .large-4.columns
         %b Shape:
         = @weekly_program.shape
@@ -55,16 +55,19 @@
               %th Social
               %th Art and Craft
               %th Language
+              %th Language
           %tbody
             %tr
-              %td= activity.cross_mentor
-              %td= activity.social
-              %td= activity.art_and_craft
-              %td= activity.language
+              %td= RedCloth.new(activity.cross_mentor).to_html.html_safe
+              %td= RedCloth.new(activity.social).to_html.html_safe
+              %td= RedCloth.new(activity.art_and_craft).to_html.html_safe
+              %td= RedCloth.new(activity.language).to_html.html_safe
+              %td= RedCloth.new(activity.language).to_html.html_safe
             %tr
               %td= activity.cross_mentor_outcome
               %td= activity.social_outcome
               %td= activity.art_and_craft_outcome
+              %td= activity.language_outcome
               %td= activity.language_outcome
 .row
   .large-12.columns
@@ -89,16 +92,19 @@
               %th Social
               %th Art and Craft
               %th Language
+              %th Language
           %tbody
             %tr
-              %td= activity.cross_mentor
-              %td= activity.social
-              %td= activity.art_and_craft
-              %td= activity.language
+              %td= RedCloth.new(activity.cross_mentor).to_html.html_safe
+              %td= RedCloth.new(activity.social).to_html.html_safe
+              %td= RedCloth.new(activity.art_and_craft).to_html.html_safe
+              %td= RedCloth.new(activity.language).to_html.html_safe
+              %td= RedCloth.new(activity.language).to_html.html_safe
             %tr
               %td= activity.cross_mentor_outcome
               %td= activity.social_outcome
               %td= activity.art_and_craft_outcome
+              %td= activity.language_outcome
               %td= activity.language_outcome
 
 %p
