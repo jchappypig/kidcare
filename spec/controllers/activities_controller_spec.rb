@@ -99,10 +99,10 @@ describe ActivitiesController do
         end
       end
 
-      # context 'when fails' do
-      #   before { post :create, activity: attributes_for(:activity).merge(), weekly_program_id: weekly_program }
-      #   it { is_expected.to render_template(:new) }
-      # end
+      context 'when fails' do
+        before { post :create, activity: attributes_for(:activity).merge(day: ''), weekly_program_id: weekly_program }
+        it { is_expected.to render_template(:new) }
+      end
     end
 
     describe 'GET #edit' do
@@ -137,10 +137,10 @@ describe ActivitiesController do
         expect(response).to render_template(:edit)
       end
 
-      # context 'when fails' do
-      #   before { post :update, id: weekly_program, weekly_program: weekly_program.attributes.merge(theme: '') }
-      #   it { is_expected.to render_template(:edit) }
-      # end
+      context 'when fails' do
+        before { post :update, id: activity, activity: attributes_for(:activity).merge(day: ''), weekly_program_id: weekly_program }
+        it { is_expected.to render_template(:edit) }
+      end
     end
   end
 end

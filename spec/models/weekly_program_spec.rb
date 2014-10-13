@@ -20,11 +20,13 @@ describe WeeklyProgram do
 
   describe 'indoor and out door activities' do
     let(:weekly_program) { create(:weekly_program) }
-    let(:indoor_activity) { create(:activity, category: 'Indoor', weekly_program: weekly_program) }
-    let(:outdoor_activity) { create(:activity, category: 'Outdoor', weekly_program: weekly_program) }
+    let(:indoor_activity) { create(:activity, category: 'Indoor', weekly_program: weekly_program, day: 'Monday') }
+    let(:outdoor_activity) { create(:activity, category: 'Outdoor', weekly_program: weekly_program, day: 'Monday') }
 
     describe 'indoor_activities' do
       it 'should return indoor activities' do
+        indoor_activity
+        outdoor_activity
         expect(weekly_program.indoor_activities).to include(indoor_activity)
         expect(weekly_program.indoor_activities).not_to include(outdoor_activity)
       end
@@ -41,6 +43,8 @@ describe WeeklyProgram do
 
     describe 'outdoor_activities' do
       it 'should return outdoor activities' do
+        indoor_activity
+        outdoor_activity
         expect(weekly_program.outdoor_activities).not_to include(indoor_activity)
         expect(weekly_program.outdoor_activities).to include(outdoor_activity)
       end
