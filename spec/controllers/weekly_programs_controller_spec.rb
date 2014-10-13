@@ -159,5 +159,10 @@ describe WeeklyProgramsController do
         expect(response).to render_template('show')
       end
     end
+
+    describe 'DELETE #destory' do
+      before { weekly_program }
+      it { expect { delete :destroy, id: weekly_program }.to change { WeeklyProgram.count }.by(-1) }
+    end
   end
 end

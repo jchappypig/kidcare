@@ -5,6 +5,7 @@ describe ActivitiesController do
   include AuthenticationHelper
 
   let(:weekly_program) { create(:weekly_program) }
+  let(:activity) {create(:activity, weekly_program: weekly_program)}
 
   context 'not authenticated user' do
     context 'no login' do
@@ -16,6 +17,9 @@ describe ActivitiesController do
         should_deny_user_access
 
         post :create, activity: attributes_for(:activity), weekly_program_id: weekly_program
+        should_deny_user_access
+
+        delete :destroy, id: activity, weekly_program_id: weekly_program
         should_deny_user_access
       end
     end
@@ -33,6 +37,9 @@ describe ActivitiesController do
         should_deny_staff_access
 
         post :create, activity: attributes_for(:activity), weekly_program_id: weekly_program
+        should_deny_staff_access
+
+        delete :destroy, id: activity, weekly_program_id: weekly_program
         should_deny_staff_access
       end
     end
@@ -106,8 +113,6 @@ describe ActivitiesController do
     end
 
     describe 'GET #edit' do
-      let(:activity) {create(:activity, weekly_program: weekly_program)}
-
       before { get :edit, id: activity, weekly_program_id: weekly_program }
       subject { response }
 
@@ -116,7 +121,6 @@ describe ActivitiesController do
     end
 
     describe 'PUT #update' do
-      let(:activity) {create(:activity, weekly_program: weekly_program)}
 
       context 'when succeeds' do
         it 'redirects to weekly program page' do
@@ -141,6 +145,11 @@ describe ActivitiesController do
         before { post :update, id: activity, activity: attributes_for(:activity).merge(day: ''), weekly_program_id: weekly_program }
         it { is_expected.to render_template(:edit) }
       end
+    end
+
+    describe 'DELETE #destory' do
+      before { activity }
+      it { expect { delete :destroy, weekly_program_id: weekly_program, id: activity }.to change { Activity.count }.by(-1) }
     end
   end
 end

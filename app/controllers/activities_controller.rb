@@ -35,6 +35,11 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def destroy
+    @activity.destroy
+    redirect_to weekly_program_path(params[:weekly_program_id]), notice: 'Activity was successfully deleted.'
+  end
+
   private
   def set_activity
     @activity = Activity.find(params[:id])
