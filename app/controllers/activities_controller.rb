@@ -46,7 +46,7 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:category, :day, :cross_mentor, :cross_mentor_outcome,
+    params.require(:activity).permit(:category, :day, :cognitive, :cognitive_outcome, :cross_mentor, :cross_mentor_outcome,
                                      :social, :social_outcome, :art_and_craft, :art_and_craft_outcome, :language,
                                      :language_outcome)
   end

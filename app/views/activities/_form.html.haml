@@ -8,6 +8,8 @@
     .ui-field-contain
       %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
         = f.input :day, as: :radio_buttons, collection: %w(Monday Tuesday Wednesday Thursday Friday)
+    = f.input :cognitive
+    = f.input :cognitive_outcome
     = f.input :cross_mentor
     = f.input :cross_mentor_outcome
     = f.input :social
