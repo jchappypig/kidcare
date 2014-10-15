@@ -65,7 +65,7 @@ gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'unicorn'
 gem 'dotenv-deployment'
-gem 'RedCloth'
+gem 'RedCloth', :require => 'redcloth'
 
 group :development, :test do
   gem 'rspec-rails'
