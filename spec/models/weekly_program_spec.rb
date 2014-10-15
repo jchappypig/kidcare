@@ -50,4 +50,16 @@ describe WeeklyProgram do
       end
     end
   end
+
+  describe 'latest' do
+    let(:weekly_program) { create(:weekly_program, week_start: Date.parse('Monday')) }
+    let(:last_weekly_program) { create(:weekly_program, week_start: Date.parse('Monday') - 7) }
+
+    it 'should return the latest weekly program' do
+      weekly_program
+      last_weekly_program
+
+      expect(WeeklyProgram.latest).to eq(weekly_program)
+    end
+  end
 end

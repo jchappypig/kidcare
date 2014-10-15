@@ -15,7 +15,7 @@ describe WeeklyProgramsController do
         get :new
         should_deny_user_access
 
-        post :create, our_weekly_program: attributes_for(:weekly_program)
+        post :create, weekly_program: attributes_for(:weekly_program)
         should_deny_user_access
 
         get :edit, id: weekly_program
@@ -44,7 +44,7 @@ describe WeeklyProgramsController do
         get :new
         should_deny_staff_access
 
-        post :create, our_weekly_program: attributes_for(:weekly_program)
+        post :create, weekly_program: attributes_for(:weekly_program)
         should_deny_staff_access
 
         get :edit, id: weekly_program

@@ -29,6 +29,10 @@ class WeeklyProgram < ActiveRecord::Base
     find_by_category('Outdoor')
   end
 
+  def self.latest
+    WeeklyProgram.order('week_start').last
+  end
+
   private
 
   def priority
