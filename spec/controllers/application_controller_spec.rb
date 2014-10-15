@@ -15,7 +15,7 @@ describe ApplicationController do
     describe 'GET#weekly_program' do
 
       it 'should not allow user access' do
-        get :weekly_program
+        get :our_weekly_program
         should_deny_user_access
       end
     end
@@ -27,24 +27,18 @@ describe ApplicationController do
       sign_in :user, user
     end
 
-    describe 'Get #weekly_program' do
+    describe 'Get #our_weekly_program' do
       it 'should assign latest weekly program' do
         weekly_program = create(:weekly_program, week_start: Date.parse('Monday'))
-        last_weekly_program = create(:weekly_program, week_start: Date.parse('Monday') - 7)
-        get :weekly_program
-        expect(assigns(:latest_weekly_program)).to eq(weekly_program)
+        create(:weekly_program, week_start: Date.parse('Monday') - 7)
+
+        get :our_weekly_program
+        expect(assigns(:weekly_program)).to eq(weekly_program)
       end
 
       it 'renders template' do
-        get :weekly_program
-        expect(response).to render_template(:weekly_program)
-      end
-
-      it 'gets all story outcomes' do
-        Outcome.create(item_no: '1', description: 'description1', category: '1');
-        Outcome.create(item_no: '2', description: 'description2', category: '1');
-        get :weekly_program
-        expect(assigns(:outcomes).count).to eq 2
+        get :our_weekly_program
+        expect(response).to render_template(:our_weekly_program)
       end
     end
 

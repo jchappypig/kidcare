@@ -1,11 +1,9 @@
-%h1
-  Weekly Program
-
 %h3
   Learning Outcomes
 .row
   .large-12.columns
     %p.outcomes
+      - @outcomes = Outcome.all
       - if @outcomes.any?
         .panel.callout.radius
           - @outcomes.each do |outcome|
