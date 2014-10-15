@@ -1,39 +1,42 @@
-%h1.inline
-  Weekly Program
-%span.label.warning
-  = @weekly_program.week_range
+- if @weekly_program.nil?
+  Sorry, no weekly program available.
+- else
+  %h1.inline
+    Weekly Program
+  %span.label.warning
+    = @weekly_program.week_range
 
-.row
-  .large-12.columns
-    .row
-      .large-4.columns
-        %b Program staff:
-        = @weekly_program.program_staff
-      .large-8.columns
-        %b Theme:
-        = @weekly_program.theme
-    .row
-      .large-4.columns
-        %b Number Of week:
-        = @weekly_program.number
-      .large-8.columns
-        %b Goals:
-        = @weekly_program.goals
-    .row
-      .large-4.columns
-        %b Letter Of week:
-        = @weekly_program.letter
-      .large-4.columns
-        %b Colour:
-        = content_tag(:span, @weekly_program.colour, style: 'color: ' + @weekly_program.colour)
-      .large-4.columns
-        %b Shape:
-        = @weekly_program.shape
+  .row
+    .large-12.columns
+      .row
+        .large-4.columns
+          %b Program staff:
+          = @weekly_program.program_staff
+        .large-8.columns
+          %b Theme:
+          = @weekly_program.theme
+      .row
+        .large-4.columns
+          %b Number Of week:
+          = @weekly_program.number
+        .large-8.columns
+          %b Goals:
+          = @weekly_program.goals
+      .row
+        .large-4.columns
+          %b Letter Of week:
+          = @weekly_program.letter
+        .large-4.columns
+          %b Colour:
+          = content_tag(:span, @weekly_program.colour, style: 'color: ' + @weekly_program.colour)
+        .large-4.columns
+          %b Shape:
+          = @weekly_program.shape
 
-- indoor_activities = @weekly_program.indoor_activities
-- outdoor_activities = @weekly_program.outdoor_activities
-= render partial: 'activities', locals: {activities: indoor_activities, category: 'Indoor'}
-= render partial: 'activities', locals: {activities: outdoor_activities, category: 'Outdoor'}
+  - indoor_activities = @weekly_program.indoor_activities
+  - outdoor_activities = @weekly_program.outdoor_activities
+  = render partial: 'activities', locals: {activities: indoor_activities, category: 'Indoor'}
+  = render partial: 'activities', locals: {activities: outdoor_activities, category: 'Outdoor'}
 
-%p
-= render partial: 'outcomes'
+  %p
+  = render partial: 'outcomes'

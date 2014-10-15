@@ -80,3 +80,12 @@ td.action {
 .inline {
   display: inline-block;
 }
+
+@media screen {
+  .condense_table {
+    table-layout: fixed;
+    td p{
+      font-size: 0.9em;
+    }
+  }
+}

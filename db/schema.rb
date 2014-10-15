@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 20141014023959) do
     t.string  "art_and_craft_outcome"
     t.text    "language"
     t.string  "language_outcome"
-    t.string  "cognitive"
-    t.string  "cognitive_outcome"
     t.integer "weekly_program_id"
+    t.text    "cognitive"
+    t.string  "cognitive_outcome"
   end
 
   create_table "outcomes", force: true do |t|
