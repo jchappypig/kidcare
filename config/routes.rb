@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :waiting_lists
   resources :weekly_programs do
     get '/activity_selection' => 'activities#activity_selection'
-    resource :activities
+    resource :activities, on: :collection do
+      get 'clone' => 'activities#clone'
+    end
   end
 
   devise_for :users, controllers: { registrations: 'registrations' }

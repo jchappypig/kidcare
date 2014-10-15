@@ -3,6 +3,22 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_activity, only: [:edit, :update, :destroy]
 
+  def clone
+    if (params[:category].present?)
+      reference_activity = Activity.where(category: params[:category]).last
+    else
+      reference_activity = Activity.last
+    end
+
+    if reference_activity.nil?
+      @activity = Activity.new
+    else
+      @activity = reference_activity.dup
+    end
+
+    @activity.weekly_program_id = params[:weekly_program_id]
+  end
+
   def new
     @activity = Activity.new
     @activity.weekly_program_id = params[:weekly_program_id]
@@ -16,7 +32,7 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params.merge(weekly_program_id: params[:weekly_program_id]))
 
-    if(@activity.save)
+    if (@activity.save)
       redirect_to weekly_program_path(params[:weekly_program_id]), notice: 'Activity was successfully created.'
     else
       render action: :new

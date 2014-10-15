@@ -5,5 +5,6 @@ FactoryGirl.define do
     association :weekly_program
     category { %w(Indoor Outdoor).sample }
     day { %w(Monday Tuesday Wednesday Thursday Friday).sample }
+    cognitive { Faker::Lorem.paragraph }
   end
 end

@@ -5,7 +5,7 @@ describe ActivitiesController do
   include AuthenticationHelper
 
   let(:weekly_program) { create(:weekly_program) }
-  let(:activity) {create(:activity, weekly_program: weekly_program)}
+  let(:activity) { create(:activity, weekly_program: weekly_program) }
 
   context 'not authenticated user' do
     context 'no login' do
@@ -20,6 +20,9 @@ describe ActivitiesController do
         should_deny_user_access
 
         delete :destroy, id: activity, weekly_program_id: weekly_program
+        should_deny_user_access
+
+        get :clone, weekly_program_id: weekly_program
         should_deny_user_access
       end
     end
@@ -40,6 +43,9 @@ describe ActivitiesController do
         should_deny_staff_access
 
         delete :destroy, id: activity, weekly_program_id: weekly_program
+        should_deny_staff_access
+
+        get :clone, weekly_program_id: weekly_program
         should_deny_staff_access
       end
     end
@@ -76,6 +82,59 @@ describe ActivitiesController do
           get :new, weekly_program_id: weekly_program, category: 'indoor'
           expect(assigns(:activity).category).to eq('indoor')
         end
+      end
+    end
+
+    describe 'Get #clone' do
+      let(:indoor_activity1) { create(:activity, category: 'Indoor', cognitive: 'cognitive_indoor1') }
+      let(:indoor_activity2) { create(:activity, category: 'Indoor', cognitive: 'cognitive_indoor2') }
+      let(:outdoor_activity1) { create(:activity, category: 'Outdoor', cognitive: 'cognitive_outdoor1') }
+      let(:outdoor_activity2) { create(:activity, category: 'Outdoor', cognitive: 'cognitive_outdoor2') }
+      let(:any_activity1) { create(:activity, cognitive: 'cognitive1') }
+      let(:any_activity2) { create(:activity, cognitive: 'cognitive2') }
+
+      context 'when passed in category' do
+        before :each do
+          indoor_activity1
+          indoor_activity2
+          outdoor_activity1
+          outdoor_activity2
+        end
+
+        it 'clones the latest activity of indoor category' do
+          get :clone, weekly_program_id: weekly_program, category: 'Indoor'
+          expect(assigns(:activity).cognitive).to eq(indoor_activity2.cognitive)
+        end
+
+        it 'clones the latest activity of outdoor category' do
+          get :clone, weekly_program_id: weekly_program, category: 'Outdoor'
+          expect(assigns(:activity).cognitive).to eq(outdoor_activity2.cognitive)
+        end
+      end
+
+      context 'when no category passed in' do
+        before :each do
+          indoor_activity1
+          indoor_activity2
+          any_activity1
+          any_activity2
+        end
+
+        it 'clones the latest activity of outdoor category' do
+          get :clone, weekly_program_id: weekly_program
+          expect(assigns(:activity).cognitive).to eq(any_activity2.cognitive)
+        end
+      end
+
+      it 'should set weekly program id' do
+        get :clone, weekly_program_id: weekly_program
+        expect(assigns(:activity).weekly_program_id).to eq(weekly_program.id)
+        expect(assigns(:activity).weekly_program_id).not_to eq(any_activity2.weekly_program_id)
+      end
+
+      it 'should just create a new activity with no details if no activity record' do
+        get :clone, weekly_program_id: weekly_program
+        expect(assigns(:activity).cognitive).to be_nil
       end
     end
 
