@@ -7,3 +7,15 @@
   display: inline-block;
   line-height: 2em;
 }
+
+.weekly_program {
+  .category {
+    font-weight: bold;
+  }
+
+  .day {
+    color: #008CBA;
+    font-weight: bold;
+    font-style: italic;
+  }
+}

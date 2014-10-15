@@ -1,13 +1,13 @@
 .row
   .large-12.columns
-    %h3
+    %h3.category
       = "#{category} Program"
     - if activities.empty?
       .right
         = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: category)
     - else
       - activities.each do |activity|
-        %h4.inline
+        %h5.inline.day
           = activity.day
         .right
           = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: activity.category)

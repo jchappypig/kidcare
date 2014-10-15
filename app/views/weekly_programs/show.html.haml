@@ -3,8 +3,8 @@
 %span.label.warning
   = @weekly_program.week_range
 
-.row
-  .large-12.columns
+.weekly_program
+  %p
     .row
       .large-4.columns
         %b Program staff:
@@ -32,9 +32,9 @@
     .right
       = link_to 'Edit', edit_weekly_program_path(@weekly_program)
 
-- indoor_activities = @weekly_program.indoor_activities
-- outdoor_activities = @weekly_program.outdoor_activities
-= render partial: 'activities', locals: {activities: indoor_activities, category: 'Indoor'}
-= render partial: 'activities', locals: {activities: outdoor_activities, category: 'Outdoor'}
-%p
-= link_to 'Back', weekly_programs_path
+  - indoor_activities = @weekly_program.indoor_activities
+  - outdoor_activities = @weekly_program.outdoor_activities
+  = render partial: 'activities', locals: {activities: indoor_activities, category: 'Indoor'}
+  = render partial: 'activities', locals: {activities: outdoor_activities, category: 'Outdoor'}
+  %p
+  = link_to 'Back', weekly_programs_path

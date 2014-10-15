@@ -35,7 +35,9 @@
 
   - indoor_activities = @weekly_program.indoor_activities
   - outdoor_activities = @weekly_program.outdoor_activities
+  %p
   = render partial: 'activities', locals: {activities: indoor_activities, category: 'Indoor'}
+  %p
   = render partial: 'activities', locals: {activities: outdoor_activities, category: 'Outdoor'}
 
   %p

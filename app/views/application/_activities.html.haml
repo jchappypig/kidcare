@@ -1,10 +1,10 @@
 - if activities.any?
-  .row
+  .row.weekly_program
     .large-12.columns
-      %h3
+      %h3.category
         = "#{category} Program"
       - activities.each do |activity|
-        %h4.inline
+        %h5.inline.day
           = activity.day
 
         %table.condense_table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
