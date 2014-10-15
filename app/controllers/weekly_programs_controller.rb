@@ -1,5 +1,3 @@
-require 'redcloth'
-
 class WeeklyProgramsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!
