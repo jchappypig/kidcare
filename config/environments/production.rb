@@ -79,7 +79,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Cloudfront setting
-  config.action_controller.asset_host = 'd11dkzsxgkfyqq.cloudfront.net'
+  # config.action_controller.asset_host = 'd11dkzsxgkfyqq.cloudfront.net'
 
   # Action mailer setting
   config.action_mailer.default_url_options = { host: 'jchappypig.com' }
