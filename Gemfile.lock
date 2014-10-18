@@ -102,6 +102,8 @@ GEM
     fog-softlayer (0.3.9)
       fog-core
       fog-json
+    font_assets (0.1.11)
+      rack
     formatador (0.2.5)
     foundation-rails (5.3.1.0)
       railties (>= 3.1.0)
@@ -268,6 +270,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   fog
+  font_assets
   foundation-rails
   gmaps4rails
   haml-rails
