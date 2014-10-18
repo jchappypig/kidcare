@@ -25,6 +25,5 @@ module Kidcare
     config.assets.initialize_on_precompile = false
 
     config.time_zone = 'Sydney'
-    config.font_assets.origin = '*'
   end
 end
