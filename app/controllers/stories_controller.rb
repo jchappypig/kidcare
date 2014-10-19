@@ -44,9 +44,9 @@ class StoriesController < ApplicationController
 # PATCH/PUT /stories/1
   def update
     if @story.update(story_params)
-      puts(' prams:' + params)
-      puts(' story_attachments:' + params[:story_attachments])
-      puts(' photos:' + params[:story_attachments][:photo])
+      puts(' prams:' + params.to_s)
+      puts(' story_attachments:' + params[:story_attachments].to_s)
+      puts(' photos:' + params[:story_attachments][:photo].to_s)
 
       params[:story_attachments][:photo].each do |photo|
         StoryAttachment.create!(photo: photo, story_id: @story.id, guid: @story.guid)
