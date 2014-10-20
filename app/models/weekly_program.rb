@@ -10,6 +10,7 @@ class WeeklyProgram < ActiveRecord::Base
   validates :colour, presence: true
   validates :shape, presence: true
   has_many :activities, dependent: :destroy
+  has_many :group_time_plannings, dependent: :destroy
 
   def week_range
     week_start_desc = to_word(week_start)

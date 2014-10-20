@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020041741) do
+ActiveRecord::Schema.define(version: 20141020051516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20141020041741) do
     t.integer "weekly_program_id"
     t.text    "cognitive"
     t.string  "cognitive_outcome"
+  end
+
+  create_table "group_time_plannings", force: true do |t|
+    t.text    "morning"
+    t.text    "late_morning"
+    t.text    "afternoon"
+    t.text    "late_afternoon"
+    t.text    "finishing_up"
+    t.string  "day"
+    t.integer "weekly_program_id"
   end
 
   create_table "outcomes", force: true do |t|

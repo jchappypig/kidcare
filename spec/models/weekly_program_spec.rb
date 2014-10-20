@@ -10,6 +10,7 @@ describe WeeklyProgram do
   it { is_expected.to validate_presence_of :colour }
   it { is_expected.to validate_presence_of :shape }
   it { is_expected.to have_many(:activities).dependent(:destroy) }
+  it { is_expected.to have_many(:group_time_plannings).dependent(:destroy) }
 
   describe 'week_range' do
     it 'should show week start day and end day' do
