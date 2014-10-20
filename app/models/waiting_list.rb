@@ -6,4 +6,15 @@ class WaitingList < ActiveRecord::Base
   validates :home_phone, presence: true
   validates :mobile_phone, presence: true
   validates :address, presence: true
+
+  before_create :set_date_contacted
+
+  private
+
+  def set_date_contacted
+    if date_contacted.nil?
+      self.date_contacted = created_at.to_date
+    end
+  end
+
 end

@@ -32,6 +32,11 @@ describe WaitingListsController do
           it 'creates and save waiting list' do
             expect { post :create, waiting_list: attributes_for(:waiting_list) }.to change { WaitingList.count }.by(1)
           end
+
+          it 'set date contacted with date created by default' do
+            post :create, waiting_list: attributes_for(:waiting_list)
+            expect(assigns(:waiting_list).date_contacted).not_to be_nil
+          end
         end
 
         context 'when fails' do
@@ -148,7 +153,7 @@ describe WaitingListsController do
       end
     end
 
-    describe 'DELETE #dewaiting_list' do
+    describe 'DELETE #waiting_list' do
       before { waiting_list }
       it { expect { delete :destroy, id: waiting_list }.to change { WaitingList.count }.by(-1) }
     end
