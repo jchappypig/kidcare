@@ -1,5 +1,7 @@
 %h1 Register Your Interest
 
-= render 'form'
+.row
+  .large-10.columns
+    = render 'form'
 
-= link_to 'Back', current_user.try(:admin) ? waiting_lists_path : root_path
+    = link_to 'Back', current_user.try(:admin) ? waiting_lists_path : root_path

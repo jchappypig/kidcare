@@ -2,7 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :week_start
+    .ui-field-contain
+      %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
+        = f.input :week_start, label: 'Start at'
     = f.input :program_staff
     = f.input :theme
     = f.input :goals
