@@ -2,7 +2,7 @@
   - if @stories.empty?
     Sorry, no stories available.
   - else
-    %h4
+    %h1
       = "#{@stories.first.time_line.strftime('%A, %d %b %Y')} @ Little Star"
 
     .navigate-date
