@@ -22,5 +22,11 @@
     .ui-field-contain
       %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
         = f.input :days_required, as: :check_boxes, collection: %w(Monday Tuesday Wednesday Thursday Friday)
+
+    - if current_user.try(:admin)
+      .ui-field-contain
+        %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
+          = f.input :date_contacted, label: 'Date Contacted'
+
   .form-actions
     = f.button :submit
