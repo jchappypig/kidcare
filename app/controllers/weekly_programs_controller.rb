@@ -4,7 +4,7 @@ class WeeklyProgramsController < ApplicationController
   before_action :set_weekly_program, only: [:show, :edit, :update, :destroy]
 
   def index
-    @weekly_programs = WeeklyProgram.all
+    @weekly_programs = WeeklyProgram.order(week_start: :desc)
   end
 
   def new

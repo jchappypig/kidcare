@@ -4,7 +4,7 @@ class WaitingListsController < ApplicationController
   before_action :set_waiting_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @waiting_lists = WaitingList.all.paginate(:page => params[:page], :per_page => 10)
+    @waiting_lists = WaitingList.order(:child_full_name).paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

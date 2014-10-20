@@ -4,7 +4,7 @@ class WhiteListsController < ApplicationController
   before_action :set_white_list, only: [:show, :edit, :update, :destroy]
 
   def index
-    @white_lists = WhiteList.all
+    @white_lists = WhiteList.order(:email)
   end
 
   def show
