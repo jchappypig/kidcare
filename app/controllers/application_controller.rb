@@ -20,10 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def our_stories
-    datesAvailable = Story.order(:time_line).pluck('DISTINCT time_line')
+    datesAvailable = Story.where(published: true).order(:time_line).pluck('DISTINCT time_line')
     date = getStoryDate(datesAvailable)
 
-    @stories = Story.where(time_line: date)
+    @stories = Story.where(time_line: date, published: true)
     if !@stories.empty?
       current_date_index = datesAvailable.index(date)
       @last_story_date = (current_date_index == 0 ? nil : datesAvailable[current_date_index - 1])

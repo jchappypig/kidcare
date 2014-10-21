@@ -14,6 +14,7 @@
     = file_field_tag('fileupload', name: 'story_attachments[photo][]', 'data-url'=>'',  'multiple'=>'')
     .progress.radius.success
       %span.meter{ 'style' => 'width: 0%;' }
+    = f.input :published
     = f.input :guid, as: :hidden
     
     .form-actions

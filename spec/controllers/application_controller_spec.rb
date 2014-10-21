@@ -117,6 +117,26 @@ describe ApplicationController do
 
         expect(response).to render_template(:our_stories)
       end
+
+      it 'should get only get published story' do
+        story_published =  create(:story, time_line: today, published: true)
+        story_not_published =  create(:story, time_line: today, published: false)
+
+        get :our_stories, date: today
+
+        expect(assigns(:stories)).to include(story_published)
+        expect(assigns(:stories)).not_to include(story_not_published)
+      end
+
+      it 'should get latest published story' do
+        yesterday_story_published = create(:story, time_line: yesterday, published: true)
+        today_story_not_published = create(:story, time_line: today, published: false)
+
+        get :our_stories
+
+        expect(assigns(:stories)).to include(yesterday_story_published)
+        expect(assigns(:stories)).not_to include(today_story_not_published)
+      end
     end
   end
 end
