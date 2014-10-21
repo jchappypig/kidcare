@@ -30,6 +30,10 @@ class WeeklyProgram < ActiveRecord::Base
     find_by_category('Outdoor')
   end
 
+  def group_time_plannings_sorted
+    group_time_plannings.sort_by { |activity| priority.index(activity.day) || priority.size }
+  end
+
   def self.latest
     WeeklyProgram.order('week_start').last
   end
@@ -37,7 +41,7 @@ class WeeklyProgram < ActiveRecord::Base
   private
 
   def priority
-    %w(Monday Tuesday Wednesday Thursday Friday)
+    %w(Monday Tuesday Wednesday Thursday Friday Alternatives)
   end
 
   def find_by_category(category)

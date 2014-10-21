@@ -35,7 +35,7 @@
 
   - indoor_activities = @weekly_program.indoor_activities
   - outdoor_activities = @weekly_program.outdoor_activities
-  - group_time_plannings = @weekly_program.group_time_plannings
+  - group_time_plannings = @weekly_program.group_time_plannings_sorted
   = render partial: 'weekly_programs/activities', locals: {activities: indoor_activities, category: 'Indoor', is_published_view: is_published_view}
   = render partial: 'weekly_programs/activities', locals: {activities: outdoor_activities, category: 'Outdoor', is_published_view: is_published_view}
   = render partial: 'weekly_programs/group_time_plannings', locals: {activities: group_time_plannings, is_published_view: is_published_view}

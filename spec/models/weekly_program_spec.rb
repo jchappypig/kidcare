@@ -32,7 +32,7 @@ describe WeeklyProgram do
         expect(weekly_program.indoor_activities).not_to include(outdoor_activity)
       end
 
-      it 'should sort by date' do
+      it 'should sort by day' do
         tuesday_activity = create(:activity, category: 'Indoor', weekly_program: weekly_program, day: 'Tuesday')
         monday_activity = create(:activity, category: 'Indoor', weekly_program: weekly_program, day: 'Monday')
         wednesday_activity = create(:activity, category: 'Indoor', weekly_program: weekly_program, day: 'Wednesday')
@@ -49,6 +49,19 @@ describe WeeklyProgram do
         expect(weekly_program.outdoor_activities).not_to include(indoor_activity)
         expect(weekly_program.outdoor_activities).to include(outdoor_activity)
       end
+    end
+  end
+
+  describe 'group time plannings' do
+    it 'should sort by day' do
+      weekly_program = create(:weekly_program)
+      tuesday_group_time = create(:group_time_planning, weekly_program: weekly_program, day: 'Tuesday')
+      monday_group_time = create(:group_time_planning, weekly_program: weekly_program, day: 'Monday')
+      alternative_group_time = create(:group_time_planning, weekly_program: weekly_program, day: 'Alternative')
+
+      expect(weekly_program.group_time_plannings_sorted.first).to eq monday_group_time
+      expect(weekly_program.group_time_plannings_sorted.second).to eq tuesday_group_time
+      expect(weekly_program.group_time_plannings_sorted.last).to eq alternative_group_time
     end
   end
 
