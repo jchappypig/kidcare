@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resource :activities, on: :collection do
       get 'clone' => 'activities#clone'
     end
+    resource :group_time_plannings, on: :collection do
+      get 'clone' => 'group_time_plannings#clone'
+    end
   end
 
   devise_for :users, controllers: { registrations: 'registrations' }

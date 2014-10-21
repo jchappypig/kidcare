@@ -158,7 +158,7 @@ describe ActivitiesController do
           expect(response).to redirect_to(weekly_program_path(weekly_program))
         end
 
-        it 'creates and save weekly program' do
+        it 'creates and save activity' do
           expect {
             post :create, activity: attributes_for(:activity), weekly_program_id: weekly_program.id
           }.to change { weekly_program.activities.count }.by(1)

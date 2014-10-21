@@ -1,0 +1,12 @@
+%h1 New activity
+
+= render 'form'
+
+= link_to 'Clone from previous activity',
+           clone_weekly_program_activities_path(@activity.weekly_program, category: params[:category]),
+           class: 'button'
+%p
+= link_to 'Back', weekly_program_activity_selection_path(@activity.weekly_program)
+
+%p
+= render partial: 'application/outcomes'

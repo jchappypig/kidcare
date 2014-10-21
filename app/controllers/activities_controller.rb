@@ -45,7 +45,7 @@ class ActivitiesController < ApplicationController
 
   def update
     if ((@activity.weekly_program_id.to_s.eql? params[:weekly_program_id]) && @activity.update(activity_params))
-      redirect_to weekly_program_path(params[:weekly_program_id]), notice: 'Weekly program was successfully updated.'
+      redirect_to weekly_program_path(params[:weekly_program_id]), notice: 'Activity was successfully updated.'
     else
       render action: 'edit'
     end
