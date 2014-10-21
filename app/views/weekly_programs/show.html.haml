@@ -34,7 +34,10 @@
 
   - indoor_activities = @weekly_program.indoor_activities
   - outdoor_activities = @weekly_program.outdoor_activities
+  - group_time_plannings = @weekly_program.group_time_plannings
   = render partial: 'activities', locals: {activities: indoor_activities, category: 'Indoor'}
   = render partial: 'activities', locals: {activities: outdoor_activities, category: 'Outdoor'}
+  = render partial: 'group_time_planning', locals: {activities: group_time_plannings}
+
   %p
   = link_to 'Back', weekly_programs_path

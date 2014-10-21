@@ -1,8 +1,5 @@
-%h1 New activity
+%h1 New Group Time Planning
 
 = render 'form'
 
-= link_to 'Back', weekly_program_activity_selection_path(@activity.weekly_program)
-
-%p
-= render partial: 'application/outcomes'
+= link_to 'Back', new_weekly_program_group_time_plannings_path(@group_time_planning.weekly_program)

@@ -1,12 +1,9 @@
-%h1 New activity
+%h1 New Group Time Planning
 
 = render 'form'
 
-= link_to 'Clone from previous activity',
-           clone_weekly_program_activities_path(@activity.weekly_program, category: params[:category]),
+= link_to 'Clone from previous group time planning',
+           clone_weekly_program_group_time_plannings_path(@group_time_planning.weekly_program),
            class: 'button'
 %p
-= link_to 'Back', weekly_program_activity_selection_path(@activity.weekly_program)
-
-%p
-= render partial: 'application/outcomes'
+= link_to 'Back', weekly_program_path(@group_time_planning.weekly_program)

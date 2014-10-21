@@ -1,22 +1,14 @@
-= simple_form_for @activity, url: weekly_program_activities_path(@activity.weekly_program_id, id: params[:id]) do |f|
+= simple_form_for @group_time_planning, url: weekly_program_group_time_plannings_path(@group_time_planning.weekly_program_id, id: params[:id]) do |f|
   = f.error_notification
 
   .form-inputs
     .ui-field-contain
       %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
-        = f.input :category, as: :radio_buttons, collection: %w(Indoor Outdoor)
-    .ui-field-contain
-      %fieldset{'data-type' => 'horizontal', 'data-role' => 'controlgroup'}
-        = f.input :day, as: :radio_buttons, collection: %w(Monday Tuesday Wednesday Thursday Friday)
-    = f.input :cognitive
-    = f.input :cognitive_outcome
-    = f.input :cross_mentor
-    = f.input :cross_mentor_outcome
-    = f.input :social
-    = f.input :social_outcome
-    = f.input :art_and_craft
-    = f.input :art_and_craft_outcome
-    = f.input :language
-    = f.input :language_outcome
+        = f.input :day, as: :radio_buttons, collection: %w(Monday Tuesday Wednesday Thursday Friday Alternative)
+    = f.input :morning, label: 'Morning 9:00 AM'
+    = f.input :late_morning, label: 'Show and tell 11:00 AM'
+    = f.input :afternoon, label: 'Afternoon 2:45 PM'
+    = f.input :late_afternoon, label: 'Story time 3:30 PM'
+    = f.input :finishing_up, label: 'Game group time 5:15 PM'
   .form-actions
     = f.button :submit
