@@ -1,7 +1,7 @@
 %p
   %b Content:
   %br
-  = @story.content
+  = RedCloth.new(@story.content).to_html.html_safe
 %p
   %b Time:
   %br
