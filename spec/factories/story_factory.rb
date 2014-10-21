@@ -10,7 +10,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |story, evaluator|
-        create_list(:story_attachment, evaluator.attachments_count, story: story)
+        create_list(:story_attachment, evaluator.attachments_count, story: story, guid: story.guid)
       end
     end
   end

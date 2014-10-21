@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1
   def show
-    @story_attachments = @story.story_attachment.all
+    @story_attachments = StoryAttachment.where(guid: @story.guid)
   end
 
   # GET /stories/new
@@ -33,12 +33,16 @@ class StoriesController < ApplicationController
       redirect_to @story, notice: 'Story was successfully created.'
     else
       if @story.save
-        StoryAttachment.where(guid: @story.guid, story_id: nil).update_all(story_id: @story)
+        recruit_orphan_attachments
         redirect_to @story, notice: 'Story was successfully created.'
       else
         render action: 'new'
       end
     end
+  end
+
+  def recruit_orphan_attachments
+    StoryAttachment.where(guid: @story.guid, story_id: nil).update_all(story_id: @story)
   end
 
 # PATCH/PUT /stories/1
