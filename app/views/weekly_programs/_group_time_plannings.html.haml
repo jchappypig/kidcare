@@ -1,0 +1,24 @@
+- if current_user.try(:admin) && !is_published_view
+  %h3.category Group Time Planning
+  - if activities.empty?
+    .right
+      = link_to 'Add', new_weekly_program_group_time_plannings_path(@weekly_program)
+  - else
+    - activities.each do |activity|
+      %h5.inline.day
+        = activity.day
+      .right
+        = link_to 'Add', new_weekly_program_group_time_plannings_path(@weekly_program)
+        \|
+        = link_to 'Edit', edit_weekly_program_group_time_plannings_path(@weekly_program, id: activity)
+        \|
+        = link_to 'Destroy', weekly_program_group_time_plannings_path(@weekly_program, id: activity), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+      = render partial: 'weekly_programs/group_time_planning', locals: {activity: activity}
+
+- elsif activities.any?
+  %h3.category Group Time Planning
+  - activities.each do |activity|
+    %h5.inline.day
+      = activity.day
+    = render partial: 'weekly_programs/group_time_planning', locals: {activity: activity}

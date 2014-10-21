@@ -1,39 +1,26 @@
-.row
-  .large-12.columns
-    %h3.category
-      = "#{category} Program"
-    - if activities.empty?
+- if current_user.try(:admin) && !is_published_view
+  %h3.category
+    = "#{category} Program"
+  - if activities.empty?
+    .right
+      = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: category)
+  - else
+    - activities.each do |activity|
+      %h5.inline.day
+        = activity.day
       .right
-        = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: category)
-    - else
-      - activities.each do |activity|
-        %h5.inline.day
-          = activity.day
-        .right
-          = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: activity.category)
-          \|
-          = link_to 'Edit', edit_weekly_program_activities_path(@weekly_program, id: activity)
-          \|
-          = link_to 'Destroy', weekly_program_activities_path(@weekly_program, id: activity), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        = link_to 'Add', new_weekly_program_activities_path(@weekly_program, category: activity.category)
+        \|
+        = link_to 'Edit', edit_weekly_program_activities_path(@weekly_program, id: activity)
+        \|
+        = link_to 'Destroy', weekly_program_activities_path(@weekly_program, id: activity), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-        %table.condense_table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
-          %thead
-            %tr
-              %th Cognitive
-              %th Cross Mentor
-              %th Social
-              %th Art and Craft
-              %th Language
-          %tbody
-            %tr
-              %td= RedCloth.new(activity.cognitive).to_html.html_safe
-              %td= RedCloth.new(activity.cross_mentor).to_html.html_safe
-              %td= RedCloth.new(activity.social).to_html.html_safe
-              %td= RedCloth.new(activity.art_and_craft).to_html.html_safe
-              %td= RedCloth.new(activity.language).to_html.html_safe
-            %tr
-              %td= activity.cognitive_outcome
-              %td= activity.cross_mentor_outcome
-              %td= activity.social_outcome
-              %td= activity.art_and_craft_outcome
-              %td= activity.language_outcome
+      = render partial: 'weekly_programs/activity', locals: {activity: activity}
+- elsif activities.any?
+  %h3.category
+    = "#{category} Program"
+    - activities.each do |activity|
+      %h5.inline.day
+        = activity.day
+      = render partial: 'weekly_programs/activity', locals: {activity: activity}
+

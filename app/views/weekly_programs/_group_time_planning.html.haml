@@ -1,32 +1,15 @@
-.row
-  .large-12.columns
-    %h3.category Group Time Planning
-    - if activities.empty?
-      .right
-        = link_to 'Add', new_weekly_program_group_time_plannings_path(@weekly_program)
-    - else
-      - activities.each do |activity|
-        %h5.inline.day
-          = activity.day
-        .right
-          = link_to 'Add', new_weekly_program_group_time_plannings_path(@weekly_program)
-          \|
-          = link_to 'Edit', edit_weekly_program_group_time_plannings_path(@weekly_program, id: activity)
-          \|
-          = link_to 'Destroy', weekly_program_group_time_plannings_path(@weekly_program, id: activity), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-        %table.condense_table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
-          %thead
-            %tr
-              %th Transition song 9:00 AM
-              %th Show and tell 11:00 AM
-              %th Computer 2:45 PM
-              %th Story time 3:30 PM
-              %th Game group time 5:15 PM
-          %tbody
-            %tr
-              %td= RedCloth.new(activity.morning).to_html.html_safe
-              %td= RedCloth.new(activity.late_morning).to_html.html_safe
-              %td= RedCloth.new(activity.afternoon).to_html.html_safe
-              %td= RedCloth.new(activity.late_afternoon).to_html.html_safe
-              %td= RedCloth.new(activity.finishing_up).to_html.html_safe
+%table.condense_table.ui-responsive{'data-mode' => 'reflow', 'data-role' => 'table'}
+  %thead
+    %tr
+      %th Transition song 9:00 AM
+      %th Show and tell 11:00 AM
+      %th Computer 2:45 PM
+      %th Story time 3:30 PM
+      %th Game group time 5:15 PM
+  %tbody
+    %tr
+      %td= RedCloth.new(activity.morning).to_html.html_safe
+      %td= RedCloth.new(activity.late_morning).to_html.html_safe
+      %td= RedCloth.new(activity.afternoon).to_html.html_safe
+      %td= RedCloth.new(activity.late_afternoon).to_html.html_safe
+      %td= RedCloth.new(activity.finishing_up).to_html.html_safe
