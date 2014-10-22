@@ -193,7 +193,7 @@ describe StoriesController do
       context 'when succeeds' do
         it 'redirects to story page' do
           put :update, id: story, story: story.attributes
-          expect(response).to redirect_to(story_path(assigns(:story)))
+          expect(response).to redirect_to preview_our_stories_path(date: story.time_line)
         end
 
         it 'updates the story' do

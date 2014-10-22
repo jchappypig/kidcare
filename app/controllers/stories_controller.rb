@@ -30,7 +30,7 @@ class StoriesController < ApplicationController
       params[:story_attachments][:photo].each do |photo|
         StoryAttachment.create!(photo: photo, guid: @story.guid)
       end
-      redirect_to @story, notice: 'Story was successfully created.'
+      redirect_to preview_our_stories_path(date: @story.time_line), notice: 'Story was successfully created.'
     else
       if @story.save
         recruit_orphan_attachments
@@ -51,7 +51,7 @@ class StoriesController < ApplicationController
       params[:story_attachments][:photo].each do |photo|
         StoryAttachment.create!(photo: photo, story_id: @story.id, guid: @story.guid)
       end if (params[:story_attachments].present?)
-      redirect_to @story, notice: 'Story was successfully updated.'
+      redirect_to preview_our_stories_path(date: @story.time_line), notice: 'Story was successfully updated.'
     else
       render action: 'edit'
     end
