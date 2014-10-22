@@ -1,0 +1,3 @@
+- next_path = preview_our_stories_path(date: @next_story_date)
+- last_path = preview_our_stories_path(date: @last_story_date)
+= render :partial => 'stories_gallery', locals: {next_path: next_path, last_path: last_path, is_public_view: false}

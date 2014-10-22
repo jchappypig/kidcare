@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get '/contact_us' => 'application#contact_us'
   get '/about_us' => 'application#about_us'
   get '/our_stories' => 'application#our_stories'
+  get '/preview_our_stories' => 'application#preview_our_stories'
   get '/our_weekly_program' => 'application#our_weekly_program'
 
   resources :story_attachments, only: [:destroy], defaults: {format: :json} do

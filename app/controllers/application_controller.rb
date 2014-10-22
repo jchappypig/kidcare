@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   after_filter :set_csrf_cookie_for_ng
-  before_action :authenticate_user!, only: [:our_stories, :our_weekly_program]
+  before_action :authenticate_user!, only: [:our_stories, :our_weekly_program, :preview_our_stories]
+  before_action :authenticate_admin!, only: [:preview_our_stories]
 
   def index
     @story
@@ -24,6 +25,18 @@ class ApplicationController < ActionController::Base
     date = getStoryDate(datesAvailable)
 
     @stories = Story.where(time_line: date, published: true)
+    if !@stories.empty?
+      current_date_index = datesAvailable.index(date)
+      @last_story_date = (current_date_index == 0 ? nil : datesAvailable[current_date_index - 1])
+      @next_story_date = (current_date_index == (datesAvailable.size - 1) ? nil : datesAvailable[current_date_index + 1])
+    end
+  end
+
+  def preview_our_stories
+    datesAvailable = Story.order(:time_line).pluck('DISTINCT time_line')
+    date = getStoryDate(datesAvailable)
+
+    @stories = Story.where(time_line: date)
     if !@stories.empty?
       current_date_index = datesAvailable.index(date)
       @last_story_date = (current_date_index == 0 ? nil : datesAvailable[current_date_index - 1])
