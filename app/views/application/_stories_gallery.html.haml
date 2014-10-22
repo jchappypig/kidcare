@@ -2,9 +2,17 @@
   - if @stories.empty?
     Sorry, no stories available.
   - else
-    %h1
-      = "#{@stories.first.time_line.strftime('%A, %d %b %Y')} @ Little Star"
-
+    - date = @stories.first.time_line
+    %h1.inline
+      = "#{date.strftime('%A, %d %b %Y')} @ Little Star"
+    - if current_user.try(:admin) && !is_published_view
+      - if @stories.first.published
+        .right
+          = button_to('Unpublish', publish_stories_path(published: false, date: date), class: 'button unpublish_btn', method: :put)
+      - else
+        .right
+          = button_to('Publish It', publish_stories_path(date: date), class: 'button publish_btn', method: :put)
+    %p
     .navigate-date
       - if @last_story_date
         .left

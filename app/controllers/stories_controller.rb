@@ -63,6 +63,17 @@ class StoriesController < ApplicationController
     redirect_to stories_url
   end
 
+  def publish
+    date = params[:date]
+    if date.present?
+      published = params[:published].eql?('false') ? false : true
+      Story.where(time_line: date).update_all(published: published)
+      redirect_to preview_our_stories_path(date: date)
+    else
+      redirect_to preview_our_stories_path
+    end
+  end
+
   private
 # Use callbacks to share common setup or constraints between actions.
   def set_story

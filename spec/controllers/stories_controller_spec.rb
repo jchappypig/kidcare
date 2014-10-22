@@ -32,6 +32,9 @@ describe StoriesController do
 
         get :show, id: story
         should_deny_user_access
+
+        put :publish, id: story, published: 'true'
+        should_deny_user_access
       end
     end
     context 'non staff login' do
@@ -60,6 +63,9 @@ describe StoriesController do
         should_deny_staff_access
 
         get :show, id: story
+        should_deny_staff_access
+
+        put :publish, id: story, published: 'true'
         should_deny_staff_access
       end
     end
@@ -214,6 +220,57 @@ describe StoriesController do
       context 'when fails' do
         before { post :update, id: story, story: story.attributes.merge(content: '') }
         it { is_expected.to render_template(:edit) }
+      end
+
+    end
+
+    describe 'PUT #publish' do
+      let(:date) {Date.today}
+      let(:another_date) {Date.yesterday}
+      let(:same_date_story1) {create(:story, published: 'false', time_line: date)}
+      let(:same_date_story2) {create(:story, published: 'false', time_line: date)}
+      let(:another_date_story) {create(:story, published: 'false', time_line: another_date)}
+
+      context 'when story date is provided' do
+        it 'should update publish status of stories of the same date if publish status is provided' do
+          same_date_story1
+          same_date_story2
+          another_date_story
+
+          put :publish, published: 'true', date: date
+
+          expect(Story.find(same_date_story1).published).to eq(true)
+          expect(Story.find(same_date_story2).published).to eq(true)
+          expect(Story.find(another_date_story).published).to eq(false)
+
+          put :publish, published: 'false', date: date
+
+          expect(Story.find(same_date_story1).published).to eq(false)
+          expect(Story.find(same_date_story2).published).to eq(false)
+        end
+
+        it 'should set publish status to true if publish status is not provided' do
+          same_date_story1
+
+          put :publish, date: date
+
+          expect(Story.find(same_date_story1).published).to eq(true)
+        end
+      end
+
+      context 'when date is not provided' do
+        it 'should do nothing' do
+          same_date_story1
+          same_date_story2
+          another_date_story
+
+          put :publish, published: 'true'
+
+          expect(Story.find(same_date_story1).published).to eq(false)
+          expect(Story.find(same_date_story2).published).to eq(false)
+          expect(Story.find(another_date_story).published).to eq(false)
+
+        end
       end
     end
 
