@@ -2,6 +2,14 @@
   Weekly Program
 %span.label.warning
   = @weekly_program.week_range
+- if current_user.try(:admin) && !is_published_view
+  - if @weekly_program.published
+    .right
+      = button_to('Unpublish', publish_weekly_program_path(published: false), class: 'button unpublish_btn', method: :put)
+  - else
+    .right
+      = button_to('Publish It', publish_weekly_program_path, class: 'button publish_btn', method: :put)
+
 
 .weekly_program
   %p

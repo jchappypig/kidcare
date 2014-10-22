@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :waiting_lists
   resources :weekly_programs do
+    put 'publish' => 'weekly_programs#publish', on: :member
     get '/activity_selection' => 'activities#activity_selection'
     resource :activities, on: :collection do
       get 'clone' => 'activities#clone'

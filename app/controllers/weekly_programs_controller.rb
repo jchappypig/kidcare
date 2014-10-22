@@ -1,7 +1,7 @@
 class WeeklyProgramsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!
-  before_action :set_weekly_program, only: [:show, :edit, :update, :destroy]
+  before_action :set_weekly_program, only: [:show, :edit, :update, :destroy, :publish]
 
   def index
     @weekly_programs = WeeklyProgram.order(week_start: :desc).paginate(:page => params[:page], :per_page => 10)
@@ -40,6 +40,16 @@ class WeeklyProgramsController < ApplicationController
 
   def show
 
+  end
+
+  def publish
+    published = params[:published].eql?('false') ? false : true
+    @weekly_program.published = published
+    @weekly_program.save
+
+    publish_note = published ? 'published': 'removed from public'
+
+    redirect_to @weekly_program, notice: 'Weekly program was successfully ' + publish_note
   end
 
   private

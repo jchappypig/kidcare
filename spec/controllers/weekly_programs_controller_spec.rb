@@ -24,6 +24,9 @@ describe WeeklyProgramsController do
         put :update, id: weekly_program, weekly_program: weekly_program.attributes
         should_deny_user_access
 
+        put :publish, id: weekly_program, published: 'true'
+        should_deny_user_access
+
         delete :destroy, id: weekly_program
         should_deny_user_access
 
@@ -57,6 +60,9 @@ describe WeeklyProgramsController do
         should_deny_staff_access
 
         get :show, id: weekly_program
+        should_deny_staff_access
+
+        put :publish, id: weekly_program, published: 'true'
         should_deny_staff_access
       end
     end
@@ -139,8 +145,30 @@ describe WeeklyProgramsController do
       end
 
       context 'when fails' do
-        before { post :update, id: weekly_program, weekly_program: weekly_program.attributes.merge(theme: '') }
+        before { put :update, id: weekly_program, weekly_program: weekly_program.attributes.merge(theme: '') }
         it { is_expected.to render_template(:edit) }
+      end
+    end
+
+    describe 'PUT #publish' do
+      it 'should update publish status if publish status is provided' do
+        weekly_program = create(:weekly_program, published: 'false')
+
+        put :publish, id: weekly_program, published: 'true'
+
+        expect(WeeklyProgram.find(weekly_program).published).to eq(true)
+
+        put :publish, id: weekly_program, published: 'false'
+
+        expect(WeeklyProgram.find(weekly_program).published).to eq(false)
+      end
+
+      it 'should set publish status to true if publish status is not provided' do
+        weekly_program = create(:weekly_program, published: 'false')
+
+        put :publish, id: weekly_program
+
+        expect(WeeklyProgram.find(weekly_program).published).to eq(true)
       end
     end
 
