@@ -68,7 +68,10 @@ class StoriesController < ApplicationController
     if date.present?
       published = params[:published].eql?('false') ? false : true
       Story.where(time_line: date).update_all(published: published)
-      redirect_to preview_our_stories_path(date: date)
+
+      publish_note = published ? 'published': 'removed from public'
+
+      redirect_to preview_our_stories_path(date: date), notice: 'Stories were successfully ' + publish_note
     else
       redirect_to preview_our_stories_path
     end
