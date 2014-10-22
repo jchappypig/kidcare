@@ -30,8 +30,12 @@
         %b Shape:
         = @weekly_program.shape
     - if current_user.try(:admin) && !is_published_view
-      .right
-        = link_to 'Edit', edit_weekly_program_path(@weekly_program)
+      .row
+        .large-4.columns
+          %b Published:
+          = @weekly_program.published
+        .right
+          = link_to 'Edit', edit_weekly_program_path(@weekly_program)
 
   - indoor_activities = @weekly_program.indoor_activities
   - outdoor_activities = @weekly_program.outdoor_activities

@@ -12,7 +12,7 @@ describe ApplicationController do
       end
     end
 
-    describe 'GET#weekly_program' do
+    describe 'GET#our_weekly_program' do
 
       it 'should not allow user access' do
         get :our_weekly_program
@@ -28,12 +28,14 @@ describe ApplicationController do
     end
 
     describe 'Get #our_weekly_program' do
-      it 'should assign latest weekly program' do
+      it 'should assign latest published weekly program' do
         weekly_program = create(:weekly_program, week_start: Date.parse('Monday'))
-        create(:weekly_program, week_start: Date.parse('Monday') - 7)
+        weekly_program_2_weeks_ago = create(:weekly_program, week_start: Date.parse('Monday') - 14, published: true)
+        weekly_program_1_weeks_ago = create(:weekly_program, week_start: Date.parse('Monday') - 7, published: true)
+        weekly_program_3_weeks_ago = create(:weekly_program, week_start: Date.parse('Monday') - 21, published: true)
 
         get :our_weekly_program
-        expect(assigns(:weekly_program)).to eq(weekly_program)
+        expect(assigns(:weekly_program)).to eq(weekly_program_1_weeks_ago)
       end
 
       it 'renders template' do
@@ -46,9 +48,9 @@ describe ApplicationController do
       let(:today) { Date.today }
       let(:yesterday) { Date.yesterday }
       let(:the_day_before_yesterday) { 2.days.ago.to_date }
-      let(:today_story) { create(:story, time_line: today) }
-      let(:yesterday_story) { create(:story, time_line: yesterday) }
-      let(:the_day_before_yesterday_story) { create(:story, time_line: the_day_before_yesterday) }
+      let(:today_story) { create(:story, time_line: today, published: true) }
+      let(:yesterday_story) { create(:story, time_line: yesterday, published: true) }
+      let(:the_day_before_yesterday_story) { create(:story, time_line: the_day_before_yesterday, published: true) }
 
       it 'renders template' do
         today_story

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def our_weekly_program
-    @weekly_program = WeeklyProgram.latest
+    @weekly_program = WeeklyProgram.order(week_start: :desc).find_by(published: true)
   end
 
   def our_stories

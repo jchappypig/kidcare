@@ -48,6 +48,6 @@ class WeeklyProgramsController < ApplicationController
   end
 
   def weekly_program_params
-    params.require(:weekly_program).permit(:week_start, :program_staff, :theme, :goals, :letter, :number, :shape, :colour)
+    params.require(:weekly_program).permit(:week_start, :program_staff, :theme, :goals, :letter, :number, :shape, :colour, :published)
   end
 end
