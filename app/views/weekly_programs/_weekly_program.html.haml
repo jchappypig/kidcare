@@ -10,6 +10,10 @@
     .right
       = button_to('Publish It', publish_weekly_program_path, class: 'button publish_btn', method: :put)
 
+.row
+  .large-12.columns
+    .right
+      = link_to 'Download Weekly Program', download_weekly_program_path(@weekly_program, :format => 'pdf')
 
 .weekly_program
   %p

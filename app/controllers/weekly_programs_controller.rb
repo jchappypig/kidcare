@@ -1,7 +1,7 @@
 class WeeklyProgramsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_admin!
-  before_action :set_weekly_program, only: [:show, :edit, :update, :destroy, :publish]
+  before_action :authenticate_admin!, except: [:download]
+  before_action :set_weekly_program, only: [:show, :edit, :update, :destroy, :publish, :download]
 
   def index
     @weekly_programs = WeeklyProgram.order(week_start: :desc).paginate(:page => params[:page], :per_page => 10)
@@ -40,6 +40,16 @@ class WeeklyProgramsController < ApplicationController
 
   def show
 
+  end
+
+  def download
+    respond_to do |format|
+      format.pdf do
+        weekly_program_printer = WeeklyProgramPrinter.new(@weekly_program)
+        weekly_program_printer.write_to_pdf
+        send_data weekly_program_printer.render, filename: "WeeklyProgramOn + #{@weekly_program.week_start}",  type: 'application/pdf'
+      end
+    end
   end
 
   def publish
