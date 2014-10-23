@@ -3,47 +3,50 @@
     Sorry, no stories available.
   - else
     - date = @stories.first.time_line
-    %h1.inline
-      = "#{date.strftime('%A, %d %b %Y')} @ Little Star"
-    - if current_user.try(:admin) && !is_published_view
-      - if @stories.first.published
-        .right
-          = button_to('Unpublish', publish_stories_path(published: false, date: date), class: 'button unpublish_btn', method: :put)
-      - else
-        .right
-          = button_to('Publish It', publish_stories_path(date: date), class: 'button publish_btn', method: :put)
-    %p
-    .navigate-date
-      - if @last_story_date
-        .left
-          =link_to(last_path) do
-            %i.fi-arrow-left
-            Last
-
-      - if @next_story_date
-        .right
-          =link_to(next_path) do
-            Next
-            %i.fi-arrow-right
-    .stories
-      - @stories.each do |story|
-        %li.story
-          %ul
-            .content
-              .story-images.left
-                - StoryAttachment.where(guid: story.guid).each do |attachment|
-                  %li
-                    =link_to(image_tag(attachment.photo_url(:thumb), class: 'story-image', alt: "#{truncate(story.content, :length => 200,  :separator => ' ')}"), attachment.photo_url)
-              = RedCloth.new(story.content).to_html.html_safe
-              .clear
-            .outcomes
-              - if story.outcomes.any?
-                .panel.callout.radius
-                  - story.outcomes.each do |outcome|
-                    .outcome
-                      %b
-                        = outcome.long_description
-          %p
-          %p
+    .row
+      .large-12.columns
+        %h1.inline
+          = "#{date.strftime('%A, %d %b %Y')} @ Little Star"
+        - if current_user.try(:admin) && !is_published_view
+          - if @stories.first.published
             .right
-              = link_to('Edit Story', edit_story_path(story))
+              = button_to('Unpublish', publish_stories_path(published: false, date: date), class: 'button unpublish_btn', method: :put)
+          - else
+            .right
+              = button_to('Publish It', publish_stories_path(date: date), class: 'button publish_btn', method: :put)
+    .row
+      .large-12.columns
+        .navigate-date
+          - if @last_story_date
+            .left
+              =link_to(last_path) do
+                %i.fi-arrow-left
+                Last
+
+          - if @next_story_date
+            .right
+              =link_to(next_path) do
+                Next
+                %i.fi-arrow-right
+        .stories
+          - @stories.each do |story|
+            %li.story
+              %ul
+                .content
+                  .story-images.left
+                    - StoryAttachment.where(guid: story.guid).each do |attachment|
+                      %li
+                        =link_to(image_tag(attachment.photo_url(:thumb), class: 'story-image', alt: "#{truncate(story.content, :length => 200,  :separator => ' ')}"), attachment.photo_url)
+                  = RedCloth.new(story.content).to_html.html_safe
+                  .clear
+                .outcomes
+                  - if story.outcomes.any?
+                    .panel.callout.radius
+                      - story.outcomes.each do |outcome|
+                        .outcome
+                          %b
+                            = outcome.long_description
+              %p
+              %p
+                .right
+                  = link_to('Edit Story', edit_story_path(story))
