@@ -46,8 +46,7 @@ class WeeklyProgramsController < ApplicationController
     respond_to do |format|
       format.pdf do
         weekly_program_printer = WeeklyProgramPrinter.new(@weekly_program)
-        weekly_program_printer.write_to_pdf
-        send_data weekly_program_printer.render, filename: "WeeklyProgramOn + #{@weekly_program.week_start}",  type: 'application/pdf'
+        send_data weekly_program_printer.render, filename: "WeeklyProgramOn#{@weekly_program.week_start}",  type: 'application/pdf'
       end
     end
   end

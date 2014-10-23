@@ -67,6 +67,7 @@ gem 'unicorn'
 gem 'dotenv-deployment'
 gem 'RedCloth', :require => 'redcloth'
 gem 'prawn'
+gem 'prawn-table'
 
 group :development, :test do
   gem 'rspec-rails'
