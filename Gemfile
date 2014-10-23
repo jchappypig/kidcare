@@ -66,6 +66,7 @@ gem 'capistrano-rails'
 gem 'unicorn'
 gem 'dotenv-deployment'
 gem 'RedCloth', :require => 'redcloth'
+gem 'prawn'
 
 group :development, :test do
   gem 'rspec-rails'
