@@ -14,6 +14,10 @@ module Printer
     "<b><color rgb='FFFFFF'>#{text}</color></b>"
   end
 
+  def row_th(text)
+    "<b>#{text}</b>"
+  end
+
   def h4(text)
     "<b><i><color rgb='008CBA'>#{text}</color></i></b>"
   end
