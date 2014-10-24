@@ -1,28 +1,25 @@
 class WeeklyProgramPrinter
   include Prawn::View
+  include Printer
 
   def initialize(weekly_program)
     @weekly_program = weekly_program
-    write_header
-    write_title
-    write_indoor_programs
-    start_new_page
-    write_outdoor_programs
-    move_down 20
-    write_group_time_plannings
+    if @weekly_program.instance_of? WeeklyProgram
+      write_header
+      write_title('Weekly Program from ' + @weekly_program.week_range)
+      write_indoor_programs
+      start_new_page
+      write_outdoor_programs
+      move_down 20
+      write_group_time_plannings
+    end
   end
+
+  # def document
+  #   @document ||= Prawn::Document.new(page_layout: :landscape)
+  # end
 
   private
-  def write_header
-    text "#{h4('Little Start Early Learning Centre')}", inline_format: true
-    stroke_horizontal_rule
-    move_down 20
-  end
-
-  def write_title
-    text "#{h1('Weekly Program from ' + @weekly_program.week_range)}", inline_format: true
-    move_down 20
-  end
 
   def write_indoor_programs
     write_category('Indoor Program')
@@ -92,21 +89,5 @@ class WeeklyProgramPrinter
       )
       move_down 20
     end
-  end
-
-  def th(text)
-    "<b><color rgb='FFFFFF'>#{text}</color></b>"
-  end
-
-  def h4(text)
-    "<b><i><color rgb='008CBA'>#{text}</color></i></b>"
-  end
-
-  def h1(text)
-    "<b><font size='20'>#{text}</font></b>"
-  end
-
-  def h3(text)
-    "<b><font size='16'>#{text}</font></b>"
   end
 end

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :stories do
     put 'publish' => 'stories#publish', on: :collection
+    get 'download' => 'stories#download', on: :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -2,7 +2,7 @@ require 'prawn'
 
 class StoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: [:download]
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
   # GET /stories
@@ -13,6 +13,16 @@ class StoriesController < ApplicationController
   # GET /stories/1
   def show
     @story_attachments = StoryAttachment.where(guid: @story.guid)
+  end
+
+  def download
+    respond_to do |format|
+      format.pdf do
+        date = params[:date]
+        stories_printer = StoriesPrinter.new(date)
+        send_data stories_printer.render, filename: "StoriesOn#{date}",  type: 'application/pdf'
+      end
+    end
   end
 
   # GET /stories/new

@@ -16,6 +16,10 @@
               = button_to('Publish It', publish_stories_path(date: date), class: 'button publish_btn', method: :put)
     .row
       .large-12.columns
+        .right
+          = link_to 'Download Stories', download_stories_path(date: date, :format => 'pdf')
+    .row
+      .large-12.columns
         .navigate-date
           - if @last_story_date
             .left
