@@ -28,18 +28,21 @@ class StoriesPrinter
   end
 
   def write_outcomes(story)
-    pad(20) do
-      data = []
-      story.outcomes.each do |outcome|
-        data << [outcome.long_description]
+    outcomes = story.outcomes
+    if outcomes.any?
+      pad(20) do
+        data = []
+        outcomes.each do |outcome|
+          data << [outcome.long_description]
+        end
+        table(data, position: :center, width: 540,
+              cell_style: {:inline_format => true,
+                           background_color: 'ecfaff',
+                           border_colors: 'b6edff',
+                           padding: 10
+              }
+        )
       end
-      table(data, position: :center, width: 540,
-            cell_style: {:inline_format => true,
-                         background_color: 'ecfaff',
-                         border_colors: 'b6edff',
-                         padding: 10
-            }
-      )
     end
   end
 
@@ -66,7 +69,7 @@ class StoriesPrinter
       story_attachments.each do |attachment|
         x_position_holder = 0 if !odd
 
-        image = image open(attachment.photo_url), height: attachment_height, at: [x_position_holder, y_position_holder]
+        image = image open(attachment.photo_url(:thumb)), height: attachment_height, at: [x_position_holder, y_position_holder]
 
         image_origin_width = image.width.to_f
         image_origin_height = image.height.to_f
