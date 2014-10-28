@@ -70,6 +70,9 @@ GEM
     email_validator (1.4.0)
       activemodel
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     excon (0.38.0)
     execjs (2.2.1)
     factory_girl (4.4.0)
@@ -271,6 +274,7 @@ DEPENDENCIES
   devise
   dotenv-deployment
   email_validator
+  exception_notification
   factory_girl_rails
   faker
   fog

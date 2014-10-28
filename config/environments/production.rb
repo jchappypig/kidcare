@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
@@ -82,17 +82,24 @@ Rails.application.configure do
   # config.action_controller.asset_host = 'd11dkzsxgkfyqq.cloudfront.net'
 
   # Action mailer setting
-  config.action_mailer.default_url_options = { host: 'jchappypig.com' }
+  config.action_mailer.default_url_options = {host: 'jchappypig.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'jchappypig@hotmail.com'}
   config.action_mailer.smtp_settings = {
-      address:              'smtp.live.com',
-      port:                 587,
-      domain:               'jchappypig.com',
-      user_name:            ENV['MAIL_KEY'],
-      password:             ENV['MAIL_SECRET'],
-      authentication:       'plain',
-      enable_starttls_auto: true  }
+      address: 'smtp.live.com',
+      port: 587,
+      domain: 'jchappypig.com',
+      user_name: ENV['MAIL_KEY'],
+      password: ENV['MAIL_SECRET'],
+      authentication: 'plain',
+      enable_starttls_auto: true}
+
+  config.middleware.use ExceptionNotification::Rack,
+                        :email => {
+                            :email_prefix => '[Exception] ',
+                            :sender_address => %{'notifier' <littlestarelc@bigpond.com>},
+                            :exception_recipients => %w{jchappypig@hotmail.com littlestarelc@bigpond.com}
+                        }
 end
