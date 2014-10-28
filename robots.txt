@@ -1,0 +1,6 @@
+User-agent: *
+
+Disallow: /stories
+Disallow: /weekly_programs
+Disallow: /waiting_lists
+Disallow: /white_lists
