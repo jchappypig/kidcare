@@ -2,10 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://littlestarearlylearningcentre.com.au/our_stories</loc>
+  </url>
+  <url>
     <loc>http://littlestarearlylearningcentre.com.au/our_weekly_program</loc>
+  </url>
+  <url>
     <loc>http://littlestarearlylearningcentre.com.au/about_us</loc>
+  </url>
+  <url>
     <loc>http://littlestarearlylearningcentre.com.au/waiting_lists/new</loc>
+  </url>
+  <url>
     <loc>http://littlestarearlylearningcentre.com.au/contact_us</loc>
+  </url>
+  <url>
     <loc>http://littlestarearlylearningcentre.com.au/users/sign_in</loc>
   </url>
 </urlset>
