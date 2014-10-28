@@ -1,33 +1,42 @@
-%h1
-  Contact Us
-.row
-  .large-12.columns
-    %p
-      You can contact us by phone or by visiting us at our centre.
-.row
-  .large-8.columns
-    #map{style: 'height: 300px;'}
-.row
-  .large-12.columns
-    %p
-      %b Address:
-      6 Nielsen Ave, Carlton NSW 2218
-      %br
-      %b Phone:
-      (02) 9587 3703
-      %br
-      %b Email:
-      =link_to('littlestarelc@bigpond.com', 'mailto:littlestarelc@bigpond.com', target: '_top')
-%ul.vcard
-  %li
-    The centre is open
-    %b Monday to Friday
-    , though it is closed for all public holidays.
-  %li
-    The centre is operating from
-    %b 7.30AM
-    till
-    %b 6.00PM.
+%span{'itemscope'=>'', 'itemtype'=>'http://schema.org/LocalBusiness'}
+  %h1{'itemprop'=>'name'}
+    Contact Us
+  .row
+    .large-12.columns
+      %p
+        You can contact us by phone or by visiting us at our centre.
+  .row
+    .large-8.columns
+      #map{style: 'height: 300px;'}
+  .row
+    .large-12.columns
+      %p
+        %b Address:
+        %span{:itemprop => 'address', :itemscope => '', :itemtype => 'http://schema.org/PostalAddress'}
+          %span{:itemprop => 'streetAddress'}> 6 Nielsen Ave
+          ,
+          %span{:itemprop => 'addressLocality'} Carlton
+          %span{:itemprop => 'addressRegion'} NSW
+          %span{:itemprop => 'postalCode'} 2218
+        %br
+        %b Phone:
+        %span{:itemprop => 'telephone'} (02) 9587 3703
+        %br
+        %b Email:
+        =link_to('mailto:littlestarelc@bigpond.com', target: '_top') do
+          %span{:itemprop => 'email'}
+            littlestarelc@bigpond.com
+  %ul.vcard
+    %li
+      The centre is open
+      %span{:itemprop => 'dayOfWeek', :itemscope => '', :itemtype => 'http://schema.org/DayOfWeek'}
+        %b{:itemprop => 'name'} Monday to Friday
+      , though it is closed for all public holidays.
+    %li
+      The centre is operating from
+      %b 7.30AM
+      till
+      %b 6.00PM.
 
 
 %script{src: "//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry", type: "text/javascript"}

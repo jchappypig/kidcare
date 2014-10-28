@@ -1,42 +1,46 @@
-%h1
-  Little Star Early Learning Centre Philosophy
+%span{'itemscope'=>'', 'itemtype'=>'http://schema.org/Article'}
+  %h1#about_us{'itemprop'=>'name'}
+    Little Star Early Learning Centre Philosophy
 
-%h5
-  %b Vision
+  %h5
+    %b{'itemprop'=>'articleSection'} Vision
 
-.right
-  = image_tag('about_us.jpg')
+  .right
+    = image_tag('about_us.jpg', 'itemprop'=>'image')
 
-%p We at, Little Star Early Learning Centre believe that our program and services offer developmentally appropriate curriculum and we strive to enhance social, emotional, physical and intellectual growth in young children.
+  %span{'itemprop'=>'articleBody'}
+    %p
+      We at, Little Star Early Learning Centre believe that our program and services offer developmentally appropriate curriculum and we strive to enhance social, emotional, physical and intellectual growth in young children.
 
-%h5
-  %b Mission
+%span{'itemscope'=>'', 'itemtype'=>'http://schema.org/Article', 'itemref'=>'about_us'}
+  %h5
+    %b{'itemprop'=>'articleSection'} Mission
+  %span{'itemprop'=>'articleBody'}
+    %p
+      As educators, we believe that all children have a right to respect, regardless of their abilities. We provide an environment that is safe yet stimulating, and a curriculum that challenges them through creativity, self choice, and learning through play. Therefore, our program supports the following philosophy about children and their growth:
 
-%p As educators, we believe that all children have a right to respect, regardless of their abilities. We provide an environment that is safe yet stimulating, and a curriculum that challenges them through creativity, self choice, and learning through play. Therefore, our program supports the following philosophy about children and their growth:
+    %blockquote Little Star Early Learning Centre advocates open communication with parents, for they ultimately play the most vital role in their child’s intellectual development. As much as we love to care for and guide children, we believe that parents should also be encouraged to be active participants in their children’s education. Parents and educators share a common priority: providing the best that they possibly can for the child. Working together, we believe that optimum development will be obtained.
 
-%blockquote Little Star Early Learning Centre advocates open communication with parents, for they ultimately play the most vital role in their child’s intellectual development. As much as we love to care for and guide children, we believe that parents should also be encouraged to be active participants in their children’s education. Parents and educators share a common priority: providing the best that they possibly can for the child. Working together, we believe that optimum development will be obtained.
+%span{'itemscope'=>'', 'itemtype'=>'http://schema.org/Article', 'itemref'=>'about_us'}
+  %h5
+    %b{'itemprop'=>'articleSection'} Hours of Operation
+  %span{'itemprop'=>'articleBody'}
+    %ul
+      %li
+        The centre is open
+        %b Monday to Friday
+        , though it is closed for all public holidays.
+      %li
+        The centre is operating from
+        %b 7.30AM
+        till
+        %b 6.00PM.
+      %li The Centre is licensed to care for 31 children;   2-5 years old.
 
-
-
-%h5
-  %b Hours of Operation
-
-%ul
-  %li
-    The centre is open
-    %b Monday to Friday
-    , though it is closed for all public holidays.
-  %li
-    The centre is operating from
-    %b 7.30AM
-    till
-    %b 6.00PM.
-  %li The Centre is licensed to care for 31 children;   2-5 years old.
-
-%blockquote
-  Most families attending the centre are eligible to apply for Child Care assistance.
-  %br
-  This Assistance is means tested; families need to lodge an application with the Family Assistance office prior to enrolment.
+    %blockquote
+      Most families attending the centre are eligible to apply for Child Care assistance.
+      %br
+      This Assistance is means tested; families need to lodge an application with the Family Assistance office prior to enrolment.
 
 %br
 %br
@@ -44,7 +48,7 @@
 
 .vcard
   %p
-    %b Policies and procedures:
+    %b{'itemprop'=>'articleSection'} Policies and procedures:
     Please note that the centre accommodates a wide range of policies and procedures which govern our practices on a daily basis.
   %p Policies and procedures folders are on display in the front foyer, if you wish to sight a particular policy , please ask the staff members  and they will direct you .
 
