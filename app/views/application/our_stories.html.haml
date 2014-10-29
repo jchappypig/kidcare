@@ -1,3 +1,5 @@
+- content_for :title, 'Learning Stories'
+
 - next_path = our_stories_path(date: @next_story_date)
 - last_path = our_stories_path(date: @last_story_date)
 = render :partial => 'stories_gallery', locals: {next_path: next_path, last_path: last_path, is_published_view: true}
