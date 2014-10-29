@@ -3,3 +3,13 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+
+User-agent: *
+
+Disallow: /stories
+Disallow: /weekly_programs
+Disallow: /waiting_lists
+Disallow: /white_lists
+Disallow: /users/password
+
+Allow: /waiting_lists/new
