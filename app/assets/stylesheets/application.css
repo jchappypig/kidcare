@@ -15,4 +15,5 @@
  *= require foundation_and_overrides
  *= require common
  *= require jquery.mobile.overrides
+ *= require zfont.scss
  */

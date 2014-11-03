@@ -4,7 +4,9 @@
     %meta{charset: 'utf-8'}/
     %meta{content: 'width=device-width, initial-scale=1.0', name: 'viewport'}/
     %title= "Little Star Early Learning Centre #{ !yield(:title).empty? ? "| #{ h yield(:title) }" : ''}"
-    = stylesheet_link_tag    'application'
+    = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Lato'
+    = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Gloria+Hallelujah'
+    = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Nunito'
     = javascript_include_tag 'vendor/modernizr'
     = csrf_meta_tags
   %body
@@ -15,6 +17,8 @@
     - if alert
       .alert-box.warning{'data-alert' => ''}
         = alert
-    = yield
+    .row
+      .large-12.columns
+        = yield
     = render partial: 'layouts/footer'
     = javascript_include_tag 'application'

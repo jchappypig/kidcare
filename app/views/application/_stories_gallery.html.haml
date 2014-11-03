@@ -5,7 +5,7 @@
     - date = @stories.first.time_line
     .row
       .large-12.columns
-        %h1.inline
+        %h2.inline
           = "#{date.strftime('%A, %d %b %Y')} @ Little Star"
         - if current_user.try(:admin) && !is_published_view
           - if @stories.first.published
