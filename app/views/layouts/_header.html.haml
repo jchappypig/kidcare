@@ -1,48 +1,46 @@
-.row
-  .large-12.columns
-    %nav.top-bar{'data-topbar' => ''}
-      %ul.title-area
-        %li.name
-          %h1
-            =link_to('Little Star Early Learning Centre', root_path)
-        %li.toggle-topbar.menu-icon
-          %a{href: '#'}
-            %span
-      %section.top-bar-section
-        %ul.right
-          - if current_user.try(:admin?)
-            %li.has-dropdown
-              =link_to 'Management', '#'
-              %ul.dropdown
-                %li
-                  =link_to 'Edit Stories', stories_path
-                %li
-                  =link_to 'Edit Weekly Program', weekly_programs_path
-                %li
-                  =link_to 'Edit Waiting List', waiting_lists_path
-                %li
-                  =link_to 'Edit Email White List', white_lists_path
-          %li.divider
-          %li.has-dropdown
-            =link_to 'Activities', '#'
-            %ul.dropdown
-              %li
-                =link_to 'Learning Stories', our_stories_path
-              %li
-                =link_to 'Weekly Program', our_weekly_program_path
-          %li.divider
-          %li
-            =link_to 'About Us', about_us_path
-          %li.divider
-          %li
-            =link_to 'Register Interest', new_waiting_list_path
-          %li.divider
-          %li
-            =link_to 'Contact Us', contact_us_path
-          %li.divider
-          - if user_signed_in?
+%nav.top-bar{'data-topbar' => ''}
+  %ul.title-area
+    %li.name
+      %h1
+        =link_to('Little Star Early Learning Centre', root_path)
+    %li.toggle-topbar.menu-icon
+      %a{href: '#'}
+        %span
+  %section.top-bar-section
+    %ul.right
+      - if current_user.try(:admin?)
+        %li.has-dropdown
+          =link_to 'Management', '#'
+          %ul.dropdown
             %li
-              = link_to 'logout', destroy_user_session_path, method: :delete
-          - else
+              =link_to 'Edit Stories', stories_path
             %li
-              =link_to 'Login', new_user_session_path
+              =link_to 'Edit Weekly Program', weekly_programs_path
+            %li
+              =link_to 'Edit Waiting List', waiting_lists_path
+            %li
+              =link_to 'Edit Email White List', white_lists_path
+      %li.divider
+      %li.has-dropdown
+        =link_to 'Activities', '#'
+        %ul.dropdown
+          %li
+            =link_to 'Learning Stories', our_stories_path
+          %li
+            =link_to 'Weekly Program', our_weekly_program_path
+      %li.divider
+      %li
+        =link_to 'About Us', about_us_path
+      %li.divider
+      %li
+        =link_to 'Register Interest', new_waiting_list_path
+      %li.divider
+      %li
+        =link_to 'Contact Us', contact_us_path
+      %li.divider
+      - if user_signed_in?
+        %li
+          = link_to 'logout', destroy_user_session_path, method: :delete
+      - else
+        %li
+          =link_to 'Login', new_user_session_path
