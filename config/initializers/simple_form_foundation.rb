@@ -19,7 +19,7 @@ SimpleForm.setup do |config|
   end
 
   # CSS class for buttons
-  config.button_class = 'button'
+  config.button_class = 'button radius'
 
   # CSS class to add for error notification helper.
   config.error_notification_class = 'alert-box alert'
