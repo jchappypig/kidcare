@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
- *= require common
+ *= require zcommon.scss
  *= require jquery.mobile.overrides
  *= require zfont.scss
  */
