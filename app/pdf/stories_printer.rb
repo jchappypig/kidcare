@@ -68,7 +68,7 @@ class StoriesPrinter
       story_attachments.each do |attachment|
         x_position_holder = 0 if !odd
 
-        image = image open(attachment.photo_url(:thumb)), height: attachment_height, at: [x_position_holder, y_position_holder]
+        image = image open(attachment.photo_url(:preview)), height: attachment_height, at: [x_position_holder, y_position_holder]
 
         image_origin_width = image.width.to_f
         image_origin_height = image.height.to_f

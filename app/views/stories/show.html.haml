@@ -1,11 +1,12 @@
-%p
-  %b Content:
-  %br
-  = RedCloth.new(@story.content).to_html.html_safe
+%h2 Show story
 %p
   %b Time:
   %br
   = @story.time_line
+%p
+  %b Content:
+  %br
+  = RedCloth.new(@story.content).to_html.html_safe
 %p
   %b Photos:
   %br
