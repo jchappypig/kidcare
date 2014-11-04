@@ -3,6 +3,7 @@ class WeeklyProgramPrinter
   include Printer
 
   def initialize(weekly_program)
+    initialize_fonts
     @weekly_program = weekly_program
     if @weekly_program.instance_of? WeeklyProgram
       write_header

@@ -5,6 +5,7 @@ class StoriesPrinter
   include Printer
 
   def initialize(date)
+    initialize_fonts
     @stories = Story.where(time_line: date)
     if @stories.any?
       write_header
@@ -46,7 +47,7 @@ class StoriesPrinter
   end
 
   def write_content(story)
-    pad_top(10) { text story.content }
+    pad_top(10) { text story.content, color: '606060' }
   end
 
   def write_attachments(story)
