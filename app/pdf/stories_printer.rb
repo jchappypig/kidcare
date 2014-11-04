@@ -10,7 +10,7 @@ class StoriesPrinter
       write_header
       y_position_holder = cursor
       write_title("#{@stories.first.time_line.strftime('%A, %d %b %Y')} @ Little Star")
-      image "#{Rails.root}/app/assets/images/teddyBear.jpg", width: 40, at: [350, y_position_holder+10]
+      image "#{Rails.root}/app/assets/images/teddyBear.jpg", width: 40, at: [400, y_position_holder+10]
       write_stories
     end
   end
