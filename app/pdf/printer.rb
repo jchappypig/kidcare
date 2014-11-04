@@ -36,24 +36,24 @@ module Printer
 
   def initialize_fonts
     font_families.update('Lato' => {
-        :normal => "#{Rails.root}/app/assets/stylesheets/Lato-Regular.ttf",
-        :italic => "#{Rails.root}/app/assets/stylesheets/Lato-Italic.ttf",
-        :bold => "#{Rails.root}/app/assets/stylesheets/Lato-Bold.ttf",
-        :bold_italic => "#{Rails.root}/app/assets/stylesheets/Lato-BoldItalic.ttf"
+        :normal => "#{Rails.root}/app/assets/stylesheets/fonts/Lato-Regular.ttf",
+        :italic => "#{Rails.root}/app/assets/stylesheets/fonts/Lato-Italic.ttf",
+        :bold => "#{Rails.root}/app/assets/stylesheets/fonts/Lato-Bold.ttf",
+        :bold_italic => "#{Rails.root}/app/assets/stylesheets/fonts/Lato-BoldItalic.ttf"
     })
 
     font_families.update('Gloria Hallelujah' => {
-        :normal => "#{Rails.root}/app/assets/stylesheets/gloriahallelujah.ttf",
-        :italic => "#{Rails.root}/app/assets/stylesheets/gloriahallelujah.ttf",
-        :bold => "#{Rails.root}/app/assets/stylesheets/gloriahallelujah.ttf",
-        :bold_italic => "#{Rails.root}/app/assets/stylesheets/gloriahallelujah.ttf"
+        :normal => "#{Rails.root}/app/assets/stylesheets/fonts/gloriahallelujah.ttf",
+        :italic => "#{Rails.root}/app/assets/stylesheets/fonts/gloriahallelujah.ttf",
+        :bold => "#{Rails.root}/app/assets/stylesheets/fonts/gloriahallelujah.ttf",
+        :bold_italic => "#{Rails.root}/app/assets/stylesheets/fonts/gloriahallelujah.ttf"
     })
 
     font_families.update('Nunito' => {
-        :normal => "#{Rails.root}/app/assets/stylesheets/Nunito-Regular.ttf",
-        :italic => "#{Rails.root}/app/assets/stylesheets/Nunito-Regular.ttf",
-        :bold => "#{Rails.root}/app/assets/stylesheets/Nunito-Bold.ttf",
-        :bold_italic => "#{Rails.root}/app/assets/stylesheets/Nunito-Bold.ttf"
+        :normal => "#{Rails.root}/app/assets/stylesheets/fonts/Nunito-Regular.ttf",
+        :italic => "#{Rails.root}/app/assets/stylesheets/fonts/Nunito-Regular.ttf",
+        :bold => "#{Rails.root}/app/assets/stylesheets/fonts/Nunito-Bold.ttf",
+        :bold_italic => "#{Rails.root}/app/assets/stylesheets/fonts/Nunito-Bold.ttf"
     })
 
     font 'Lato'
