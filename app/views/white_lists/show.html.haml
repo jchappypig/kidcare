@@ -3,7 +3,9 @@
 %p
   %b Email:
   = @white_list.email
+= link_to 'Add Another One', new_white_list_path, class: 'button radius'
 
-= link_to 'Edit', edit_white_list_path(@white_list)
-\|
-= link_to 'Back', white_lists_path
+%p
+  = link_to 'Edit', edit_white_list_path(@white_list)
+  \|
+  = link_to 'Back', white_lists_path
