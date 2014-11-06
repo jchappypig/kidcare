@@ -88,8 +88,8 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'littlestarelc@bigpond.com'}
   config.action_mailer.smtp_settings = {
-      address: 'smtp.live.com',
-      port: 587,
+      address: 'mail.bigpond.com',
+      port: 110,
       domain: 'littlestarearlylearningcentre.com.au',
       user_name: ENV['MAIL_KEY'],
       password: ENV['MAIL_SECRET'],
