@@ -82,15 +82,15 @@ Rails.application.configure do
   # config.action_controller.asset_host = 'd11dkzsxgkfyqq.cloudfront.net'
 
   # Action mailer setting
-  config.action_mailer.default_url_options = {host: 'jchappypig.com'}
+  config.action_mailer.default_url_options = {host: 'littlestarearlylearningcentre.com.au'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'jchappypig@hotmail.com'}
+  config.action_mailer.default_options = {from: 'littlestarelc@bigpond.com'}
   config.action_mailer.smtp_settings = {
       address: 'smtp.live.com',
       port: 587,
-      domain: 'jchappypig.com',
+      domain: 'littlestarearlylearningcentre.com.au',
       user_name: ENV['MAIL_KEY'],
       password: ENV['MAIL_SECRET'],
       authentication: 'plain',
